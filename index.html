@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Highlight reel and premium portfolio featuring brand evolution, celebrity production, and live strategy.">
-    <title>Render Your Vision | Portfolio</title>
+    <meta name="description" content="Complete Digital Production for Brands with a Vision.">
+    <title>Your Creative Partner | Portfolio</title>
     
     <style>
         /* Base Dark Theme & Reset */
@@ -15,39 +15,69 @@
         }
 
         body {
-            background-color: #050507; /* Very deep dark neutral */
-            color: #f5f5f7; /* Apple-style off-white */
+            background-color: #050507; 
+            color: #f5f5f7; 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.5;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Dark Blueish-Purple Accent */
         :root {
-            --accent-color: #6B5B95; /* Deep purple-blue */
+            --accent-color: #6B5B95; 
             --glass-bg: rgba(255, 255, 255, 0.03);
             --glass-border: rgba(255, 255, 255, 0.08);
         }
 
-        /* Container to constrain width on massive screens */
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 1.5rem;
         }
 
-        /* === 80% Top Header (Hero Bento Box) === */
-        .hero-header {
+        /* === Top Navigation Header === */
+        .top-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem 2rem 1rem;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        /* === 80% Top Hero Video Section === */
+        .hero-section {
             height: 80vh;
             border-radius: 32px;
             overflow: hidden;
             position: relative;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             display: flex;
-            align-items: flex-end; /* Puts content at the bottom */
-            padding: 3rem;
-            /* Glass border for the hero */
-            border: 1px solid var(--glass-border);
+            align-items: center; /* Centers text vertically */
+            justify-content: center; /* Centers text horizontally */
+            text-align: center;
         }
 
         .hero-video {
@@ -58,50 +88,40 @@
             height: 100%;
             object-fit: cover;
             z-index: -1;
-            opacity: 0.7; /* Dims video slightly for text readability */
+            opacity: 0.5; /* Dimmed enough to make white text pop perfectly */
         }
 
-        /* Glassmorphism content box inside the header */
-        .hero-content {
-            background: rgba(10, 10, 12, 0.4);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 2rem 3rem;
-            border-radius: 24px;
-            border: 1px solid var(--glass-border);
-            max-width: 800px;
+        /* Clean White Text Overlay */
+        .hero-text-overlay {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            max-width: 900px;
         }
 
-        .hero-content h2 {
-            color: var(--accent-color);
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero-content h1 {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
+        .hero-text-overlay h1 {
+            font-size: clamp(3rem, 6vw, 5.5rem);
             font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            color: #ffffff;
             line-height: 1.1;
         }
 
-        .hero-content h1 span {
-            font-style: italic;
-            color: #ffffff;
+        .hero-text-overlay p {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.85); 
+            font-weight: 400;
         }
 
         /* === Bento Box Grid === */
         .bento-grid {
             display: grid;
-            /* Creates a 4-column layout */
             grid-template-columns: repeat(4, 1fr);
-            /* Sets a base height for the boxes */
             grid-auto-rows: 350px; 
             gap: 1.5rem;
         }
 
-        /* Glassmorphism Card Styles */
         .bento-card {
             background: var(--glass-bg);
             backdrop-filter: blur(16px);
@@ -122,7 +142,6 @@
             background: rgba(255, 255, 255, 0.05);
         }
 
-        /* Images inside Bento Cards */
         .bento-card img {
             position: absolute;
             top: 0;
@@ -139,7 +158,6 @@
             opacity: 0.8;
         }
 
-        /* Text overlay for cards */
         .card-content {
             background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
             position: absolute;
@@ -163,19 +181,17 @@
             font-weight: 600;
         }
 
-        /* Bento Grid Spans (The Magic!) */
         .span-2-cols {
             grid-column: span 2;
         }
 
-        /* Responsive Design: Stack boxes on smaller screens */
+        /* Responsive Adjustments */
         @media (max-width: 1024px) {
             .bento-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .hero-header {
+            .hero-section {
                 height: 60vh;
-                padding: 1.5rem;
             }
         }
 
@@ -184,10 +200,11 @@
                 grid-template-columns: 1fr;
             }
             .span-2-cols {
-                grid-column: span 1; /* Reset span for mobile */
+                grid-column: span 1; 
             }
-            .hero-content {
-                padding: 1.5rem;
+            .top-nav {
+                flex-direction: column;
+                gap: 1rem;
             }
         }
     </style>
@@ -195,16 +212,26 @@
 <body>
 
     <div class="container">
-        <header class="hero-header">
+        
+        <header class="top-nav">
+            <div class="logo">RENDER.</div>
+            <ul class="nav-links">
+                <li><a href="#">Work</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </header>
+
+        <section class="hero-section">
             <video class="hero-video" autoplay loop muted playsinline>
-                <source src="highlight reel 2026 (short).mp4" type="video/mp4">
+                <source src="assets/highlight-reel.mp4" type="video/mp4">
             </video>
             
-            <div class="hero-content">
-                <h2>Highlight Reel // 2024</h2>
-                <h1>RENDER YOUR <span>VISION.</span></h1>
+            <div class="hero-text-overlay">
+                <h1>Your Creative partner</h1>
+                <p>Complete Digital Production for Brands with a Vision.</p>
             </div>
-        </header>
+        </section>
 
         <main class="bento-grid">
             
