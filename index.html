@@ -3,109 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mike Miller Media | Render Your Vision</title>
+    <title>Mike Miller Media | Creative Director & Brand Strategist</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #050505; color: white; }
+        body { font-family: 'Inter', sans-serif; background-color: #050505; color: white; scroll-behavior: smooth; }
+        
+        /* Glassmorphism Effect */
         .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 2.5rem;
         }
-        .accent-glow {
-            box-shadow: 0 0 50px -10px rgba(88, 86, 214, 0.3);
-        }
+
+        /* Accent Colors */
+        .bg-purple-accent { background-color: #30106b; }
+        .text-purple-accent { color: #30106b; }
+        .border-purple-accent { border-color: #30106b; }
+        .text-yellow-highlight { color: #fac50b; }
+        .bg-yellow-highlight { background-color: #fac50b; }
+
         .bento-grid {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
             gap: 1.25rem;
         }
+
+        .hover-lift { transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .hover-lift:hover { transform: translateY(-5px); border-color: rgba(250, 197, 11, 0.3); }
+
         @media (max-width: 1024px) { .bento-grid { grid-template-columns: repeat(1, 1fr); } }
     </style>
 </head>
-<body class="p-4 md:p-10 lg:p-16">
+<body class="p-4 md:p-8 lg:p-12">
 
     <!-- Navigation -->
-    <nav class="flex justify-between items-center max-w-7xl mx-auto mb-16">
-        <div class="text-xl font-bold tracking-tighter uppercase">Mike Miller Media</div>
-        <a href="mailto:hello@mikemillermedia.com" class="px-6 py-2 bg-white text-black rounded-full font-bold text-sm hover:scale-105 transition">Contact</a>
+    <nav class="flex justify-between items-center max-w-7xl mx-auto mb-12">
+        <div class="flex items-center gap-2">
+            <div class="w-2 h-2 rounded-full bg-yellow-highlight"></div>
+            <span class="text-sm font-black uppercase tracking-[0.3em]">Mike Miller Media</span>
+        </div>
+        <div class="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+            <a href="#work" class="hover:text-yellow-highlight transition">Portfolio</a>
+            <a href="#about" class="hover:text-yellow-highlight transition">Overview</a>
+            <a href="#contact" class="hover:text-yellow-highlight transition underline decoration-yellow-highlight underline-offset-4">Inquire</a>
+        </div>
     </nav>
 
-    <!-- Bento Grid -->
+    <!-- Main Grid -->
     <div class="max-w-7xl mx-auto bento-grid">
         
-        <!-- Hero Box (Wide) -->
-        <div class="glass col-span-1 lg:col-span-4 p-8 md:p-12 min-h-[450px] flex flex-col justify-end relative overflow-hidden group">
-            <div class="absolute top-0 right-0 w-64 h-64 bg-[#5856D6] opacity-10 blur-[100px]"></div>
-            <h1 class="text-5xl md:text-8xl font-extrabold tracking-tighter leading-[0.9] mb-6">
-                Full-Cycle <br> <span class="text-[#5856D6]">Storytelling.</span>
+        <!-- 1. HERO: The Big Hook -->
+        <div class="glass col-span-1 lg:col-span-4 p-8 md:p-16 min-h-[500px] flex flex-col justify-end relative overflow-hidden group hover-lift">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-[#30106b] opacity-20 blur-[120px]"></div>
+            <h1 class="text-6xl md:text-9xl font-black tracking-tighter leading-[0.85] mb-8">
+                RENDER <br> YOUR <span class="text-yellow-highlight">VISION.</span>
             </h1>
-            <p class="text-zinc-400 text-lg max-w-md">We build narratives that turn experts into industry icons. Strategy, production, and polish for the digital age.</p>
+            <p class="text-zinc-400 text-xl max-w-lg leading-relaxed">
+                Creative Director & Visual Strategist. We turn 8-figure expertise into <span class="text-white italic">cinematic legacies.</span>
+            </p>
         </div>
 
-        <!-- Strategy Box -->
-        <div class="glass col-span-1 lg:col-span-2 p-8 flex flex-col justify-between">
-            <div class="w-12 h-12 rounded-2xl bg-[#5856D6]/20 flex items-center justify-center border border-[#5856D6]/30">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5856D6" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            </div>
+        <!-- 2. OVERVIEW: Who is Mike Miller Media -->
+        <div id="about" class="glass col-span-1 lg:col-span-2 p-10 flex flex-col justify-between hover-lift">
             <div>
-                <h2 class="text-2xl font-bold mb-2 leading-tight">Branding Beyond Logos.</h2>
-                <p class="text-zinc-500 text-sm">We ensure your audience doesn't just see you—they listen to you.</p>
+                <span class="text-yellow-highlight text-[10px] font-black uppercase tracking-widest">The Agency</span>
+                <h2 class="text-3xl font-bold mt-4 mb-6 leading-tight">10+ Years of Narrative Engineering.</h2>
+                <p class="text-zinc-500 text-sm leading-relaxed">
+                    Led by Michael Miller, we operate as an end-to-end creative partner—from positioning and concept to 4K cinematic execution. Specializing in high-profile podcasting, YouTube ecosystems, and premium brand identities.
+                </p>
+            </div>
+            <div class="mt-8 flex gap-2">
+                <span class="px-3 py-1 bg-white/5 rounded-full text-[9px] font-bold border border-white/10 uppercase">8-Figure Client History</span>
+                <span class="px-3 py-1 bg-white/5 rounded-full text-[9px] font-bold border border-white/10 uppercase">Global Production</span>
             </div>
         </div>
 
-        <!-- Foundation Package (The "Apple Watch" Style Card) -->
-        <div class="glass accent-glow col-span-1 lg:col-span-3 p-10 border-[#5856D6]/30">
-            <div class="flex justify-between items-center mb-8">
-                <span class="text-[10px] font-black uppercase tracking-[0.2em] text-[#5856D6] bg-[#5856D6]/10 px-3 py-1 rounded-full">The Foundation</span>
-                <div class="w-2 h-2 rounded-full bg-[#5856D6] animate-pulse"></div>
+        <!-- 3. PORTFOLIO GRID (Placeholders) -->
+        <div id="work" class="glass col-span-1 lg:col-span-3 min-h-[350px] relative overflow-hidden group hover-lift cursor-pointer">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
+            <div class="absolute inset-0 bg-zinc-900 group-hover:scale-105 transition-transform duration-1000">
+                <!-- IMAGE PLACEHOLDER -->
             </div>
-            <h3 class="text-3xl font-bold mb-6">Your Content Ecosystem.</h3>
-            <ul class="space-y-4 mb-10 text-zinc-300">
-                <li class="flex items-center gap-3"> <span class="w-1.5 h-1.5 rounded-full bg-[#5856D6]"></span> Monthly "Core Themes" Call</li>
-                <li class="flex items-center gap-3"> <span class="w-1.5 h-1.5 rounded-full bg-[#5856D6]"></span> Remote Lighting & Audio Direction</li>
-                <li class="flex items-center gap-3"> <span class="w-1.5 h-1.5 rounded-full bg-[#5856D6]"></span> 2 Long-Form Video Assets</li>
-                <li class="flex items-center gap-3"> <span class="w-1.5 h-1.5 rounded-full bg-[#5856D6]"></span> 4 Short-Form Social Clips</li>
-            </ul>
-            <button class="w-full bg-[#5856D6] py-5 rounded-3xl font-bold uppercase tracking-widest text-xs hover:brightness-125 transition shadow-lg shadow-[#5856D6]/20">Start Your Journey</button>
-        </div>
-
-        <!-- Case Study Thumbnail -->
-        <div class="glass col-span-1 lg:col-span-3 min-h-[300px] relative overflow-hidden group cursor-pointer">
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10"></div>
-            <!-- Replacement for Image -->
-            <div class="absolute inset-0 bg-zinc-900 group-hover:scale-105 transition-transform duration-700"></div>
             <div class="relative z-20 h-full p-10 flex flex-col justify-end">
-                <p class="text-[10px] font-bold uppercase tracking-widest text-zinc-500 mb-2">Featured Project</p>
-                <h3 class="text-4xl font-bold tracking-tighter italic">Kathleen Cameron</h3>
-                <p class="text-[#5856D6] font-semibold mt-2">View Narrative →</p>
+                <span class="text-yellow-highlight text-[10px] font-bold uppercase tracking-widest mb-2">Featured Case Study</span>
+                <h3 class="text-4xl font-black tracking-tighter italic uppercase">Kathleen Cameron</h3>
+                <p class="text-zinc-400 text-sm mt-2 font-medium">Full Brand Evolution & Content Pivot</p>
             </div>
         </div>
 
-        <!-- Full Width CTA -->
-        <div class="glass bg-white col-span-1 lg:col-span-6 p-12 flex flex-col md:flex-row items-center justify-between text-black">
-            <div>
-                <h2 class="text-4xl md:text-6xl font-black tracking-tighter mb-2 italic uppercase">Ready to build something iconic?</h2>
-                <p class="font-medium text-zinc-500">Currently taking 2 new partnerships for next month.</p>
+        <div class="glass col-span-1 lg:col-span-3 min-h-[350px] relative overflow-hidden group hover-lift cursor-pointer">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
+            <div class="absolute inset-0 bg-zinc-800 group-hover:scale-105 transition-transform duration-1000">
+                <!-- IMAGE PLACEHOLDER -->
             </div>
-            <button class="mt-8 md:mt-0 px-12 py-6 bg-black text-white rounded-full font-black uppercase tracking-widest text-sm hover:scale-110 transition">Get Started</button>
+            <div class="relative z-20 h-full p-10 flex flex-col justify-end">
+                <span class="text-yellow-highlight text-[10px] font-bold uppercase tracking-widest mb-2">Live Production</span>
+                <h3 class="text-4xl font-black tracking-tighter italic uppercase">Jason Derulo Collab</h3>
+                <p class="text-zinc-400 text-sm mt-2 font-medium">Podcast Direction & Revenue-Generating Course</p>
+            </div>
+        </div>
+
+        <!-- 4. CAPABILITIES (From Resume) -->
+        <div class="glass col-span-1 lg:col-span-2 p-10 hover-lift">
+            <h3 class="text-sm font-black uppercase tracking-widest text-zinc-500 mb-8">Core Stack</h3>
+            <div class="flex flex-wrap gap-3">
+                <span class="px-4 py-2 glass text-[10px] font-bold border-purple-accent/30 text-zinc-300">DaVinci Resolve</span>
+                <span class="px-4 py-2 glass text-[10px] font-bold border-purple-accent/30 text-zinc-300">Adobe Creative Suite</span>
+                <span class="px-4 py-2 glass text-[10px] font-bold border-purple-accent/30 text-zinc-300">Cinema-Level Lighting</span>
+                <span class="px-4 py-2 glass text-[10px] font-bold border-purple-accent/30 text-zinc-300">Multi-Camera Direction</span>
+                <span class="px-4 py-2 glass text-[10px] font-bold border-purple-accent/30 text-zinc-300">Sound Design</span>
+            </div>
+        </div>
+
+        <!-- 5. THE FOUNDATION PACKAGE (Focus Product) -->
+        <div class="glass col-span-1 lg:col-span-4 p-10 border-[#30106b]/40 shadow-[0_0_80px_-20px_rgba(48,16,107,0.3)] hover-lift">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
+                <div>
+                    <span class="bg-purple-accent text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest">Flagship Product</span>
+                    <h3 class="text-4xl font-black mt-4 tracking-tighter">The Foundation Package.</h3>
+                </div>
+                <div class="text-right">
+                    <p class="text-zinc-500 text-xs font-bold uppercase tracking-tighter">Availability</p>
+                    <p class="text-yellow-highlight text-lg font-black">2 Slots Left Q1</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <ul class="space-y-4 text-zinc-300 font-medium">
+                    <li class="flex items-center gap-4"> <div class="w-1.5 h-1.5 rounded-full bg-yellow-highlight"></div> Monthly "Core Themes" Call</li>
+                    <li class="flex items-center gap-4"> <div class="w-1.5 h-1.5 rounded-full bg-yellow-highlight"></div> Remote Audio/Light Direction</li>
+                </ul>
+                <ul class="space-y-4 text-zinc-300 font-medium">
+                    <li class="flex items-center gap-4"> <div class="w-1.5 h-1.5 rounded-full bg-yellow-highlight"></div> 2 Professional Long-Form Assets</li>
+                    <li class="flex items-center gap-4"> <div class="w-1.5 h-1.5 rounded-full bg-yellow-highlight"></div> 4 High-Retention Social Clips</li>
+                </ul>
+            </div>
+            
+            <button class="w-full bg-purple-accent py-6 rounded-[2rem] font-black uppercase tracking-widest text-sm hover:brightness-150 transition shadow-xl shadow-[#30106b]/40 border border-white/10">
+                Scale Your Message
+            </button>
+        </div>
+
+        <!-- 6. FINAL CTA -->
+        <div id="contact" class="glass bg-white col-span-1 lg:col-span-6 p-12 md:p-20 flex flex-col md:flex-row items-center justify-between text-black hover-lift">
+            <div class="text-center md:text-left">
+                <h2 class="text-5xl md:text-8xl font-black tracking-tighter leading-none mb-4 italic uppercase">Ready to build <br>something iconic?</h2>
+                <p class="font-bold text-zinc-400 uppercase tracking-widest text-xs">Let's talk about your digital empire.</p>
+            </div>
+            <a href="mailto:michaelemiller919@gmail.com" class="mt-12 md:mt-0 px-16 py-8 bg-black text-white rounded-full font-black uppercase tracking-widest text-sm hover:bg-[#30106b] transition duration-500">
+                Book a Discovery Call
+            </a>
         </div>
 
     </div>
 
-    <footer class="mt-20 py-10 border-t border-white/5 flex flex-col md:flex-row justify-between text-[10px] font-bold uppercase tracking-widest text-zinc-600">
-        <p>© 2024 Mike Miller Media — Texas Based. Global Reach.</p>
-        <div class="flex gap-8 mt-4 md:mt-0">
-            <a href="#" class="hover:text-[#5856D6]">Instagram</a>
-            <a href="#" class="hover:text-[#5856D6]">LinkedIn</a>
-            <a href="#" class="hover:text-[#5856D6]">YouTube</a>
+    <!-- Footer -->
+    <footer class="mt-20 py-12 border-t border-white/5 flex flex-col md:flex-row justify-between text-[10px] font-black uppercase tracking-[0.3em] text-zinc-600 max-w-7xl mx-auto">
+        <p>© 2024 Mike Miller Media — TEX-LA</p>
+        <div class="flex gap-10 mt-8 md:mt-0">
+            <a href="https://mikemillermedia.com" class="hover:text-yellow-highlight transition">Digital Assets</a>
+            <a href="#" class="hover:text-yellow-highlight transition">Instagram</a>
+            <a href="#" class="hover:text-yellow-highlight transition">YouTube</a>
         </div>
     </footer>
 
 </body>
 </html>
-Initial Commit
