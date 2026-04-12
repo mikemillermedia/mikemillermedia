@@ -3,124 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Highlight Header</title>
+    <meta name="description" content="Highlight reel and premium portfolio featuring brand evolution, celebrity production, and live strategy.">
+    <title>Render Your Vision | Portfolio</title>
+    
     <style>
-        body {
+        /* Base Dark Theme & Reset */
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background-color: #1a1a1a;
-            font-family: Arial, sans-serif;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
-        .header {
-            width: 100%;
-            height: 100vh;
+        body {
+            background-color: #050507; /* Very deep dark neutral */
+            color: #f5f5f7; /* Apple-style off-white */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Dark Blueish-Purple Accent */
+        :root {
+            --accent-color: #6B5B95; /* Deep purple-blue */
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Container to constrain width on massive screens */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        /* === 80% Top Header (Hero Bento Box) === */
+        .hero-header {
+            height: 80vh;
+            border-radius: 32px;
             overflow: hidden;
             position: relative;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-end; /* Puts content at the bottom */
+            padding: 3rem;
+            /* Glass border for the hero */
+            border: 1px solid var(--glass-border);
         }
 
-        .header video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .hero-video {
             position: absolute;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             z-index: -1;
+            opacity: 0.7; /* Dims video slightly for text readability */
         }
 
-        .header-content {
-            position: relative;
-            z-index: 1;
-            padding: 2rem;
+        /* Glassmorphism content box inside the header */
+        .hero-content {
+            background: rgba(10, 10, 12, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 2rem 3rem;
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            max-width: 800px;
         }
 
-        .highlight-text {
-            color: #b19cd9;
-            font-size: 0.8rem;
+        .hero-content h2 {
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
             margin-bottom: 0.5rem;
         }
 
-        .vision-text {
-            font-size: 3rem;
-            font-weight: bold;
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
         }
 
-        .vision-text span {
+        .hero-content h1 span {
             font-style: italic;
+            color: #ffffff;
         }
 
-        .project-cards {
+        /* === Bento Box Grid === */
+        .bento-grid {
             display: grid;
+            /* Creates a 4-column layout */
             grid-template-columns: repeat(4, 1fr);
+            /* Sets a base height for the boxes */
+            grid-auto-rows: 350px; 
             gap: 1.5rem;
-            width: 90%;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
         }
 
-        .card {
-            background-color: #2e2e2e;
-            padding: 1rem;
-            border-radius: 8px;
+        /* Glassmorphism Card Styles */
+        .bento-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
+            padding: 2rem;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            justify-content: flex-end;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, background 0.3s ease;
         }
 
-        .card img {
+        .bento-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Images inside Bento Cards */
+        .bento-card img {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            border-radius: 4px;
-            margin-bottom: 1rem;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .bento-card:hover img {
+            opacity: 0.8;
+        }
+
+        /* Text overlay for cards */
+        .card-content {
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 3rem 2rem 2rem 2rem;
         }
 
         .card-brand {
             font-size: 0.8rem;
-            color: #b19cd9;
-            margin-bottom: 0.2rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+            text-transform: uppercase;
         }
 
         .card-name {
-            font-size: 1rem;
-            font-weight: bold;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        /* Bento Grid Spans (The Magic!) */
+        .span-2-cols {
+            grid-column: span 2;
+        }
+
+        /* Responsive Design: Stack boxes on smaller screens */
+        @media (max-width: 1024px) {
+            .bento-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero-header {
+                height: 60vh;
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+            .span-2-cols {
+                grid-column: span 1; /* Reset span for mobile */
+            }
+            .hero-content {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <video autoplay loop muted>
-            <source src="highlight reel 2026 (short).mp4" type="video/mp4">
-        </video>
-        <div class="header-content">
-            <div class="highlight-text">HIGHLIGHT REEL // 2024</div>
-            <div class="vision-text">RENDER YOUR <span>VISION.</span></div>
-        </div>
+
+    <div class="container">
+        <header class="hero-header">
+            <video class="hero-video" autoplay loop muted playsinline>
+                <source src="highlight reel 2026 (short).mp4" type="video/mp4">
+            </video>
+            
+            <div class="hero-content">
+                <h2>Highlight Reel // 2024</h2>
+                <h1>RENDER YOUR <span>VISION.</span></h1>
+            </div>
+        </header>
+
+        <main class="bento-grid">
+            
+            <article class="bento-card span-2-cols">
+                <img src="assets/kathleen-cameron.jpg" alt="Kathleen Cameron Brand Evolution Book">
+                <div class="card-content">
+                    <div class="card-brand">Brand Evolution</div>
+                    <div class="card-name">Kathleen Cameron</div>
+                </div>
+            </article>
+
+            <article class="bento-card">
+                <img src="assets/jason-derulo.jpg" alt="Jason Derulo Concert Stage">
+                <div class="card-content">
+                    <div class="card-brand">Celebrity Production</div>
+                    <div class="card-name">Jason Derulo</div>
+                </div>
+            </article>
+
+            <article class="bento-card">
+                <img src="assets/revenue-lab.jpg" alt="Revenue Lab Podcast Setup">
+                <div class="card-content">
+                    <div class="card-brand">Podcast Directing</div>
+                    <div class="card-name">Revenue Lab</div>
+                </div>
+            </article>
+
+            <article class="bento-card span-2-cols">
+                <img src="assets/signature-summit.jpg" alt="Signature Summit Event Stage">
+                <div class="card-content">
+                    <div class="card-brand">Live Strategy</div>
+                    <div class="card-name">Signature Summit</div>
+                </div>
+            </article>
+
+        </main>
     </div>
-    <div class="project-cards">
-        <div class="card">
-            <img src="kathleen-cameron.jpg" alt="Kathleen Cameron Project">
-            <div class="card-brand">BRAND EVOLUTION</div>
-            <div class="card-name">KATHLEEN CAMERON</div>
-        </div>
-        <div class="card">
-            <img src="jason-derulo.jpg" alt="Jason Derulo Project">
-            <div class="card-brand">CELEBRITY PRODUCTION</div>
-            <div class="card-name">JASON DERULO</div>
-        </div>
-        <div class="card">
-            <img src="revenue-lab.jpg" alt="Revenue Lab Project">
-            <div class="card-brand">PODCAST DIRECTING</div>
-            <div class="card-name">REVENUE LAB</div>
-        </div>
-        <div class="card">
-            <img src="signature-summit.jpg" alt="Signature Summit Project">
-            <div class="card-brand">LIVE STRATEGY</div>
-            <div class="card-name">SIGNATURE SUMMIT</div>
-        </div>
-    </div>
+
 </body>
 </html>
