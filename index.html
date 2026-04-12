@@ -420,7 +420,10 @@
         </section>
 
        <section id="services" class="page-section fade-in-section">
-            
+            <div class="section-header">
+                <h2>Our Capabilities</h2>
+                <p>Comprehensive digital media under one umbrella.</p>
+            </div>
             
             <div class="services-grid">
                 
@@ -470,11 +473,16 @@
 
             </div>
         </section>
+        
         <section id="about-mike" class="page-section fade-in-section">
+            <div class="section-header">
+                <h2>Meet the Director</h2>
+                <p>Strategy comes before production.</p>
+            </div>
 
             <div class="bento-grid">
                 <div class="bento-card span-2-cols bio-video-container">
-                    <video class="hero-video" autoplay loop muted playsinline style="border-radius: 32px; opacity: 0.9;">
+                    <video id="mike-bio-video" class="hero-video" loop playsinline controls style="border-radius: 32px; opacity: 0.9;">
                         <source src="mike-intro.mp4" type="video/mp4">
                     </video>
                 </div>
@@ -561,6 +569,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // 1. Existing Observer for fade-in animations
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
@@ -580,6 +589,32 @@
             sections.forEach(section => {
                 observer.observe(section);
             });
+
+            // 2. New Observer for the Mike Miller Bio Video (Play/Pause on scroll)
+            const bioVideo = document.getElementById('mike-bio-video');
+            
+            if (bioVideo) {
+                const videoObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // The video is in view, attempt to play it
+                            let playPromise = bioVideo.play();
+                            
+                            // Catch the browser block if the user hasn't interacted with the page yet
+                            if (playPromise !== undefined) {
+                                playPromise.catch(error => {
+                                    console.log("Browser blocked unmuted auto-play. User must click play manually.");
+                                });
+                            }
+                        } else {
+                            // The video is out of view, pause it
+                            bioVideo.pause();
+                        }
+                    });
+                }, { threshold: 0.5 }); // Triggers when 50% of the video is visible
+
+                videoObserver.observe(bioVideo);
+            }
         });
     </script>
 
