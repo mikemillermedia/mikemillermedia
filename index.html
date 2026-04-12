@@ -68,7 +68,7 @@
             color: #ffffff;
         }
 
-        /* === Top Hero Section === */
+       /* === Top Hero Section === */
         .hero-section {
             height: 80vh;
             border-radius: 32px;
@@ -76,9 +76,9 @@
             position: relative;
             margin-bottom: 4rem;
             display: flex;
-            align-items: center; 
-            justify-content: center; 
-            text-align: center;
+            align-items: flex-end; /* Moves the text block to the bottom */
+            justify-content: flex-start; /* Moves the text block to the left */
+            text-align: left; /* Left-aligns the text */
             cursor: default;
         }
 
@@ -90,7 +90,7 @@
             height: 100%;
             object-fit: cover;
             z-index: -1;
-            opacity: 0.4; 
+            opacity: 1; /* Changed to 100% clear and vibrant */
             transition: opacity 0.5s ease;
         }
 
@@ -98,10 +98,11 @@
         .hero-text-overlay {
             position: relative;
             z-index: 1;
-            padding: 2rem;
-            max-width: 900px;
-            transition: opacity 0.4s ease; /* Smooth transition for opacity change */
-            pointer-events: none; /* Prevents the text from blocking the hover trigger */
+            padding: 3rem 4rem; /* Adds breathing room from the bottom left corner */
+            max-width: 800px;
+            transition: opacity 0.4s ease; 
+            pointer-events: none; 
+            text-shadow: 0 4px 16px rgba(0, 0, 0, 0.6); /* Helps text pop against full-opacity video */
         }
 
         /* Hovering over the hero section changes text opacity */
@@ -110,21 +111,21 @@
         }
 
         .hero-text-overlay h1 {
-            font-size: clamp(3rem, 6vw, 5.5rem);
+            font-size: clamp(2.5rem, 5vw, 4rem); /* Made the font smaller */
             font-weight: 700;
             letter-spacing: -0.02em;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             color: #ffffff;
             line-height: 1.1;
             text-transform: uppercase;
         }
 
         .hero-text-overlay p {
-            font-size: clamp(1.1rem, 2vw, 1.5rem);
-            color: rgba(255, 255, 255, 0.85); 
+            font-size: clamp(1rem, 1.5vw, 1.25rem); /* Made the subtitle smaller */
+            color: rgba(255, 255, 255, 0.9); 
             font-weight: 400;
         }
-
+        
         /* === Page Sections & Headers === */
         .page-section {
             margin-bottom: 6rem;
@@ -312,6 +313,9 @@
             .span-2-cols, .span-4-cols { grid-column: span 1; }
             .top-nav { flex-direction: column; gap: 1rem; }
             .text-box { padding: 2rem 1.5rem; }
+            
+            /* Add this line for mobile hero text spacing: */
+            .hero-text-overlay { padding: 2rem; } 
         }
     </style>
 </head>
