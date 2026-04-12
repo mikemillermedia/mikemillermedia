@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Complete Digital Production for Brands with a Vision.">
-    <title>MIKE MILLER MEDIA | YOUR CREATIVE PARTNER</title>
+    <title>Mike Miller Media | YOUR CREATIVE PARTNER</title>
     
     <style>
         /* Base Dark Theme & Reset */
@@ -20,6 +20,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden; /* Prevents horizontal scroll during animations */
         }
 
         :root {
@@ -78,6 +79,7 @@
             align-items: center; 
             justify-content: center; 
             text-align: center;
+            cursor: default;
         }
 
         .hero-image {
@@ -89,13 +91,22 @@
             object-fit: cover;
             z-index: -1;
             opacity: 0.4; 
+            transition: opacity 0.5s ease;
         }
 
+        /* The text overlay with hover transition */
         .hero-text-overlay {
             position: relative;
             z-index: 1;
             padding: 2rem;
             max-width: 900px;
+            transition: opacity 0.4s ease; /* Smooth transition for opacity change */
+            pointer-events: none; /* Prevents the text from blocking the hover trigger */
+        }
+
+        /* Hovering over the hero section changes text opacity */
+        .hero-section:hover .hero-text-overlay {
+            opacity: 0.2;
         }
 
         .hero-text-overlay h1 {
@@ -177,22 +188,45 @@
             padding: 2.5rem;
             position: relative;
             overflow: hidden;
-            transition: transform 0.3s ease, background 0.3s ease;
+            transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
             min-height: 350px;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
+            text-decoration: none; /* In case we make them clickable links */
+            color: inherit;
         }
 
         .bento-card:hover {
-            transform: translateY(-4px);
-            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-6px) scale(1.01);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .bento-card img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0.5;
+            transition: opacity 0.3s ease, transform 0.5s ease;
+        }
+
+        .bento-card:hover img {
+            opacity: 0.7;
+            transform: scale(1.05); /* Slight zoom on hover */
         }
 
         /* Text overlay for standard cards */
         .card-content {
             position: relative;
             z-index: 2;
+            background: linear-gradient(to top, rgba(5,5,7,0.95) 0%, rgba(5,5,7,0) 100%);
+            margin: -2.5rem; /* Negates padding to stretch gradient */
+            padding: 4rem 2.5rem 2.5rem 2.5rem;
         }
 
         .card-label {
@@ -226,6 +260,7 @@
             align-items: center;
             text-align: center;
             padding: 4rem 2rem;
+            background: var(--glass-bg); /* Removes gradient for text-only boxes */
         }
 
         .text-box h3 {
@@ -249,6 +284,20 @@
             border: 1px dashed rgba(255, 255, 255, 0.2);
             border-radius: 16px;
             color: rgba(255, 255, 255, 0.5);
+            width: 100%;
+        }
+
+        /* Dynamic Scroll Animation Classes */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, visibility;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
         }
 
         /* Responsive Adjustments */
@@ -275,20 +324,20 @@
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
-                <li><a href="#work">Work</a></li>
+                <li><a href="#projects">Work</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </header>
 
         <section class="hero-section">
-            <img src="assets/ferrari-bg.jpg" alt="Dark Ferrari Background" class="hero-image">
+            <img src="assets/ferrari-bg.jpg" alt="Dark Background" class="hero-image">
             <div class="hero-text-overlay">
                 <h1>YOUR CREATIVE PARTNER</h1>
                 <p>Complete Digital Production for Brands with a Vision.</p>
             </div>
         </section>
 
-        <section id="about" class="page-section">
+        <section id="about" class="page-section fade-in-section">
             <div class="bento-grid">
                 <article class="bento-card span-4-cols text-box">
                     <div class="card-label">Rooted in Vision</div>
@@ -299,7 +348,7 @@
             </div>
         </section>
 
-        <section id="services" class="page-section">
+        <section id="services" class="page-section fade-in-section">
             <div class="section-header">
                 <h2>Our Capabilities</h2>
                 <p>Comprehensive digital media under one umbrella.</p>
@@ -310,7 +359,7 @@
                     <div class="card-content">
                         <div class="card-label">Cinematography</div>
                         <div class="card-title">Motion & Video</div>
-                        <div class="card-desc">High-end videography for promotional campaigns, targeted ads, live events, and luxury real estate. We capture the essence of your brand in motion.</div>
+                        <div class="card-desc">High-end videography for promotional campaigns, targeted ads, live events, and luxury real estate.</div>
                     </div>
                 </article>
 
@@ -326,9 +375,56 @@
                     <div class="card-content">
                         <div class="card-label">Audio & Visual</div>
                         <div class="card-title">Podcast Production</div>
-                        <div class="card-desc">Full-service podcast production operated through <b>Rise & Render DFW</b>, a Mike Miller Media company.</div>
+                        <div class="card-desc">Full-service podcast production operated through Rise & Render DFW.</div>
                     </div>
                 </article>
+            </div>
+        </section>
+
+        <section id="projects" class="page-section fade-in-section">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <p>Realizing the vision across multiple disciplines.</p>
+            </div>
+
+            <div class="bento-grid">
+                
+                <a href="#" class="bento-card span-2-cols">
+                    <img src="assets/project-cinematography.jpg" alt="Real Estate Cinematography">
+                    <div class="card-content">
+                        <div class="card-label">Cinematography</div>
+                        <div class="card-title">Luxury Real Estate Tour</div>
+                        <div class="card-desc">Dynamic drone work and interior stabilization for high-end market listings.</div>
+                    </div>
+                </a>
+
+                <a href="#" class="bento-card span-2-cols">
+                    <img src="assets/project-webdesign.jpg" alt="Brand Web Design">
+                    <div class="card-content">
+                        <div class="card-label">Web & Graphic Design</div>
+                        <div class="card-title">Boutique Brand Overhaul</div>
+                        <div class="card-desc">A complete visual identity and e-commerce website redesign for a modern apparel brand.</div>
+                    </div>
+                </a>
+
+                <a href="#" class="bento-card span-2-cols">
+                    <img src="assets/project-event.jpg" alt="Live Event Production">
+                    <div class="card-content">
+                        <div class="card-label">Live Event Coverage</div>
+                        <div class="card-title">The Signature Summit</div>
+                        <div class="card-desc">Multi-cam production and live-cut editing for a three-day entrepreneurial conference.</div>
+                    </div>
+                </a>
+
+                <a href="#" class="bento-card span-2-cols">
+                    <img src="assets/project-podcast.jpg" alt="Podcast Studio Production">
+                    <div class="card-content">
+                        <div class="card-label">Podcast Production</div>
+                        <div class="card-title">Rise & Render Sessions</div>
+                        <div class="card-desc">Studio build-out, lighting design, and ongoing audio/visual production for weekly episodic content.</div>
+                    </div>
+                </a>
+
             </div>
 
             <div class="cta-container">
@@ -336,14 +432,14 @@
             </div>
         </section>
 
-        <section id="work" class="page-section">
+        <section id="social" class="page-section fade-in-section">
             <div class="section-header">
-                <h2>Latest Work</h2>
+                <h2>The Latest</h2>
                 <p>Follow the journey on Instagram @MikeMillerMedia</p>
             </div>
             
             <div class="bento-grid">
-                <article class="bento-card span-4-cols">
+                <article class="bento-card span-4-cols text-box" style="padding: 2rem;">
                     <div class="ig-placeholder">
                         <p>[ Insert Live Instagram Feed Widget Here ]</p>
                     </div>
@@ -356,6 +452,30 @@
         </section>
 
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 // Triggers when 15% of the element is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Stop observing once it's visible
+                    }
+                });
+            }, observerOptions);
+
+            const sections = document.querySelectorAll('.fade-in-section');
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
 
 </body>
 </html>
