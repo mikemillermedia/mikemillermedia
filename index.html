@@ -94,35 +94,27 @@
             transition: opacity 0.5s ease;
         }
 
-        /* The text overlay with hover transition */
-        .hero-text-overlay {
-            position: relative;
-            z-index: 1;
-            padding: 3rem 4rem; /* Adds breathing room from the bottom left corner */
-            max-width: 800px;
-            transition: opacity 0.4s ease; 
-            pointer-events: none; 
-            text-shadow: 0 4px 16px rgba(0, 0, 0, 0.6); /* Helps text pop against full-opacity video */
+        /* === Intro Statement Section === */
+        .intro-section {
+            text-align: center; /* Centers the big statement nicely between the video and the bento boxes */
+            padding: 2rem 1rem 6rem 1rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        /* Hovering over the hero section changes text opacity */
-        .hero-section:hover .hero-text-overlay {
-            opacity: 0.2;
-        }
-
-        .hero-text-overlay h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem); /* Made the font smaller */
+        .intro-section h1 {
+            font-size: clamp(3rem, 6vw, 5rem); /* Keeps it massively impactful on desktop, scalable on mobile */
             font-weight: 700;
             letter-spacing: -0.02em;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             color: #ffffff;
             line-height: 1.1;
             text-transform: uppercase;
         }
 
-        .hero-text-overlay p {
-            font-size: clamp(1rem, 1.5vw, 1.25rem); /* Made the subtitle smaller */
-            color: rgba(255, 255, 255, 0.9); 
+        .intro-section p {
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            color: rgba(255, 255, 255, 0.7); 
             font-weight: 400;
         }
         
@@ -333,14 +325,21 @@
             </ul>
         </header>
 
-       <section class="hero-section">
-    <video class="hero-video" autoplay loop muted playsinline>
-        <source src="highlight reel 2026 (short).mp4" type="video/mp4">
-    </video>
-    <div class="hero-text-overlay">
-        <h1>Your Creative partner</h1>
-        <p>Complete Digital Production for Brands with a Vision.</p>
-    </div>
+      <section class="hero-section">
+            <video class="hero-video" autoplay loop muted playsinline>
+                <source src="assets/your-header-video.mp4" type="video/mp4">
+            </video>
+            </section>
+
+        <section class="intro-section fade-in-section">
+            <h1>Your Creative partner</h1>
+            <p>Complete Digital Production for Brands with a Vision.</p>
+        </section>
+
+        <section id="about" class="page-section fade-in-section">
+            <div class="bento-grid">
+                <article class="bento-card span-4-cols text-box">
+                    <div class="card-label">Rooted in Vision</div>
 </section>
 
         <section id="about" class="page-section fade-in-section">
