@@ -73,7 +73,6 @@
         .hero-section {
             height: 80vh;
             border-radius: 32px;
-            /* overflow: hidden removed to allow the glow to spill out */
             position: relative;
             margin-bottom: 2rem;
             cursor: default;
@@ -212,7 +211,8 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 30px rgba(123, 44, 191, 0.15);
         }
 
-        .bento-card img {
+        /* Base settings for images inside project cards */
+        .project-img {
             position: absolute;
             top: 0;
             left: 0;
@@ -224,14 +224,19 @@
             transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .bento-card:hover img {
+        .bento-card:hover .project-img {
             opacity: 0.7;
             transform: scale(1.05); 
         }
 
+        /* Standard text container logic */
         .card-content {
             position: relative;
             z-index: 2;
+        }
+
+        /* Gradient overlay specifically for image cards */
+        .image-card-content {
             background: linear-gradient(to top, rgba(5,5,7,0.95) 0%, rgba(5,5,7,0) 100%);
             margin: -2.5rem; 
             padding: 4rem 2.5rem 2.5rem 2.5rem;
@@ -261,6 +266,40 @@
         /* Grid Spans */
         .span-2-cols { grid-column: span 2; }
         .span-4-cols { grid-column: span 4; }
+
+        /* Pure Text Box Adjustments */
+        .text-only-card {
+            background: rgba(255, 255, 255, 0.02);
+            justify-content: flex-end;
+        }
+
+        .bio-text {
+            justify-content: center;
+            align-items: flex-start;
+            padding: 3rem;
+        }
+
+        .bio-text p {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.2rem;
+        }
+
+        .bio-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .bio-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Bio Video Container */
+        .bio-video-container {
+            padding: 0; 
+            border: 1px solid var(--glass-border);
+        }
 
         /* Custom alignment for pure text bento boxes */
         .text-box {
@@ -313,7 +352,7 @@
             .bento-grid { grid-template-columns: 1fr; }
             .span-2-cols, .span-4-cols { grid-column: span 1; }
             .top-nav { flex-direction: column; gap: 1rem; }
-            .text-box { padding: 2rem 1.5rem; }
+            .text-box, .bio-text { padding: 2rem 1.5rem; }
         }
     </style>
 </head>
@@ -325,6 +364,7 @@
             <div class="logo">MIKE MILLER MEDIA.</div>
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
+                <li><a href="#about-mike">About</a></li>
                 <li><a href="#projects">Work</a></li>
                 <li><a href="#social">Social</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -351,29 +391,54 @@
             </div>
             
             <div class="bento-grid">
-                <article class="bento-card span-2-cols">
+                <div class="bento-card span-2-cols text-only-card">
                     <div class="card-content">
                         <div class="card-label">Cinematography</div>
                         <div class="card-title">Motion & Video</div>
                         <div class="card-desc">High-end videography for promotional campaigns, targeted ads, live events, and luxury real estate.</div>
                     </div>
-                </article>
+                </div>
 
-                <article class="bento-card">
+                <div class="bento-card text-only-card">
                     <div class="card-content">
                         <div class="card-label">Visual Identity</div>
                         <div class="card-title">Graphic & Web</div>
                         <div class="card-desc">Sleek, modern web design and striking graphic assets built to convert and captivate.</div>
                     </div>
-                </article>
+                </div>
 
-                <article class="bento-card">
+                <div class="bento-card text-only-card">
                     <div class="card-content">
                         <div class="card-label">Audio & Visual</div>
                         <div class="card-title">Podcast Production</div>
                         <div class="card-desc">Full-service podcast production operated through Rise & Render DFW.</div>
                     </div>
-                </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="about-mike" class="page-section fade-in-section">
+            <div class="section-header">
+                <h2>Meet the Director</h2>
+                <p>Strategy comes before production.</p>
+            </div>
+
+            <div class="bento-grid">
+                <div class="bento-card span-2-cols bio-video-container">
+                    <video class="hero-video" autoplay loop muted playsinline style="border-radius: 32px; opacity: 0.9;">
+                        <source src="assets/mike-intro.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="bento-card span-2-cols text-only-card bio-text">
+                    <div class="card-content">
+                        <div class="card-label">The Foundation</div>
+                        <h3 class="bio-title">Mike Miller</h3>
+                        <p>Mike Miller Media was founded on a simple principle: Strategy comes before production.</p>
+                        <p>Led by seasoned Creative Director Mike Miller, with over 10 years of experience in digital innovation, our company DNA is rooted in technical excellence and creative vision. We don't just "hit record." We analyze your audience, refine your message, and produce content that doesn't just look good but also drives results.</p>
+                        <p>Whether you need a full-service creative partner to manage your brand or a premium studio space to record your next episode, we provide the infrastructure for you to scale.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -386,32 +451,32 @@
             <div class="bento-grid">
                 
                 <a href="#" class="bento-card span-2-cols">
-                    <img src="Kathleen nurse ep still 2_3.4.1.png" alt="Youtube Content Creation">
-                    <div class="card-content">
+                    <img src="Kathleen nurse ep still 2_3.4.1.png" alt="Youtube Content Creation" class="project-img">
+                    <div class="card-content image-card-content">
                         <div class="card-title">Kathleen Cameron</div>
                         <div class="card-desc">Educational & Inspirational content that built trust with audience.</div>
                     </div>
                 </a>
 
                 <a href="#" class="bento-card span-2-cols">
-                    <img src="waxahachie home image_4.6.2.png" alt="Real Estate Videography">
-                    <div class="card-content">
+                    <img src="waxahachie home image_4.6.2.png" alt="Real Estate Videography" class="project-img">
+                    <div class="card-content image-card-content">
                         <div class="card-title">Massive Single Floor Home</div>
                         <div class="card-desc">A jaw dropping house tour that potential buyers couldn't resist.</div>
                     </div>
                 </a>
 
                 <a href="#" class="bento-card span-2-cols">
-                    <img src="fitted apron thumbnail.jpg" alt="Visual Branding & Online Course">
-                    <div class="card-content">
+                    <img src="fitted apron thumbnail.jpg" alt="Visual Branding & Online Course" class="project-img">
+                    <div class="card-content image-card-content">
                         <div class="card-title">Fitted Apron</div>
                         <div class="card-desc">Visual branding & online Course to bring this company to life.</div>
                     </div>
                 </a>
 
                 <a href="#" class="bento-card span-2-cols">
-                    <img src="pastor ron still.jpg" alt="Short Film">
-                    <div class="card-content">
+                    <img src="pastor ron still.jpg" alt="Short Film" class="project-img">
+                    <div class="card-content image-card-content">
                         <div class="card-title">The King's Park Journey</div>
                         <div class="card-desc">A inspiring history and remarkable journey of a Church that saw immediate growth.</div>
                     </div>
