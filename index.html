@@ -3,184 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mike Miller Media | Creative Director & Brand Strategist</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Aileron Font Import -->
-    <link href="https://fonts.cdnfonts.com/css/aileron" rel="stylesheet">
-                
+    <title>Website Highlight Header</title>
     <style>
-        /* Setting Aileron as the primary font */
-        body { 
-            font-family: 'Aileron', sans-serif; 
-            background-color: #050505; 
-            color: white; 
-            scroll-behavior: smooth; 
-            -webkit-font-smoothing: antialiased;
-        }
-        
-        /* Premium Glassmorphism */
-        .glass {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 2.5rem;
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            font-family: Arial, sans-serif;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .bg-accent { background-color: #30106b; }
-        .text-accent { color: #30106b; }
-        .shadow-accent { box-shadow: 0 0 60px -15px rgba(48, 16, 107, 0.4); }
+        .header {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
 
-        .bento-grid {
+        .header video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+        }
+
+        .highlight-text {
+            color: #b19cd9;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .vision-text {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .vision-text span {
+            font-style: italic;
+        }
+
+        .project-cards {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 1.25rem;
+            gap: 1.5rem;
+            width: 90%;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
         }
 
-        .hover-lift { transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-        .hover-lift:hover { 
-            transform: translateY(-8px); 
-            border-color: rgba(255, 255, 255, 0.2); 
-            background: rgba(255, 255, 255, 0.04); 
+        .card {
+            background-color: #2e2e2e;
+            padding: 1rem;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* Responsive adjustment */
-        @media (max-width: 1024px) { 
-            .bento-grid { grid-template-columns: repeat(1, 1fr); } 
+        .card img {
+            width: 100%;
+            border-radius: 4px;
+            margin-bottom: 1rem;
         }
 
-        /* Fine-tuning Aileron weights */
-        h1, h2, h3 { font-weight: 900; letter-spacing: -0.05em; }
-        p { font-weight: 300; letter-spacing: -0.01em; }
-        .nav-link { font-weight: 700; text-transform: uppercase; letter-spacing: 0.3em; font-size: 10px; }
+        .card-brand {
+            font-size: 0.8rem;
+            color: #b19cd9;
+            margin-bottom: 0.2rem;
+        }
+
+        .card-name {
+            font-size: 1rem;
+            font-weight: bold;
+        }
     </style>
 </head>
-<body class="p-4 md:p-8 lg:p-12 selection:bg-[#30106b] selection:text-white">
-
-    <!-- Navigation -->
-    <nav class="flex justify-between items-center max-w-7xl mx-auto mb-12">
-        <div class="flex items-center gap-3">
-            <div class="w-2 h-2 rounded-full bg-[#30106b]"></div>
-            <span class="nav-link text-white">Mike Miller Media</span>
+<body>
+    <div class="header">
+        <video autoplay loop muted>
+            <source src="highlight-reel.mp4" type="video/mp4">
+        </video>
+        <div class="header-content">
+            <div class="highlight-text">HIGHLIGHT REEL // 2024</div>
+            <div class="vision-text">RENDER YOUR <span>VISION.</span></div>
         </div>
-        <div class="hidden md:flex gap-10 text-zinc-500 text-center">
-            <a href="#work" class="nav-link hover:text-white transition">Portfolio</a>
-            <a href="#about" class="nav-link hover:text-white transition">Overview</a>
-            <a href="#contact" class="px-5 py-2 glass border-white/10 hover:border-white/40 transition nav-link !text-white !tracking-widest">Inquire</a>
-        </div>
-    </nav>
-
-    <!-- Main Bento Grid -->
-    <div class="max-w-7xl mx-auto bento-grid">
-        
-        <!-- 1. HEADER VIDEO REEL (Highlight Reel Placeholder) -->
-        <div class="glass col-span-1 lg:col-span-4 min-h-[400px] md:min-h-[550px] relative overflow-hidden group hover-lift shadow-accent">
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
-            
-            <!-- Replace 'your-video.mp4' with your highlight reel link -->
-            <video class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-opacity duration-700" autoplay muted loop playsinline>
-                <source src="your-highlight-reel.mp4" type="video/mp4">
-            </video>
-
-            <div class="relative z-20 h-full p-8 md:p-16 flex flex-col justify-end">
-                <span class="text-[#30106b] nav-link !text-[10px] mb-4">Highlight Reel // 2024</span>
-                <h1 class="text-5xl md:text-8xl leading-[0.85]">
-                    RENDER YOUR <span class="opacity-30 italic">VISION.</span>
-                </h1>
-            </div>
-        </div>
-
-        <!-- 2. PORTFOLIO GRID (4 Clickable Project Boxes) -->
-        <!-- Project 1 -->
-        <a href="project-1.html" class="glass col-span-1 lg:col-span-1 min-h-[300px] relative overflow-hidden group hover-lift flex flex-col justify-end p-8 border-white/5">
-            <div class="absolute inset-0 bg-zinc-900 group-hover:scale-110 transition-transform duration-1000"></div>
-            <div class="relative z-10">
-                <span class="text-white/30 nav-link !text-[8px] mb-1 block">Brand Evolution</span>
-                <h3 class="text-xl italic uppercase">Kathleen Cameron</h3>
-            </div>
-        </a>
-
-        <!-- Project 2 -->
-        <a href="project-2.html" class="glass col-span-1 lg:col-span-1 min-h-[300px] relative overflow-hidden group hover-lift flex flex-col justify-end p-8 border-white/5">
-            <div class="absolute inset-0 bg-zinc-800 group-hover:scale-110 transition-transform duration-1000"></div>
-            <div class="relative z-10">
-                <span class="text-white/30 nav-link !text-[8px] mb-1 block">Celebrity Production</span>
-                <h3 class="text-xl italic uppercase">Jason Derulo</h3>
-            </div>
-        </a>
-
-        <!-- Project 3 -->
-        <a href="project-3.html" class="glass col-span-1 lg:col-span-1 min-h-[300px] relative overflow-hidden group hover-lift flex flex-col justify-end p-8 border-white/5">
-            <div class="absolute inset-0 bg-zinc-900 group-hover:scale-110 transition-transform duration-1000"></div>
-            <div class="relative z-10">
-                <span class="text-white/30 nav-link !text-[8px] mb-1 block">Podcast Directing</span>
-                <h3 class="text-xl italic uppercase">Revenue Lab</h3>
-            </div>
-        </a>
-
-        <!-- Project 4 -->
-        <a href="project-4.html" class="glass col-span-1 lg:col-span-1 min-h-[300px] relative overflow-hidden group hover-lift flex flex-col justify-end p-8 border-white/5">
-            <div class="absolute inset-0 bg-zinc-800 group-hover:scale-110 transition-transform duration-1000"></div>
-            <div class="relative z-10">
-                <span class="text-white/30 nav-link !text-[8px] mb-1 block">Live Strategy</span>
-                <h3 class="text-xl italic uppercase">Signature Summit</h3>
-            </div>
-        </a>
-
-        <!-- 3. ABOUT / OVERVIEW -->
-        <div id="about" class="glass col-span-1 lg:col-span-2 p-12 flex flex-col justify-between hover-lift">
-            <div>
-                <span class="text-[#30106b] nav-link !text-[10px]">The Overview</span>
-                <h2 class="text-3xl mt-5 mb-8">Narrative Engineering.</h2>
-                <p class="text-zinc-500 text-sm leading-relaxed">
-                    Led by Michael Miller, we provide end-to-end creative partnership—from brand positioning to 4K cinematic distribution. We specialize in scaling 8-figure entrepreneurs.
-                </p>
-            </div>
-            <div class="mt-10 flex flex-wrap gap-2">
-                <span class="px-4 py-1.5 bg-white/5 rounded-full nav-link !text-[8px] border border-white/10">TX-Based</span>
-                <span class="px-4 py-1.5 bg-white/5 rounded-full nav-link !text-[8px] border border-white/10">Premium Content</span>
-            </div>
-        </div>
-
-        <!-- 4. FOUNDATION PACKAGE -->
-        <div class="glass col-span-1 lg:col-span-2 p-10 border-[#30106b]/30 hover-lift relative overflow-hidden">
-            <span class="bg-[#30106b] text-white px-5 py-2 rounded-full nav-link !text-[8px]">Core Service</span>
-            <h3 class="text-4xl mt-8 italic uppercase">The Foundation.</h3>
-            
-            <ul class="mt-8 space-y-4 text-zinc-400 text-[11px] font-bold uppercase tracking-wider">
-                <li class="flex items-center gap-3"> <div class="w-1 h-1 rounded-full bg-[#30106b]"></div> Monthly Strategy Call</li>
-                <li class="flex items-center gap-3"> <div class="w-1 h-1 rounded-full bg-[#30106b]"></div> 2 Professional Long-Form Edits</li>
-                <li class="flex items-center gap-3"> <div class="w-1 h-1 rounded-full bg-[#30106b]"></div> 4 Social Clips (Vertical)</li>
-            </ul>
-            
-            <button class="w-full mt-10 bg-[#30106b] py-5 rounded-[2rem] nav-link !text-[10px] hover:brightness-125 transition-all">
-                Inquire for Q1
-            </button>
-        </div>
-
-        <!-- CALL TO ACTION -->
-        <div id="contact" class="glass bg-white col-span-1 lg:col-span-4 p-12 md:p-20 flex flex-col md:flex-row items-center justify-between text-black hover-lift">
-            <div>
-                <h2 class="text-5xl md:text-7xl leading-[0.9] mb-4 uppercase italic">Ready to be Iconic?</h2>
-                <p class="nav-link !text-zinc-400 !tracking-[0.5em]">Scale your narrative today.</p>
-            </div>
-            <a href="mailto:michaelemiller919@gmail.com" class="mt-12 md:mt-0 px-12 py-7 bg-black text-white rounded-full nav-link !text-[10px] hover:bg-[#30106b] transition-all">
-                Contact the Agency
-            </a>
-        </div>
-
     </div>
-
-    <!-- Footer -->
-    <footer class="mt-20 py-16 border-t border-white/5 flex flex-col md:flex-row justify-between nav-link !text-zinc-600 max-w-7xl mx-auto">
-        <p>© 2024 Mike Miller Media — Dallas, TX</p>
-        <div class="flex gap-12 mt-10 md:mt-0">
-            <a href="#" class="hover:text-white transition">Instagram</a>
-            <a href="#" class="hover:text-white transition">LinkedIn</a>
-            <a href="#" class="hover:text-white transition">YouTube</a>
+    <div class="project-cards">
+        <div class="card">
+            <img src="kathleen-cameron.jpg" alt="Kathleen Cameron Project">
+            <div class="card-brand">BRAND EVOLUTION</div>
+            <div class="card-name">KATHLEEN CAMERON</div>
         </div>
-    </footer>
-
+        <div class="card">
+            <img src="jason-derulo.jpg" alt="Jason Derulo Project">
+            <div class="card-brand">CELEBRITY PRODUCTION</div>
+            <div class="card-name">JASON DERULO</div>
+        </div>
+        <div class="card">
+            <img src="revenue-lab.jpg" alt="Revenue Lab Project">
+            <div class="card-brand">PODCAST DIRECTING</div>
+            <div class="card-name">REVENUE LAB</div>
+        </div>
+        <div class="card">
+            <img src="signature-summit.jpg" alt="Signature Summit Project">
+            <div class="card-brand">LIVE STRATEGY</div>
+            <div class="card-name">SIGNATURE SUMMIT</div>
+        </div>
+    </div>
 </body>
 </html>
