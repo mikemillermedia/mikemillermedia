@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mike Miller Media | FULL CYCLE STORYTELLING</title>
+    <title>Mike Miller Media | Your Creative Partner</title>
     
     <!-- Aileron Font -->
     <link href="https://fonts.cdnfonts.com/css/aileron" rel="stylesheet">
@@ -26,19 +26,28 @@
         }
 
         /* Reveal Animation Styles */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         .glass-pro {
             background: var(--glass);
             backdrop-filter: blur(40px);
             border: 1px solid var(--glass-border);
-            border-radius: 2rem;
+            border-radius: 2.5rem;
         }
 
-        /* Scroll Animation for Services */
-        .service-reveal { opacity: 0.15; transform: translateX(-20px); transition: all 0.6s ease; }
-        .service-reveal.active { opacity: 1; transform: translateX(0); }
+        /* DRAMATIC SERVICE SCROLL */
+        .service-focus { 
+            opacity: 0.1; 
+            transform: scale(0.9) translateX(-30px); 
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: blur(4px);
+        }
+        .service-focus.active { 
+            opacity: 1; 
+            transform: scale(1) translateX(0); 
+            filter: blur(0);
+        }
 
         .huge-title { font-size: clamp(2rem, 8vw, 7rem); font-weight: 900; line-height: 0.9; text-transform: uppercase; letter-spacing: -0.04em; }
 
@@ -48,6 +57,26 @@
 
         .project-card img { transition: 1.5s cubic-bezier(0.16, 1, 0.3, 1); opacity: 0.4; }
         .project-card:hover img { transform: scale(1.05); opacity: 0.6; }
+
+        /* Large Icon Pulsing Effect */
+        .icon-box {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(48, 16, 107, 0.3);
+            border-radius: 1.5rem;
+            background: rgba(48, 16, 107, 0.05);
+            transition: all 0.8s ease;
+        }
+        .service-focus.active .icon-box {
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(48, 16, 107, 0.4);
+            background: rgba(48, 16, 107, 0.15);
+        }
     </style>
 </head>
 <body class="pt-24">
@@ -68,116 +97,115 @@
     </nav>
 
     <!-- HERO (Mobile 4:5, Desktop 16:9) -->
-    <section class="max-w-[90%] md:max-w-[85%] mx-auto mb-24 reveal">
-        <div class="glass-pro aspect-[4/5] md:aspect-video relative overflow-hidden flex items-end p-8 md:p-24 shadow-[0_0_80px_-20px_rgba(48,16,107,0.4)]">
+    <section class="max-w-[90%] md:max-w-[85%] mx-auto mb-32 reveal">
+        <div class="glass-pro aspect-[4/5] md:aspect-video relative overflow-hidden flex items-end p-8 md:p-24 shadow-[0_0_80px_-20px_rgba(48, 16, 107, 0.4)]">
             <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline>
                 <source src="highlight reel 2026 (short).mp4" type="video/mp4">
             </video>
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
             <div class="relative z-10 max-w-4xl">
-                <h1 class="huge-title mb-6">FULL CYCLE <br><span class="text-[#FFFFFF]">STORYTELLING</span></h1>
-                <p class="text-zinc-400 text-lg md:text-2xl font-light">STRATEGY | PRODUCTION | INNOVATION</p>
+                <h1 class="huge-title mb-6 italic">Your Creative <br><span class="text-[#30106b]">Partner.</span></h1>
+                <p class="text-zinc-400 text-lg md:text-2xl font-light">Complete Digital Production for Brands with a Vision.</p>
             </div>
         </div>
     </section>
 
     <!-- BIO SECTION (16:9 Video with Controls) -->
-    <section id="about" class="max-w-[85%] mx-auto mb-40 reveal">
+    <section id="about" class="max-w-[85%] mx-auto mb-48 reveal">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             <div class="lg:col-span-5">
                 <p class="text-[#30106b] font-black text-xs uppercase tracking-[0.5em] mb-8">Executive Director</p>
                 <div class="space-y-6 text-zinc-400 text-lg leading-relaxed font-light">
-                    <p class="text-white text-3xl font-black italic uppercase italic tracking-tighter">Hi! I'm Mike.</p>
-                    <p>I am an innovative and futuristic thinker with over 10 years of experience in digital innovation, my company DNA is rooted in technical excellence and creative vision. I don't just "hit record." I analyze your audience, refine your message, and produce content that doesn't just look good but also drives results.</p>
-                    <p>Whether you need a full-cycle creative partner to manage your brand or a premium studio space to record your next episode, we provide the infrastructure for you to scale.</p>
+                    <p class="text-white text-3xl font-black italic uppercase italic tracking-tighter">Strategy comes before production.</p>
+                    <p>Led by seasoned Creative Director Mike Miller, with over 10 years of experience in digital innovation, our company DNA is rooted in technical excellence and creative vision.</p>
+                    <p>We analyze your audience, refine your message, and produce content that doesn't just look good but also drives results. We provide the infrastructure for you to scale.</p>
                 </div>
             </div>
             <div class="lg:col-span-7">
-                <div class="glass-pro aspect-video relative overflow-hidden bg-black group">
+                <div class="glass-pro aspect-video relative overflow-hidden bg-black group shadow-2xl">
                     <video id="bioVideo" class="w-full h-full object-cover opacity-80" loop playsinline>
                         <source src="mike-intro.mp4" type="video/mp4">
                     </video>
-                    <!-- Visual Play/Pause indicator -->
                     <div id="videoOverlay" class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
-                        <span class="text-white font-black uppercase tracking-widest text-xs border border-white px-6 py-2 rounded-full">Play / Pause</span>
+                        <span class="text-white font-black uppercase tracking-widest text-xs border border-white px-8 py-3 rounded-full">Play // Pause</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- THE FULL CYCLE (Smooth Scroll Reveal Section) -->
-    <section id="services" class="max-w-[85%] mx-auto mb-40">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-            <div class="lg:col-span-4 lg:sticky lg:top-32 h-fit">
-                <p class="text-[#30106b] font-black text-xs uppercase tracking-[0.5em] mb-4">The Methodology</p>
-                <h2 class="huge-title !text-5xl italic">The <br>Full <br>Cycle.</h2>
+    <!-- THE FULL CYCLE (Dramatic Scroll Focus) -->
+    <section id="services" class="max-w-[85%] mx-auto mb-48">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            <div class="lg:col-span-4 lg:sticky lg:top-40 h-fit">
+                <p class="text-[#30106b] font-black text-xs uppercase tracking-[0.5em] mb-4">Capabilities</p>
+                <h2 class="huge-title !text-6xl italic">The <br>Full <br>Cycle.</h2>
             </div>
-            <div class="lg:col-span-8 space-y-32 py-20">
+            <div class="lg:col-span-8 space-y-48 py-20">
                 
                 <!-- Brand Strategy -->
-                <div class="service-reveal flex gap-8">
-                    <div class="w-12 h-12 shrink-0 border border-[#30106b] rounded-xl flex items-center justify-center text-[#30106b]">
-                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                <div class="service-focus flex flex-col md:flex-row gap-12 items-start md:items-center">
+                    <div class="icon-box">
+                        <svg width="48" height="48" fill="none" stroke="#30106b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Brand Strategy</h3>
-                        <p class="text-zinc-500 font-light max-w-md">We define your unique market position and long-term goals. Every frame we shoot is anchored in your core business objectives.</p>
+                        <h3 class="text-3xl font-black uppercase mb-4 tracking-tighter italic">Brand Strategy</h3>
+                        <p class="text-zinc-500 font-light text-xl leading-relaxed">We define your market position and objectives. Every frame we shoot is anchored in your core business goals.</p>
                     </div>
                 </div>
 
                 <!-- Visual Strategy -->
-                <div class="service-reveal flex gap-8">
-                    <div class="w-12 h-12 shrink-0 border border-[#30106b] rounded-xl flex items-center justify-center text-[#30106b]">
-                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
+                <div class="service-focus flex flex-col md:flex-row gap-12 items-start md:items-center">
+                    <div class="icon-box">
+                        <svg width="48" height="48" fill="none" stroke="#30106b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Visual Strategy & Design</h3>
-                        <p class="text-zinc-500 font-light max-w-md">Crafting a premium, unified aesthetic across all digital touchpoints. We ensure your brand looks as elite as the service you provide.</p>
+                        <h3 class="text-3xl font-black uppercase mb-4 tracking-tighter italic">Visual Strategy & Design</h3>
+                        <p class="text-zinc-500 font-light text-xl leading-relaxed">Crafting a premium, unified aesthetic across all digital touchpoints to ensure your brand looks as elite as your service.</p>
                     </div>
                 </div>
 
                 <!-- Narrative Engineering -->
-                <div class="service-reveal flex gap-8">
-                    <div class="w-12 h-12 shrink-0 border border-[#30106b] rounded-xl flex items-center justify-center text-[#30106b]">
-                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                <div class="service-focus flex flex-col md:flex-row gap-12 items-start md:items-center">
+                    <div class="icon-box">
+                        <svg width="48" height="48" fill="none" stroke="#30106b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Narrative Engineering</h3>
-                        <p class="text-zinc-500 font-light max-w-md">Story-driven messaging built for retention. we turn complex ideas into compelling human stories that keep audiences watching.</p>
+                        <h3 class="text-3xl font-black uppercase mb-4 tracking-tighter italic">Narrative Engineering</h3>
+                        <p class="text-zinc-500 font-light text-xl leading-relaxed">Story-driven messaging built for retention. We turn complex ideas into compelling human stories that keep audiences hooked.</p>
                     </div>
                 </div>
 
                 <!-- Web Building -->
-                <div class="service-reveal flex gap-8">
-                    <div class="w-12 h-12 shrink-0 border border-[#30106b] rounded-xl flex items-center justify-center text-[#30106b]">
-                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                <div class="service-focus flex flex-col md:flex-row gap-12 items-start md:items-center">
+                    <div class="icon-box">
+                        <svg width="48" height="48" fill="none" stroke="#30106b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Web Building</h3>
-                        <p class="text-zinc-500 font-light max-w-md">High-performance digital homes developed with futuristic intent. We build interfaces that bridge the gap between vision and user experience.</p>
+                        <h3 class="text-3xl font-black uppercase mb-4 tracking-tighter italic">Web Building</h3>
+                        <p class="text-zinc-500 font-light text-xl leading-relaxed">High-performance digital homes developed with futuristic intent to bridge the gap between vision and user experience.</p>
                     </div>
                 </div>
 
                 <!-- Video Production -->
-                <div class="service-reveal flex gap-8">
-                    <div class="w-12 h-12 shrink-0 border border-[#30106b] rounded-xl flex items-center justify-center text-[#30106b]">
-                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                <div class="service-focus flex flex-col md:flex-row gap-12 items-start md:items-center">
+                    <div class="icon-box">
+                        <svg width="48" height="48" fill="none" stroke="#30106b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Video Production</h3>
-                        <p class="text-zinc-500 font-light max-w-md">The core engine. 4K cinema-line cameras, professional lighting setups, and multi-track high-fidelity audio engineering.</p>
+                        <h3 class="text-3xl font-black uppercase mb-4 tracking-tighter italic">Video Production</h3>
+                        <p class="text-zinc-500 font-light text-xl leading-relaxed">The core engine. 4K cinema-line cameras, professional lighting setups, and high-fidelity audio engineering.</p>
                     </div>
                 </div>
 
                 <!-- Editing & Distribution -->
-                <div class="service-reveal flex gap-8">
-                    <div class="w-12 h-12 shrink-0 border border-[#30106b] rounded-xl flex items-center justify-center text-[#30106b]">
-                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                <div class="service-focus flex flex-col md:flex-row gap-12 items-start md:items-center">
+                    <div class="icon-box">
+                        <svg width="48" height="48" fill="none" stroke="#30106b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Editing & Digital Distribution</h3>
-                        <p class="text-zinc-500 font-light max-w-md">Precision post-production followed by optimized scaling. We ensure your assets hit the right platforms with maximum impact.</p>
+                        <h3 class="text-3xl font-black uppercase mb-4 tracking-tighter italic">Post & Digital Distribution</h3>
+                        <p class="text-zinc-500 font-light text-xl leading-relaxed">Precision editing followed by optimized scaling. We ensure your assets hit the right platforms with maximum impact.</p>
                     </div>
                 </div>
 
@@ -186,7 +214,7 @@
     </section>
 
     <!-- PORTFOLIO -->
-    <section id="work" class="max-w-[85%] mx-auto mb-40">
+    <section id="work" class="max-w-[85%] mx-auto mb-48">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <a href="#" class="glass-pro project-card h-[500px] relative overflow-hidden flex items-end p-12 reveal">
                 <img src="Kathleen nurse ep still 2_3.4.1.png" class="absolute inset-0 w-full h-full object-cover">
@@ -208,15 +236,15 @@
     </section>
 
     <!-- COMPACT CTA -->
-    <section class="max-w-[90%] md:max-w-[45%] mx-auto mb-40 reveal">
-        <div class="glass-pro bg-white p-12 flex flex-col items-center text-center">
-            <h2 class="text-black text-4xl font-black italic uppercase tracking-tighter mb-8 leading-none">Ready to build <br>something iconic?</h2>
-            <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" class="px-12 py-5 bg-black text-white rounded-full font-black uppercase tracking-widest text-[10px] hover:scale-105 transition-all duration-500">Book Session</a>
+    <section class="max-w-[90%] md:max-w-[40%] mx-auto mb-48 reveal">
+        <div class="glass-pro bg-white p-12 flex flex-col items-center text-center shadow-2xl">
+            <h2 class="text-black text-4xl font-black italic uppercase tracking-tighter mb-8 leading-tight">Ready to build <br>something iconic?</h2>
+            <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" class="px-16 py-6 bg-black text-white rounded-full font-black uppercase tracking-widest text-[10px] hover:scale-105 transition-all duration-500 shadow-xl">Book Session</a>
         </div>
     </section>
 
     <footer class="max-w-[85%] mx-auto py-20 border-t border-white/5 flex flex-col md:flex-row justify-between text-[10px] font-bold uppercase tracking-[0.5em] text-zinc-700">
-        <p>© 2026 Mike Miller Media — Dallas, TX</p>
+        <p>© 2026 Mike Miller Media — TEX-LA</p>
         <div class="flex gap-10 mt-8 md:mt-0">
             <a href="#" class="hover:text-white transition">Instagram</a>
             <a href="#" class="hover:text-white transition">LinkedIn</a>
@@ -224,15 +252,24 @@
     </footer>
 
     <script>
-        // 1. Reveal on Scroll
+        // 1. General Reveal
         const obs = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
             });
         }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal, .service-reveal').forEach((el) => obs.observe(el));
+        document.querySelectorAll('.reveal').forEach((el) => obs.observe(el));
 
-        // 2. Video Control Logic
+        // 2. DRAMATIC SERVICE FOCUS LOGIC
+        const serviceObs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+                else entry.target.classList.remove('active');
+            });
+        }, { threshold: 0.8 }); // Trigger when 80% is in center
+        document.querySelectorAll('.service-focus').forEach((el) => serviceObs.observe(el));
+
+        // 3. Video Control Logic
         const bioVideo = document.getElementById('bioVideo');
         const videoOverlay = document.getElementById('videoOverlay');
         
@@ -249,7 +286,7 @@
             else bioVideo.pause();
         });
 
-        // 3. Navbar logic
+        // 4. Navbar logic
         window.onscroll = function() {
             const nav = document.getElementById('navbar');
             if (window.pageYOffset > 50) nav.classList.add('scrolled');
