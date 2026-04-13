@@ -12,7 +12,7 @@
     <style>
         :root {
             --accent: #30106b;
-            --glass: rgba(255, 255, 255, 0.02);
+            --glass: rgba(255, 255, 255, 0.015); /* Lower opacity for better glow visibility */
             --glass-border: rgba(255, 255, 255, 0.08);
         }
 
@@ -23,7 +23,27 @@
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            position: relative;
         }
+
+        /* --- BACKGROUND GRADIENT GLOWS --- */
+        .bg-glow-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(160px);
+            opacity: 0.18;
+            background: var(--accent);
+        }
+        .orb-1 { width: 700px; height: 700px; top: -15%; left: -10%; }
+        .orb-2 { width: 600px; height: 600px; bottom: 5%; right: -5%; opacity: 0.12; }
+        .orb-3 { width: 500px; height: 500px; top: 35%; left: 45%; opacity: 0.08; }
 
         /* Reveal Animation Styles */
         .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -31,7 +51,8 @@
 
         .glass-pro {
             background: var(--glass);
-            backdrop-filter: blur(40px);
+            backdrop-filter: blur(45px);
+            -webkit-backdrop-filter: blur(45px);
             border: 1px solid var(--glass-border);
             border-radius: 2.5rem;
         }
@@ -41,7 +62,7 @@
             opacity: 0.1; 
             transform: scale(0.9) translateX(-30px); 
             transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-            filter: blur(4px);
+            filter: blur(6px);
         }
         .service-focus.active { 
             opacity: 1; 
@@ -53,7 +74,7 @@
 
         /* Sticky Navbar */
         nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 1.5rem 0; transition: 0.4s; }
-        nav.scrolled { background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(20px); padding: 1rem 0; }
+        nav.scrolled { background: rgba(5, 5, 5, 0.6); backdrop-filter: blur(15px); padding: 1rem 0; }
 
         .project-card img { transition: 1.5s cubic-bezier(0.16, 1, 0.3, 1); opacity: 0.4; }
         .project-card:hover img { transform: scale(1.05); opacity: 0.6; }
@@ -61,14 +82,14 @@
         /* Large Icon Pulsing Effect */
         .icon-box {
             position: relative;
-            width: 100px;
-            height: 100px;
+            width: 110px;
+            height: 110px;
             flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             border: 1px solid rgba(48, 16, 107, 0.3);
-            border-radius: 1.5rem;
+            border-radius: 1.8rem;
             background: rgba(48, 16, 107, 0.05);
             transition: all 0.8s ease;
         }
@@ -77,34 +98,46 @@
             box-shadow: 0 0 30px rgba(48, 16, 107, 0.4);
             background: rgba(48, 16, 107, 0.15);
         }
+
+        /* Hero Video Logic */
+        .hero-video-container { width: 100%; position: relative; overflow: hidden; }
+        @media (max-width: 768px) { .hero-video-container { aspect-ratio: 4 / 5; } }
+        @media (min-width: 769px) { .hero-video-container { aspect-ratio: 16 / 9; } }
     </style>
 </head>
 <body class="pt-24">
+
+    <!-- BACKGROUND GLOW LAYER -->
+    <div class="bg-glow-container">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+    </div>
 
     <!-- NAVIGATION -->
     <nav id="navbar">
         <div class="max-w-[85%] mx-auto flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="w-2.5 h-2.5 rounded-full bg-[#30106b]"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-[#30106b] shadow-[0_0_10px_#30106b]"></div>
                 <span class="font-black text-xl tracking-tighter uppercase">Mike Miller Media</span>
             </div>
             <div class="hidden md:flex gap-12 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
                 <a href="#work" class="hover:text-white transition">Portfolio</a>
-                <a href="#services" class="hover:text-white transition">Full Cycle</a>
-                <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" class="text-white border-b border-[#30106b] pb-1">Inquire</a>
+                <a href="#services" class="hover:text-white transition">Capabilities</a>
+                <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" class="text-white border-b border-[#30106b] pb-1">Start Vision</a>
             </div>
         </div>
     </nav>
 
-    <!-- HERO (Mobile 4:5, Desktop 16:9) -->
+    <!-- HERO SECTION -->
     <section class="max-w-[90%] md:max-w-[85%] mx-auto mb-32 reveal">
-        <div class="glass-pro aspect-[4/5] md:aspect-video relative overflow-hidden flex items-end p-8 md:p-24 shadow-[0_0_80px_-20px_rgba(48, 16, 107, 0.4)]">
+        <div class="glass-pro hero-video-container relative flex items-end p-8 md:p-24 shadow-[0_0_100px_-30px_rgba(48, 16, 107, 0.5)]">
             <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline>
                 <source src="highlight reel 2026 (short).mp4" type="video/mp4">
             </video>
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
             <div class="relative z-10 max-w-4xl">
-                <h1 class="huge-title mb-6 italic">FULL CYCLE <br><span class="text-[#ffffff]">PRODUCTION.</span></h1>
+                <h1 class="huge-title mb-6 italic">FULL CYCLE <br><span class="text-white">PRODUCTION.</span></h1>
                 <p class="text-zinc-400 text-lg md:text-2xl font-light">Complete Digital Production for Brands with a Vision.</p>
             </div>
         </div>
@@ -117,8 +150,8 @@
                 <p class="text-[#30106b] font-black text-xs uppercase tracking-[0.5em] mb-8">Executive Director</p>
                 <div class="space-y-6 text-zinc-400 text-lg leading-relaxed font-light">
                     <p class="text-white text-3xl font-black italic uppercase italic tracking-tighter">Hi! I'm Mike.</p>
-                    <p>I'm a innovative and futuristic thinker with over 10 years of experience in design and production, my company DNA is rooted in technical excellence and creative vision.</p>
-                    <p>Ie analyze your audience, refine your message, and produce content that doesn't just look good but also drives results. I provide the infrastructure for you to scale.</p>
+                    <p>I'm an innovative and futuristic thinker with over 10 years of experience in design and production. My company DNA is rooted in technical excellence and creative vision.</p>
+                    <p>I analyze your audience, refine your message, and produce content that doesn't just look good but also drives results. I provide the infrastructure for you to scale.</p>
                 </div>
             </div>
             <div class="lg:col-span-7">
@@ -139,11 +172,11 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
             <div class="lg:col-span-4 lg:sticky lg:top-40 h-fit">
                 <p class="text-[#30106b] font-black text-xs uppercase tracking-[0.5em] mb-4">STRATEGY | PRODUCTION | INNOVATION</p>
-                <h2 class="huge-title !text-8xl italic">The <br>Full <br>Cycle.</h2>
+                <h2 class="huge-title !text-6xl italic">The <br>Full <br>Cycle.</h2>
             </div>
-            <div class="lg:col-span-8 space-y-48 py-20">
+            <div class="lg:col-span-8 space-y-56 py-20">
                 
-                <!-- Brand Strategy -->
+                <!-- Service 1 -->
                 <div class="service-focus flex flex-col md:flex-row gap-12 items-start md:items-center">
                     <div class="icon-box">
                         <svg width="48" height="48" fill="none" stroke="#30106b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
@@ -154,7 +187,7 @@
                     </div>
                 </div>
 
-                <!-- Visual Strategy -->
+                <!-- Service 2 -->
                 <div class="service-focus flex flex-col md:flex-row gap-12 items-start md:items-center">
                     <div class="icon-box">
                         <svg width="48" height="48" fill="none" stroke="#30106b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
@@ -165,7 +198,7 @@
                     </div>
                 </div>
 
-                <!-- Narrative Engineering -->
+                <!-- Service 3 -->
                 <div class="service-focus flex flex-col md:flex-row gap-12 items-start md:items-center">
                     <div class="icon-box">
                         <svg width="48" height="48" fill="none" stroke="#30106b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
@@ -176,7 +209,7 @@
                     </div>
                 </div>
 
-                <!-- Web Building -->
+                <!-- Service 4 -->
                 <div class="service-focus flex flex-col md:flex-row gap-12 items-start md:items-center">
                     <div class="icon-box">
                         <svg width="48" height="48" fill="none" stroke="#30106b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
@@ -187,18 +220,18 @@
                     </div>
                 </div>
 
-                <!-- Video Production -->
+                <!-- Service 5 -->
                 <div class="service-focus flex flex-col md:flex-row gap-12 items-start md:items-center">
                     <div class="icon-box">
                         <svg width="48" height="48" fill="none" stroke="#30106b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
                     </div>
                     <div>
                         <h3 class="text-3xl font-black uppercase mb-4 tracking-tighter italic">Video Production</h3>
-                        <p class="text-zinc-500 font-light text-xl leading-relaxed">The core engine. 4K cinema-line cameras, professional lighting setups, and high-fidelity audio engineering.</p>
+                        <p class="text-zinc-500 font-light text-xl leading-relaxed">The core engine. 4K cinema-line cameras, professional lighting setups, and high-fidelity multi-track audio engineering.</p>
                     </div>
                 </div>
 
-                <!-- Editing & Distribution -->
+                <!-- Service 6 -->
                 <div class="service-focus flex flex-col md:flex-row gap-12 items-start md:items-center">
                     <div class="icon-box">
                         <svg width="48" height="48" fill="none" stroke="#30106b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
@@ -244,7 +277,7 @@
     </section>
 
     <footer class="max-w-[85%] mx-auto py-20 border-t border-white/5 flex flex-col md:flex-row justify-between text-[10px] font-bold uppercase tracking-[0.5em] text-zinc-700">
-        <p>© 2026 Mike Miller Media — TEX-LA</p>
+        <p>© 2026 Mike Miller Media — Dallas, TX</p>
         <div class="flex gap-10 mt-8 md:mt-0">
             <a href="#" class="hover:text-white transition">Instagram</a>
             <a href="#" class="hover:text-white transition">LinkedIn</a>
@@ -252,7 +285,7 @@
     </footer>
 
     <script>
-        // 1. General Reveal
+        // Reveal Logic
         const obs = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
@@ -260,33 +293,32 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach((el) => obs.observe(el));
 
-        // 2. DRAMATIC SERVICE FOCUS LOGIC
+        // Dramatic Service Focus
         const serviceObs = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
                 else entry.target.classList.remove('active');
             });
-        }, { threshold: 0.8 }); // Trigger when 80% is in center
+        }, { threshold: 0.75 });
         document.querySelectorAll('.service-focus').forEach((el) => serviceObs.observe(el));
 
-        // 3. Video Control Logic
+        // Video Controller
         const bioVideo = document.getElementById('bioVideo');
         const videoOverlay = document.getElementById('videoOverlay');
-        
-        const videoObs = new IntersectionObserver((entries) => {
+        const vObs = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) bioVideo.play();
                 else bioVideo.pause();
             });
         }, { threshold: 0.5 });
-        videoObs.observe(bioVideo);
+        vObs.observe(bioVideo);
 
         videoOverlay.addEventListener('click', () => {
             if (bioVideo.paused) bioVideo.play();
             else bioVideo.pause();
         });
 
-        // 4. Navbar logic
+        // Navbar Logic
         window.onscroll = function() {
             const nav = document.getElementById('navbar');
             if (window.pageYOffset > 50) nav.classList.add('scrolled');
