@@ -3,640 +3,297 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Complete Digital Production for Brands with a Vision.">
-    <title>Mike Miller Media | Your Creative Partner</title>
+    <title>Mike Miller Media | Narrative Engineering</title>
     
+    <!-- Aileron Font -->
+    <link href="https://fonts.cdnfonts.com/css/aileron" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
-        /* Base Dark Theme & Reset */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: #050507; 
-            color: #f5f5f7; 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden; 
-        }
-
         :root {
-            /* Updated to a deeper, vibrant premium purple */
-            --accent-color: #7b2cbf; 
-            --glass-bg: rgba(255, 255, 255, 0.03);
+            --accent: #30106b;
+            --glass: rgba(255, 255, 255, 0.02);
             --glass-border: rgba(255, 255, 255, 0.08);
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1.5rem;
+        body {
+            background-color: #050505;
+            color: #f5f5f7;
+            font-family: 'Aileron', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        /* === Top Navigation Header === */
-        .top-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 1rem 2rem 1rem;
-        }
-
-        .logo {
-            font-weight: 700;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #ffffff;
-        }
-
-        /* === Top Hero Section === */
-        .hero-section {
-            height: 80vh;
-            border-radius: 32px;
-            position: relative;
-            margin-bottom: 2rem;
-            cursor: default;
-            /* Added smooth transition for the hover glow */
-            transition: box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        /* The container holding the video needs overflow hidden to clip the video corners, 
-           while the outer hero-section handles the glowing shadow */
-        .video-container {
-            width: 100%;
-            height: 100%;
-            border-radius: 32px;
-            overflow: hidden;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
-
-        /* Soft glow effect on hover */
-        .hero-section:hover {
-            box-shadow: 0 10px 50px rgba(123, 44, 191, 0.35); /* Deep purple glow */
-            transform: translateY(-2px); /* Very slight lift */
-        }
-
-        .hero-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 1; 
-        }
-
-        /* === Intro Statement Section === */
-        .intro-section {
-            text-align: center; 
-            padding: 4rem 1rem 6rem 1rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .intro-section h1 {
-            font-size: clamp(3rem, 6vw, 5rem); 
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 1rem;
-            color: #ffffff;
-            line-height: 1.1;
-            text-transform: uppercase;
-        }
-
-        .intro-section p {
-            font-size: clamp(1.2rem, 2vw, 1.5rem);
-            color: rgba(255, 255, 255, 0.7); 
-            font-weight: 400;
-        }
-
-        /* === Page Sections & Headers === */
-        .page-section {
-            margin-bottom: 6rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .section-header p {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 1.1rem;
-        }
-
-        /* === Global CTA Button === */
-        .cta-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 3rem;
-        }
-
-        .btn {
-            background-color: #f5f5f7;
-            color: #050507;
-            padding: 14px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .btn:hover {
-            background-color: var(--accent-color);
-            color: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(123, 44, 191, 0.4);
-        }
-
-        /* === Bento Box Global Styles === */
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-        }
-
-        .bento-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            border-radius: 32px;
-            padding: 2.5rem;
-            position: relative;
-            overflow: hidden;
-            /* Upgraded dynamic transitions */
-            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), background 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-            min-height: 350px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            text-decoration: none; 
-            color: inherit;
-        }
-
-        .bento-card:hover {
-            transform: translateY(-8px) scale(1.01);
-            background: rgba(255, 255, 255, 0.05);
-            /* Dynamic border color and subtle accent glow on hover */
-            border-color: rgba(123, 44, 191, 0.5); 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 30px rgba(123, 44, 191, 0.15);
-        }
-
-        /* Base settings for images inside project cards */
-        .project-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            opacity: 0.5;
-            transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .bento-card:hover .project-img {
-            opacity: 0.7;
-            transform: scale(1.05); 
-        }
-
-        /* Standard text container logic */
-        .card-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Gradient overlay specifically for image cards */
-        .image-card-content {
-            background: linear-gradient(to top, rgba(5,5,7,0.95) 0%, rgba(5,5,7,0) 100%);
-            margin: -2.5rem; 
-            padding: 4rem 2.5rem 2.5rem 2.5rem;
-        }
-
-        .card-label {
-            font-size: 0.8rem;
-            color: var(--accent-color);
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-        }
-
-        .card-title {
-            font-size: 1.8rem;
-            font-weight: 600;
-            line-height: 1.2;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-desc {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Grid Spans */
-        .span-2-cols { grid-column: span 2; }
-        .span-4-cols { grid-column: span 4; }
-
-        /* Pure Text Box Adjustments */
-        .text-only-card {
-            background: rgba(255, 255, 255, 0.02);
-            justify-content: flex-end;
-        }
-
-        .bio-text {
-            justify-content: center;
-            align-items: flex-start;
-            padding: 3rem;
-        }
-
-        .bio-text p {
-            font-size: 1.05rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 1.2rem;
-        }
-
-        .bio-text p:last-child {
-            margin-bottom: 0;
-        }
-
-        .bio-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Bio Video Container */
-        .bio-video-container {
-            padding: 0; 
-            border: 1px solid var(--glass-border);
-        }
-
-        /* Custom alignment for pure text bento boxes */
-        .text-box {
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 4rem 2rem;
-            background: var(--glass-bg); 
-        }
-
-        /* IG Placeholder Styling */
-        .ig-placeholder {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 400px;
-            border: 1px dashed rgba(255, 255, 255, 0.2);
-            border-radius: 16px;
-            color: rgba(255, 255, 255, 0.5);
-            width: 100%;
-            transition: border-color 0.3s ease;
-        }
-        
-        .bento-card:hover .ig-placeholder {
-            border-color: var(--accent-color);
-        }
-
-        /* Dynamic Scroll Animation Classes */
-        .fade-in-section {
+        /* Kassow-style Reveal Animation */
+        .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            /* Upgraded to spring-like easing for dynamic feel */
-            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-            will-change: opacity, visibility;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .fade-in-section.is-visible {
+        .reveal.active {
             opacity: 1;
-            transform: none;
+            transform: translateY(0);
         }
 
-        /* === Services 3-Column Grid & Icons === */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
+        /* Glass Pro Styling */
+        .glass-pro {
+            background: var(--glass);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 2.5rem;
+            transition: all 0.5s ease;
         }
 
-        .service-icon {
-            margin-bottom: 1.5rem;
+        .glass-pro:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.04);
         }
 
-        .service-icon svg {
-            width: 48px;
-            height: 48px;
-            /* Inherits your purple accent color */
-            stroke: var(--accent-color); 
-            stroke-width: 1.5px;
-            fill: none;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            transition: transform 0.4s ease;
+        /* Kassow Nav: Sticky and Minimal */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            transition: background 0.3s;
         }
 
-        .bento-card:hover .service-icon svg {
-            transform: scale(1.1) translateY(-4px);
+        nav.scrolled {
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(10px);
         }
 
-        /* Responsive override for services */
-        @media (max-width: 1024px) {
-            .services-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 600px) {
-            .services-grid { grid-template-columns: 1fr; }
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 1024px) {
-            .bento-grid { grid-template-columns: repeat(2, 1fr); }
-            .hero-section { height: 60vh; }
-            .span-4-cols { grid-column: span 2; }
+        /* Project Card Image Logic */
+        .project-card .img-container {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            z-index: 0;
         }
 
-        @media (max-width: 600px) {
-            .bento-grid { grid-template-columns: 1fr; }
-            .span-2-cols, .span-4-cols { grid-column: span 1; }
-            .top-nav { flex-direction: column; gap: 1rem; }
-            .text-box, .bio-text { padding: 2rem 1.5rem; }
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.4;
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.1);
+            opacity: 0.7;
+        }
+
+        .accent-glow {
+            box-shadow: 0 0 80px -20px rgba(48, 16, 107, 0.4);
+        }
+
+        /* Massive Typography Styles */
+        .huge-title {
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 900;
+            line-height: 0.85;
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+        }
+
+        .sub-header {
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.4em;
+            color: var(--accent);
+            text-transform: uppercase;
         }
     </style>
 </head>
-<body>
+<body class="pt-24">
 
-    <div class="container">
-        
-        <header class="top-nav">
-            <div class="logo">MIKE MILLER MEDIA.</div>
-            <ul class="nav-links">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about-mike">About</a></li>
-                <li><a href="#projects">Work</a></li>
-                <li><a href="#social">Social</a></li>
-                <li><a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" target="_blank" rel="noopener noreferrer">Contact</a></li>
-            </ul>
-        </header>
-
-        <section class="hero-section">
-            <div class="video-container">
-                <video class="hero-video" autoplay loop muted playsinline>
-                    <source src="highlight reel 2026 (short).mp4" type="video/mp4">
-                </video>
+    <!-- NAVIGATION -->
+    <nav id="navbar">
+        <div class="max-w-[85%] mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-[#30106b]"></div>
+                <span class="font-black tracking-tighter text-lg uppercase">Mike Miller Media</span>
             </div>
-        </section>
-
-        <section class="intro-section fade-in-section">
-            <h1>Your Creative partner</h1>
-            <p>Complete Digital Production for Brands with a Vision.</p>
-        </section>
-
-       <section id="services" class="page-section fade-in-section">
-            <div class="section-header">
-                <h2>Our Capabilities</h2>
-                <p>Comprehensive digital media under one umbrella.</p>
+            <div class="hidden md:flex gap-10">
+                <a href="#work" class="text-[10px] font-bold uppercase tracking-widest hover:text-white transition text-zinc-500">Portfolio</a>
+                <a href="#about" class="text-[10px] font-bold uppercase tracking-widest hover:text-white transition text-zinc-500">The Director</a>
+                <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" class="text-[10px] font-bold uppercase tracking-widest text-white border-b-2 border-[#30106b] pb-1">Start Vision</a>
             </div>
-            
-            <div class="services-grid">
-                
-                <div class="bento-card text-only-card" style="justify-content: flex-start; text-align: center; padding: 4rem 2rem;">
-                    <div class="card-content">
-                        <div class="service-icon">
-                            <svg viewBox="0 0 24 24">
-                                <polygon points="23 7 16 12 23 17 23 7"></polygon>
-                                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-                            </svg>
-                        </div>
-                        <div class="card-label">Cinematography</div>
-                        <div class="card-title">Motion & Video</div>
-                        <div class="card-desc">Pro-level videography for all platforms.</div>
-                    </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION (80% Width Video) -->
+    <section class="max-w-[85%] mx-auto mb-24 reveal">
+        <div class="glass-pro accent-glow w-full aspect-video relative overflow-hidden flex items-end p-8 md:p-20">
+            <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline>
+                <source src="highlight reel 2026 (short).mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="relative z-10 max-w-4xl">
+                <p class="sub-header mb-6">Full-Cycle Production</p>
+                <h1 class="huge-title mb-8">Render Your <br><span class="opacity-30 italic">Vision.</span></h1>
+                <p class="text-zinc-400 text-lg md:text-2xl font-light leading-relaxed">
+                    Strategy. Production. Innovation. We don’t just hit record—we build legacies through cinematic storytelling.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE PIONEER STORY (Split Layout like Kassow Robots) -->
+    <section id="about" class="max-w-[85%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 mb-32 items-center">
+        <div class="reveal">
+            <p class="sub-header mb-4">The Innovation</p>
+            <h2 class="text-5xl md:text-7xl font-black uppercase leading-none mb-8 tracking-tighter">
+                The Podcast <br><span class="text-[#30106b]">Pioneer.</span>
+            </h2>
+            <p class="text-zinc-500 text-lg font-light leading-relaxed mb-6">
+                Back in college, before podcasting was a household name, I was already recruiting and scheduling 20+ shows for an online radio station. We were ridiculed because we weren't on "the air waves"—but we saw the future first.
+            </p>
+            <p class="text-zinc-500 text-lg font-light leading-relaxed">
+                That 10-year journey as a musician, engineer, and tech geek has evolved into a humble, faith-driven approach to serving 8-figure brands.
+            </p>
+        </div>
+        <div class="glass-pro aspect-square relative overflow-hidden reveal">
+             <video class="absolute inset-0 w-full h-full object-cover grayscale opacity-60" autoplay loop muted playsinline>
+                <source src="mike-intro.mp4" type="video/mp4">
+            </video>
+            <div class="absolute bottom-10 left-10">
+                <span class="font-black text-xl italic uppercase tracking-tighter">Mike Miller</span>
+                <p class="text-xs font-bold uppercase tracking-[0.3em] opacity-50">Creative Partner</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO GRID (4 Clickable Boxes) -->
+    <section id="work" class="max-w-[85%] mx-auto mb-32">
+        <div class="flex justify-between items-end mb-12 reveal">
+            <div>
+                <p class="sub-header mb-2">Portfolio</p>
+                <h2 class="text-5xl font-black uppercase tracking-tighter">Selected Narrative.</h2>
+            </div>
+            <p class="text-zinc-500 text-xs font-bold uppercase tracking-widest hidden md:block">Scroll to explore // 04 Projects</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Project 1 -->
+            <a href="#" class="glass-pro project-card h-[450px] relative flex items-end p-10 reveal">
+                <div class="img-container"><img src="Kathleen nurse ep still 2_3.4.1.png"></div>
+                <div class="relative z-10">
+                    <p class="text-[9px] font-black uppercase tracking-[0.4em] text-white opacity-40 mb-2">Education / Inspiration</p>
+                    <h3 class="text-3xl font-black uppercase italic tracking-tighter">Kathleen Cameron</h3>
                 </div>
+            </a>
 
-                <div class="bento-card text-only-card" style="justify-content: flex-start; text-align: center; padding: 4rem 2rem;">
-                    <div class="card-content">
-                        <div class="service-icon">
-                            <svg viewBox="0 0 24 24">
-                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                                <line x1="3" y1="9" x2="21" y2="9"></line>
-                                <line x1="9" y1="21" x2="9" y2="9"></line>
-                            </svg>
-                        </div>
-                        <div class="card-label">Visual Identity</div>
-                        <div class="card-title">Graphic & Web</div>
-                        <div class="card-desc">Modern web design & visual assets built to convert.</div>
-                    </div>
+            <!-- Project 2 -->
+            <a href="#" class="glass-pro project-card h-[450px] relative flex items-end p-10 reveal">
+                <div class="img-container"><img src="waxahachie home image_4.6.2.png"></div>
+                <div class="relative z-10">
+                    <p class="text-[9px] font-black uppercase tracking-[0.4em] text-white opacity-40 mb-2">Real Estate Cinematic</p>
+                    <h3 class="text-3xl font-black uppercase italic tracking-tighter">Waxahachie Estate</h3>
                 </div>
+            </a>
 
-                <div class="bento-card text-only-card" style="justify-content: flex-start; text-align: center; padding: 4rem 2rem;">
-                    <div class="card-content">
-                        <div class="service-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"></path>
-                                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
-                                <line x1="12" y1="19" x2="12" y2="22"></line>
-                            </svg>
-                        </div>
-                        <div class="card-label">Audio & Visual</div>
-                        <div class="card-title">Podcast Production</div>
-                        <div class="card-desc">Complete audio & visual recording and editing.</div>
-                    </div>
+            <!-- Project 3 -->
+            <a href="https://vimeo.com/manage/videos/961679758" class="glass-pro project-card h-[450px] relative flex items-end p-10 reveal">
+                <div class="img-container"><img src="fitted apron thumbnail.jpg"></div>
+                <div class="relative z-10">
+                    <p class="text-[9px] font-black uppercase tracking-[0.4em] text-white opacity-40 mb-2">Visual Identity</p>
+                    <h3 class="text-3xl font-black uppercase italic tracking-tighter">The Fitted Apron</h3>
                 </div>
+            </a>
 
-            </div>
-        </section>
-        
-        <section id="about-mike" class="page-section fade-in-section">
-            <div class="section-header">
-                <h2>Meet the Director</h2>
-                <p>Strategy comes before production.</p>
-            </div>
-
-            <div class="bento-grid">
-                <div class="bento-card span-2-cols bio-video-container">
-                    <video id="mike-bio-video" class="hero-video" loop playsinline controls style="border-radius: 32px; opacity: 0.9;">
-                        <source src="mike-intro.mp4" type="video/mp4">
-                    </video>
+            <!-- Project 4 -->
+            <a href="#" class="glass-pro project-card h-[450px] relative flex items-end p-10 reveal">
+                <div class="img-container"><img src="pastor ron still.jpg"></div>
+                <div class="relative z-10">
+                    <p class="text-[9px] font-black uppercase tracking-[0.4em] text-white opacity-40 mb-2">Short Film Narrative</p>
+                    <h3 class="text-3xl font-black uppercase italic tracking-tighter">King's Park Journey</h3>
                 </div>
+            </a>
+        </div>
+    </section>
 
-                <div class="bento-card span-2-cols text-only-card bio-text">
-                    <div class="card-content">
-                        <div class="card-label">The Foundation</div>
-                        <h3 class="bio-title">Mike Miller</h3>
-                        <p>Mike Miller Media was founded on a simple principle: Strategy comes before production.</p>
-                        <p>Led by seasoned Creative Director Mike Miller, with over 10 years of experience in digital innovation, our company DNA is rooted in technical excellence and creative vision. We don't just "hit record." We analyze your audience, refine your message, and produce content that doesn't just look good but also drives results.</p>
-                        <p>Whether you need a full-service creative partner to manage your brand or a premium studio space to record your next episode, we provide the infrastructure for you to scale.</p>
-                    </div>
+    <!-- CAPABILITIES BENTO (The "Tech Geek" Section) -->
+    <section class="max-w-[85%] mx-auto mb-32 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-pro p-12 col-span-1 md:col-span-2 reveal">
+            <h3 class="text-3xl font-black uppercase tracking-tighter mb-8 italic">The Full Cycle.</h3>
+            <div class="grid grid-cols-2 gap-8">
+                <div>
+                    <p class="text-[#30106b] font-black text-[10px] uppercase mb-4 tracking-widest">Execution</p>
+                    <ul class="text-zinc-500 space-y-3 text-sm font-bold uppercase tracking-tight">
+                        <li>Cinematography</li>
+                        <li>4K Multi-Cam Audio</li>
+                        <li>Post-Production</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="text-[#30106b] font-black text-[10px] uppercase mb-4 tracking-widest">Strategy</p>
+                    <ul class="text-zinc-500 space-y-3 text-sm font-bold uppercase tracking-tight">
+                        <li>Brand Positioning</li>
+                        <li>Narrative Engineering</li>
+                        <li>Digital Distribution</li>
+                    </ul>
                 </div>
             </div>
-        </section>
+        </div>
+        <div class="glass-pro p-12 col-span-1 flex flex-col justify-center items-center text-center border-[#30106b]/30 reveal">
+            <span class="text-5xl mb-4">✦</span>
+            <h3 class="text-xl font-black uppercase italic tracking-tighter">The Humble Edge.</h3>
+            <p class="text-zinc-500 text-xs font-medium leading-relaxed mt-4">
+                Service rooted in faith. Feedback isn't a hurdle; it's a tool for absolute excellence.
+            </p>
+        </div>
+    </section>
 
-        <section id="projects" class="page-section fade-in-section">
-            <div class="section-header">
-                <h2>Featured Projects</h2>
-                <p>Realizing the vision across multiple disciplines.</p>
-            </div>
+    <!-- FINAL CTA -->
+    <section class="max-w-[85%] mx-auto mb-32 reveal">
+        <div class="glass-pro bg-white p-12 md:p-24 flex flex-col items-center text-center">
+            <h2 class="text-black huge-title italic mb-10">Ready to be <br>Iconic?</h2>
+            <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" class="px-16 py-8 bg-black text-white rounded-full font-black uppercase tracking-widest text-[10px] hover:scale-110 transition-transform duration-500">
+                Book a Session
+            </a>
+        </div>
+    </section>
 
-            <div class="bento-grid">
-                
-                <a href="https://www.youtube.com/watch?v=jofovebZWYg&list=PLuzN4F-hgIagCvOcK9WOQhe5XX64ZTdbd&index=5" target="_blank" rel="noopener noreferrer" class="bento-card span-2-cols">
-                    <img src="Kathleen nurse ep still 2_3.4.1.png" alt="Youtube Content Creation" class="project-img">
-                    <div class="card-content image-card-content">
-                        <div class="card-title">Kathleen Cameron</div>
-                        <div class="card-desc">Educational & Inspirational content that built trust with audience.</div>
-                    </div>
-                </a>
+    <footer class="max-w-[85%] mx-auto py-12 border-t border-white/5 flex flex-col md:flex-row justify-between text-[9px] font-bold uppercase tracking-[0.4em] text-zinc-700">
+        <p>© 2026 Mike Miller Media — Dallas Based. Global View.</p>
+        <div class="flex gap-8 mt-6 md:mt-0">
+            <a href="#" class="hover:text-white transition">Instagram</a>
+            <a href="#" class="hover:text-white transition">LinkedIn</a>
+        </div>
+    </footer>
 
-                <a href="https://youtu.be/aM3xSD74lnQ" target="_blank" rel="noopener noreferrer" class="bento-card span-2-cols">
-                    <img src="waxahachie home image_4.6.2.png" alt="Real Estate Videography" class="project-img">
-                    <div class="card-content image-card-content">
-                        <div class="card-title">Massive Single Floor Home</div>
-                        <div class="card-desc">A jaw dropping house tour that potential buyers couldn't resist.</div>
-                    </div>
-                </a>
-
-                <a href="https://vimeo.com/manage/videos/961679758" target="_blank" rel="noopener noreferrer" class="bento-card span-2-cols">
-                    <img src="fitted apron thumbnail.jpg" alt="Visual Branding & Online Course" class="project-img">
-                    <div class="card-content image-card-content">
-                        <div class="card-title">Fitted Apron</div>
-                        <div class="card-desc">Visual branding & online Course to bring this company to life.</div>
-                    </div>
-                </a>
-
-                <a href="https://www.youtube.com/watch?v=fEKmwX0VNLI" target="_blank" rel="noopener noreferrer" class="bento-card span-2-cols">    
-                    <img src="pastor ron still.jpg" alt="Short Film" class="project-img">
-                    <div class="card-content image-card-content">
-                        <div class="card-title">The King's Park Journey</div>
-                        <div class="card-desc">A inspiring history and remarkable journey of a Church that saw immediate growth.</div>
-                    </div>
-                </a>
-
-            </div>
-
-            <div class="cta-container">
-                <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" target="_blank" rel="noopener noreferrer" class="btn">Book a Service</a>
-            </div>
-        </section>
-
-        <section id="social" class="page-section fade-in-section">
-            <div class="section-header">
-                <h2>The Latest</h2>
-                <p>Follow the journey on Instagram @MikeMiller_Media</p>
-            </div>
-            
-            <div class="bento-grid">
-                <article class="bento-card span-4-cols text-box" style="padding: 2rem;">
-                    <!-- Elfsight Instagram Feed | Untitled Instagram Feed -->
-<script src="https://elfsightcdn.com/platform.js" async></script>
-<div class="elfsight-app-769b9ccd-8654-41f2-b68a-d2c16d7ebb5a" data-elfsight-app-lazy></div>
-                </article>
-            </div>
-
-            <div class="cta-container" id="contact">
-                <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" target="_blank" rel="noopener noreferrer" class="btn">Start Your Project Today</a>
-            </div>
-        </section>
-
-    </div>
-
+    <!-- INTERSECTION OBSERVER SCRIPT (The Kassow Robots Motion) -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // 1. Existing Observer for fade-in animations
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.15
-            };
+        // 1. Reveal Elements on Scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
 
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target); 
-                    }
-                });
-            }, observerOptions);
-
-            const sections = document.querySelectorAll('.fade-in-section');
-            sections.forEach(section => {
-                observer.observe(section);
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
             });
+        }, observerOptions);
 
-            // 2. New Observer for the Mike Miller Bio Video (Play/Pause on scroll, respects manual pause)
-            const bioVideo = document.getElementById('mike-bio-video');
-            
-            if (bioVideo) {
-                let isScrollingPause = false;
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
-                // Track if the user manually clicked pause
-                bioVideo.addEventListener('pause', () => {
-                    if (!isScrollingPause) {
-                        bioVideo.dataset.userPaused = "true";
-                    }
-                });
-
-                // Reset the manual pause tracker if the user clicks play again
-                bioVideo.addEventListener('play', () => {
-                    bioVideo.dataset.userPaused = "false";
-                });
-
-                const videoObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            // Only auto-play if the user hasn't manually paused it
-                            if (bioVideo.dataset.userPaused !== "true") {
-                                let playPromise = bioVideo.play();
-                                
-                                // Catch the browser block if the user hasn't interacted with the page yet
-                                if (playPromise !== undefined) {
-                                    playPromise.catch(error => {
-                                        console.log("Browser blocked unmuted auto-play. User must click play manually.");
-                                    });
-                                }
-                            }
-                        } else {
-                            // The video is out of view, pause it, but let the event listener know it wasn't the user
-                            if (!bioVideo.paused) {
-                                isScrollingPause = true; 
-                                bioVideo.pause();
-                                // Reset the flag shortly after the pause fires
-                                setTimeout(() => isScrollingPause = false, 50); 
-                            }
-                        }
-                    });
-                }, { threshold: 0.5 }); // Triggers when 50% of the video is visible
-
-                videoObserver.observe(bioVideo);
+        // 2. Navbar Scroll Effect
+        window.onscroll = function() {
+            const nav = document.getElementById('navbar');
+            if (window.pageYOffset > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
             }
-        });
+        };
     </script>
 
 </body>
