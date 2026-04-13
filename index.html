@@ -25,10 +25,10 @@
             scroll-behavior: smooth;
         }
 
-        /* Reveal Animation */
+        /* Reveal Animation (Kassow Robots Style) */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(30px);
             transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .reveal.active {
@@ -53,9 +53,7 @@
         /* Sticky Navigation */
         nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
+            top: 0; left: 0; width: 100%;
             z-index: 1000;
             padding: 1.5rem 0;
             transition: all 0.4s ease;
@@ -66,21 +64,16 @@
             padding: 1rem 0;
         }
 
-        /* Responsive Hero Video logic */
+        /* Hero Video Aspect Ratios */
         .hero-video-container {
             width: 100%;
             position: relative;
             overflow: hidden;
         }
-        /* Mobile: 4:5 ratio */
-        @media (max-width: 768px) {
-            .hero-video-container { aspect-ratio: 4 / 5; }
-        }
-        /* Desktop: 16:9 ratio */
-        @media (min-width: 769px) {
-            .hero-video-container { aspect-ratio: 16 / 9; }
-        }
+        @media (max-width: 768px) { .hero-video-container { aspect-ratio: 4 / 5; } }
+        @media (min-width: 769px) { .hero-video-container { aspect-ratio: 16 / 9; } }
 
+        /* Typography */
         .huge-title {
             font-size: clamp(2.5rem, 8vw, 7.5rem);
             font-weight: 900;
@@ -107,6 +100,15 @@
             border-bottom: 1px solid rgba(255,255,255,0.05);
             padding: 1.5rem 0;
         }
+
+        /* Project Card Hover */
+        .project-card img {
+            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+        }
+        .project-card:hover img {
+            transform: scale(1.08);
+            opacity: 0.6;
+        }
     </style>
 </head>
 <body class="pt-24">
@@ -121,7 +123,7 @@
             <div class="hidden md:flex gap-12">
                 <a href="#work" class="nav-link">Portfolio</a>
                 <a href="#services" class="nav-link">Services</a>
-                <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" class="px-6 py-2 glass-pro !rounded-full !text-white nav-link hover:border-white/30">Contact</a>
+                <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" class="px-6 py-2 glass-pro !rounded-full !text-white nav-link hover:border-white/30 transition-all">Contact</a>
             </div>
         </div>
     </nav>
@@ -155,51 +157,49 @@
             </div>
         </div>
         
-        <!-- Intro Video with Audio & Controls -->
-        <div class="glass-pro aspect-[4/5] relative overflow-hidden reveal bg-zinc-900">
-             <video class="w-full h-full object-cover" controls poster="mike-poster.jpg">
+        <!-- Intro Video (With Audio & Player Controls) -->
+        <div class="glass-pro aspect-[4/5] relative overflow-hidden reveal bg-black">
+             <video class="w-full h-full object-cover" controls>
                 <source src="mike-intro.mp4" type="video/mp4">
-                Your browser does not support the video tag.
             </video>
         </div>
     </section>
 
-    <!-- SERVICES / THE FULL CYCLE -->
+    <!-- CAPABILITIES / THE FULL CYCLE -->
     <section id="services" class="max-w-[90%] md:max-w-[85%] mx-auto mb-40 reveal">
         <div class="glass-pro p-8 md:p-20 border-[#30106b]/30">
-            <p class="text-[#30106b] font-black text-xs uppercase tracking-[0.5em] mb-6">Capabilities</p>
+            <p class="text-[#30106b] font-black text-xs uppercase tracking-[0.5em] mb-6">Execution</p>
             <h2 class="huge-title !text-5xl md:!text-7xl mb-16 italic">The Full Cycle.</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-20">
                 <div class="service-item">
                     <h3 class="text-xl font-bold uppercase mb-2">Brand Strategy</h3>
-                    <p class="text-zinc-500 text-sm">Long-term visioning and market positioning.</p>
+                    <p class="text-zinc-500 text-sm">Positioning your brand for long-term dominance.</p>
                 </div>
                 <div class="service-item">
                     <h3 class="text-xl font-bold uppercase mb-2">Visual Strategy & Design</h3>
-                    <p class="text-zinc-500 text-sm">Cohesive aesthetic direction across all touchpoints.</p>
+                    <p class="text-zinc-500 text-sm">Unified identity across all digital platforms.</p>
                 </div>
                 <div class="service-item">
                     <h3 class="text-xl font-bold uppercase mb-2">Narrative Engineering</h3>
-                    <p class="text-zinc-500 text-sm">Story-driven messaging built for retention.</p>
+                    <p class="text-zinc-500 text-sm">Storytelling built to maximize retention and conversion.</p>
                 </div>
                 <div class="service-item">
                     <h3 class="text-xl font-bold uppercase mb-2">Web Building</h3>
-                    <p class="text-zinc-500 text-sm">Modern, high-performance digital homes.</p>
+                    <p class="text-zinc-500 text-sm">Performance-driven high-end digital homes.</p>
                 </div>
                 <div class="service-item md:col-span-2">
-                    <h3 class="text-xl font-bold uppercase mb-2 text-white">Video Production</h3>
-                    <p class="text-zinc-400 text-base mb-4">The core engine of MMM.</p>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="px-4 py-1 glass-pro text-[10px] font-bold uppercase tracking-widest">4K Cinema Line Cameras</span>
-                        <span class="px-4 py-1 glass-pro text-[10px] font-bold uppercase tracking-widest">Professional Lighting</span>
-                        <span class="px-4 py-1 glass-pro text-[10px] font-bold uppercase tracking-widest">High Quality Audio</span>
-                        <span class="px-4 py-1 glass-pro text-[10px] font-bold uppercase tracking-widest">Video Editing</span>
+                    <h3 class="text-xl font-bold uppercase mb-4 text-white">Video Production</h3>
+                    <div class="flex flex-wrap gap-4">
+                        <span class="px-4 py-1.5 glass-pro text-[10px] font-bold uppercase tracking-widest text-[#30106b]">4K Cinema Line Cameras</span>
+                        <span class="px-4 py-1.5 glass-pro text-[10px] font-bold uppercase tracking-widest text-[#30106b]">Professional Lighting</span>
+                        <span class="px-4 py-1.5 glass-pro text-[10px] font-bold uppercase tracking-widest text-[#30106b]">High Quality Audio</span>
+                        <span class="px-4 py-1.5 glass-pro text-[10px] font-bold uppercase tracking-widest text-zinc-400">Video Editing</span>
                     </div>
                 </div>
                 <div class="service-item md:col-span-2">
                     <h3 class="text-xl font-bold uppercase mb-2">Digital Distribution</h3>
-                    <p class="text-zinc-500 text-sm">Ensuring your message reaches the right screens through optimized scaling.</p>
+                    <p class="text-zinc-500 text-sm">Scaling your vision through optimized multi-channel delivery.</p>
                 </div>
             </div>
         </div>
@@ -208,34 +208,54 @@
     <!-- PORTFOLIO GRID -->
     <section id="work" class="max-w-[90%] md:max-w-[85%] mx-auto mb-40">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <a href="#" class="glass-pro h-[450px] md:h-[550px] relative overflow-hidden flex items-end p-10 reveal group">
-                <img src="Kathleen nurse ep still 2_3.4.1.png" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 group-hover:opacity-60 transition-all duration-1000">
+            <!-- 1. Kathleen -->
+            <a href="#" class="glass-pro project-card h-[450px] md:h-[550px] relative overflow-hidden flex items-end p-10 reveal group">
+                <img src="Kathleen nurse ep still 2_3.4.1.png" class="absolute inset-0 w-full h-full object-cover opacity-40">
                 <div class="relative z-10">
+                    <p class="text-[9px] font-black uppercase tracking-[0.4em] text-white/50 mb-2">Narrative</p>
                     <h3 class="text-3xl font-black uppercase italic tracking-tighter">Kathleen Cameron</h3>
                 </div>
             </a>
-            <a href="#" class="glass-pro h-[450px] md:h-[550px] relative overflow-hidden flex items-end p-10 reveal group">
-                <img src="waxahachie home image_4.6.2.png" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 group-hover:opacity-60 transition-all duration-1000">
+            <!-- 2. Estate -->
+            <a href="#" class="glass-pro project-card h-[450px] md:h-[550px] relative overflow-hidden flex items-end p-10 reveal group">
+                <img src="waxahachie home image_4.6.2.png" class="absolute inset-0 w-full h-full object-cover opacity-40">
                 <div class="relative z-10">
+                    <p class="text-[9px] font-black uppercase tracking-[0.4em] text-white/50 mb-2">Cinematic</p>
                     <h3 class="text-3xl font-black uppercase italic tracking-tighter">Waxahachie Estate</h3>
+                </div>
+            </a>
+            <!-- 3. Fitted Apron -->
+            <a href="https://vimeo.com/manage/videos/961679758" class="glass-pro project-card h-[450px] md:h-[550px] relative overflow-hidden flex items-end p-10 reveal group">
+                <img src="fitted apron thumbnail.jpg" class="absolute inset-0 w-full h-full object-cover opacity-40">
+                <div class="relative z-10">
+                    <p class="text-[9px] font-black uppercase tracking-[0.4em] text-white/50 mb-2">Visual Strategy</p>
+                    <h3 class="text-3xl font-black uppercase italic tracking-tighter">Fitted Apron</h3>
+                </div>
+            </a>
+            <!-- 4. King's Park -->
+            <a href="#" class="glass-pro project-card h-[450px] md:h-[550px] relative overflow-hidden flex items-end p-10 reveal group">
+                <img src="pastor ron still.jpg" class="absolute inset-0 w-full h-full object-cover opacity-40">
+                <div class="relative z-10">
+                    <p class="text-[9px] font-black uppercase tracking-[0.4em] text-white/50 mb-2">Storytelling</p>
+                    <h3 class="text-3xl font-black uppercase italic tracking-tighter">King's Park</h3>
                 </div>
             </a>
         </div>
     </section>
 
-    <!-- FINAL CTA -->
-    <section class="max-w-[90%] md:max-w-[85%] mx-auto mb-40 reveal">
-        <div class="glass-pro bg-white p-12 md:p-32 flex flex-col items-center text-center">
-            <h2 class="text-black huge-title italic mb-10">Ready to build <br>something iconic?</h2>
-            <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" class="px-16 py-7 bg-black text-white rounded-full font-black uppercase tracking-widest text-[10px] hover:scale-110 transition-transform duration-500">
-                Book a Session
+    <!-- FINAL COMPACT CTA -->
+    <section class="max-w-[90%] md:max-w-[50%] mx-auto mb-40 reveal">
+        <div class="glass-pro bg-white p-12 flex flex-col items-center text-center">
+            <h2 class="text-black text-4xl md:text-5xl font-black italic uppercase tracking-tighter mb-8 leading-none">Ready to build <br>something iconic?</h2>
+            <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" class="px-12 py-6 bg-black text-white rounded-full font-black uppercase tracking-widest text-[10px] hover:scale-105 transition-all duration-500">
+                Inquire Now
             </a>
         </div>
     </section>
 
     <footer class="max-w-[90%] md:max-w-[85%] mx-auto py-16 border-t border-white/5 flex flex-col md:flex-row justify-between text-[10px] font-bold uppercase tracking-[0.4em] text-zinc-700">
-        <p>© 2026 Mike Miller Media — Dallas, TX</p>
-        <div class="flex gap-10 mt-6 md:mt-0">
+        <p>© 2026 Mike Miller Media — TEX-LA</p>
+        <div class="flex gap-10 mt-8 md:mt-0">
             <a href="#" class="hover:text-white transition">Instagram</a>
             <a href="#" class="hover:text-white transition">LinkedIn</a>
         </div>
