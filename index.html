@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mike Miller Media | Narrative Engineering</title>
+    <title>Mike Miller Media | Your Creative Partner</title>
     
     <!-- Aileron Font -->
     <link href="https://fonts.cdnfonts.com/css/aileron" rel="stylesheet">
@@ -22,15 +22,15 @@
             font-family: 'Aileron', sans-serif;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        /* Kassow-style Reveal Animation */
+        /* Reveal Animation */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
@@ -39,19 +39,18 @@
         /* Glass Pro Styling */
         .glass-pro {
             background: var(--glass);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
             border: 1px solid var(--glass-border);
-            border-radius: 2.5rem;
-            transition: all 0.5s ease;
+            border-radius: 2rem;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
         .glass-pro:hover {
             border-color: rgba(255, 255, 255, 0.2);
             background: rgba(255, 255, 255, 0.04);
         }
 
-        /* Kassow Nav: Sticky and Minimal */
+        /* Sticky Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -59,54 +58,54 @@
             width: 100%;
             z-index: 1000;
             padding: 1.5rem 0;
-            transition: background 0.3s;
+            transition: all 0.4s ease;
         }
-
         nav.scrolled {
-            background: rgba(5, 5, 5, 0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(5, 5, 5, 0.7);
+            backdrop-filter: blur(15px);
+            padding: 1rem 0;
         }
 
-        /* Project Card Image Logic */
-        .project-card .img-container {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-            z-index: 0;
-        }
-
-        .project-card img {
+        /* Responsive Hero Video logic */
+        .hero-video-container {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.4;
-            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Mobile: 4:5 ratio */
+        @media (max-width: 768px) {
+            .hero-video-container { aspect-ratio: 4 / 5; }
+        }
+        /* Desktop: 16:9 ratio */
+        @media (min-width: 769px) {
+            .hero-video-container { aspect-ratio: 16 / 9; }
         }
 
-        .project-card:hover img {
-            transform: scale(1.1);
-            opacity: 0.7;
+        .huge-title {
+            font-size: clamp(2.5rem, 8vw, 7.5rem);
+            font-weight: 900;
+            line-height: 0.9;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
         }
 
         .accent-glow {
-            box-shadow: 0 0 80px -20px rgba(48, 16, 107, 0.4);
+            box-shadow: 0 0 80px -20px rgba(48, 16, 107, 0.5);
         }
 
-        /* Massive Typography Styles */
-        .huge-title {
-            font-size: clamp(3rem, 10vw, 8rem);
-            font-weight: 900;
-            line-height: 0.85;
-            letter-spacing: -0.05em;
-            text-transform: uppercase;
-        }
-
-        .sub-header {
-            font-size: 0.7rem;
+        .nav-link {
+            font-size: 10px;
             font-weight: 800;
-            letter-spacing: 0.4em;
-            color: var(--accent);
             text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: rgba(255,255,255,0.4);
+            transition: color 0.3s;
+        }
+        .nav-link:hover { color: #fff; }
+
+        .service-item {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 1.5rem 0;
         }
     </style>
 </head>
@@ -114,185 +113,147 @@
 
     <!-- NAVIGATION -->
     <nav id="navbar">
-        <div class="max-w-[85%] mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <div class="w-2 h-2 rounded-full bg-[#30106b]"></div>
-                <span class="font-black tracking-tighter text-lg uppercase">Mike Miller Media</span>
+        <div class="max-w-[90%] md:max-w-[85%] mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-2.5 h-2.5 rounded-full bg-[#30106b]"></div>
+                <span class="font-black text-lg md:text-xl tracking-tighter uppercase">Mike Miller Media</span>
             </div>
-            <div class="hidden md:flex gap-10">
-                <a href="#work" class="text-[10px] font-bold uppercase tracking-widest hover:text-white transition text-zinc-500">Portfolio</a>
-                <a href="#about" class="text-[10px] font-bold uppercase tracking-widest hover:text-white transition text-zinc-500">The Director</a>
-                <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" class="text-[10px] font-bold uppercase tracking-widest text-white border-b-2 border-[#30106b] pb-1">Start Vision</a>
+            <div class="hidden md:flex gap-12">
+                <a href="#work" class="nav-link">Portfolio</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" class="px-6 py-2 glass-pro !rounded-full !text-white nav-link hover:border-white/30">Contact</a>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION (80% Width Video) -->
-    <section class="max-w-[85%] mx-auto mb-24 reveal">
-        <div class="glass-pro accent-glow w-full aspect-video relative overflow-hidden flex items-end p-8 md:p-20">
+    <!-- HERO SECTION -->
+    <section class="max-w-[90%] md:max-w-[85%] mx-auto mb-24 reveal">
+        <div class="glass-pro accent-glow hero-video-container relative flex items-end p-8 md:p-24">
             <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline>
                 <source src="highlight reel 2026 (short).mp4" type="video/mp4">
             </video>
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
-            <div class="relative z-10 max-w-4xl">
-                <p class="sub-header mb-6">Full-Cycle Production</p>
-                <h1 class="huge-title mb-8">Render Your <br><span class="opacity-30 italic">Vision.</span></h1>
-                <p class="text-zinc-400 text-lg md:text-2xl font-light leading-relaxed">
-                    Strategy. Production. Innovation. We don’t just hit record—we build legacies through cinematic storytelling.
-                </p>
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+            <div class="relative z-10 max-w-5xl">
+                <h1 class="huge-title mb-6">Your Creative <br><span class="text-[#30106b]">Partner.</span></h1>
+                <p class="text-zinc-400 text-lg md:text-2xl font-light">Complete Digital Production for Brands with a Vision.</p>
             </div>
         </div>
     </section>
 
-    <!-- THE PIONEER STORY (Split Layout like Kassow Robots) -->
-    <section id="about" class="max-w-[85%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 mb-32 items-center">
+    <!-- BIO SECTION -->
+    <section id="about" class="max-w-[90%] md:max-w-[85%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 mb-40 items-start">
         <div class="reveal">
-            <p class="sub-header mb-4">The Innovation</p>
-            <h2 class="text-5xl md:text-7xl font-black uppercase leading-none mb-8 tracking-tighter">
-                The Podcast <br><span class="text-[#30106b]">Pioneer.</span>
-            </h2>
-            <p class="text-zinc-500 text-lg font-light leading-relaxed mb-6">
-                Back in college, before podcasting was a household name, I was already recruiting and scheduling 20+ shows for an online radio station. We were ridiculed because we weren't on "the air waves"—but we saw the future first.
-            </p>
-            <p class="text-zinc-500 text-lg font-light leading-relaxed">
-                That 10-year journey as a musician, engineer, and tech geek has evolved into a humble, faith-driven approach to serving 8-figure brands.
-            </p>
+            <p class="text-[#30106b] font-black text-xs uppercase tracking-[0.5em] mb-8">Director Profile</p>
+            <h2 class="text-5xl font-black uppercase mb-10 tracking-tighter italic">Mike Miller</h2>
+            
+            <div class="space-y-6 text-zinc-400 text-lg leading-relaxed font-light">
+                <p class="text-white text-2xl font-semibold leading-snug">
+                    Mike Miller Media was founded on a simple principle: Strategy comes before production.
+                </p>
+                <p>Led by seasoned Creative Director Mike Miller, with over 10 years of experience in digital innovation, our company DNA is rooted in technical excellence and creative vision. We don't just "hit record." We analyze your audience, refine your message, and produce content that doesn't just look good but also drives results.</p>
+                <p>Whether you need a full-service creative partner to manage your brand or a premium studio space to record your next episode, we provide the infrastructure for you to scale.</p>
+            </div>
         </div>
-        <div class="glass-pro aspect-square relative overflow-hidden reveal">
-             <video class="absolute inset-0 w-full h-full object-cover grayscale opacity-60" autoplay loop muted playsinline>
+        
+        <!-- Intro Video with Audio & Controls -->
+        <div class="glass-pro aspect-[4/5] relative overflow-hidden reveal bg-zinc-900">
+             <video class="w-full h-full object-cover" controls poster="mike-poster.jpg">
                 <source src="mike-intro.mp4" type="video/mp4">
+                Your browser does not support the video tag.
             </video>
-            <div class="absolute bottom-10 left-10">
-                <span class="font-black text-xl italic uppercase tracking-tighter">Mike Miller</span>
-                <p class="text-xs font-bold uppercase tracking-[0.3em] opacity-50">Creative Partner</p>
+        </div>
+    </section>
+
+    <!-- SERVICES / THE FULL CYCLE -->
+    <section id="services" class="max-w-[90%] md:max-w-[85%] mx-auto mb-40 reveal">
+        <div class="glass-pro p-8 md:p-20 border-[#30106b]/30">
+            <p class="text-[#30106b] font-black text-xs uppercase tracking-[0.5em] mb-6">Capabilities</p>
+            <h2 class="huge-title !text-5xl md:!text-7xl mb-16 italic">The Full Cycle.</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-20">
+                <div class="service-item">
+                    <h3 class="text-xl font-bold uppercase mb-2">Brand Strategy</h3>
+                    <p class="text-zinc-500 text-sm">Long-term visioning and market positioning.</p>
+                </div>
+                <div class="service-item">
+                    <h3 class="text-xl font-bold uppercase mb-2">Visual Strategy & Design</h3>
+                    <p class="text-zinc-500 text-sm">Cohesive aesthetic direction across all touchpoints.</p>
+                </div>
+                <div class="service-item">
+                    <h3 class="text-xl font-bold uppercase mb-2">Narrative Engineering</h3>
+                    <p class="text-zinc-500 text-sm">Story-driven messaging built for retention.</p>
+                </div>
+                <div class="service-item">
+                    <h3 class="text-xl font-bold uppercase mb-2">Web Building</h3>
+                    <p class="text-zinc-500 text-sm">Modern, high-performance digital homes.</p>
+                </div>
+                <div class="service-item md:col-span-2">
+                    <h3 class="text-xl font-bold uppercase mb-2 text-white">Video Production</h3>
+                    <p class="text-zinc-400 text-base mb-4">The core engine of MMM.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-1 glass-pro text-[10px] font-bold uppercase tracking-widest">4K Cinema Line Cameras</span>
+                        <span class="px-4 py-1 glass-pro text-[10px] font-bold uppercase tracking-widest">Professional Lighting</span>
+                        <span class="px-4 py-1 glass-pro text-[10px] font-bold uppercase tracking-widest">High Quality Audio</span>
+                        <span class="px-4 py-1 glass-pro text-[10px] font-bold uppercase tracking-widest">Video Editing</span>
+                    </div>
+                </div>
+                <div class="service-item md:col-span-2">
+                    <h3 class="text-xl font-bold uppercase mb-2">Digital Distribution</h3>
+                    <p class="text-zinc-500 text-sm">Ensuring your message reaches the right screens through optimized scaling.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- PORTFOLIO GRID (4 Clickable Boxes) -->
-    <section id="work" class="max-w-[85%] mx-auto mb-32">
-        <div class="flex justify-between items-end mb-12 reveal">
-            <div>
-                <p class="sub-header mb-2">Portfolio</p>
-                <h2 class="text-5xl font-black uppercase tracking-tighter">Selected Narrative.</h2>
-            </div>
-            <p class="text-zinc-500 text-xs font-bold uppercase tracking-widest hidden md:block">Scroll to explore // 04 Projects</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Project 1 -->
-            <a href="#" class="glass-pro project-card h-[450px] relative flex items-end p-10 reveal">
-                <div class="img-container"><img src="Kathleen nurse ep still 2_3.4.1.png"></div>
+    <!-- PORTFOLIO GRID -->
+    <section id="work" class="max-w-[90%] md:max-w-[85%] mx-auto mb-40">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <a href="#" class="glass-pro h-[450px] md:h-[550px] relative overflow-hidden flex items-end p-10 reveal group">
+                <img src="Kathleen nurse ep still 2_3.4.1.png" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 group-hover:opacity-60 transition-all duration-1000">
                 <div class="relative z-10">
-                    <p class="text-[9px] font-black uppercase tracking-[0.4em] text-white opacity-40 mb-2">Education / Inspiration</p>
                     <h3 class="text-3xl font-black uppercase italic tracking-tighter">Kathleen Cameron</h3>
                 </div>
             </a>
-
-            <!-- Project 2 -->
-            <a href="#" class="glass-pro project-card h-[450px] relative flex items-end p-10 reveal">
-                <div class="img-container"><img src="waxahachie home image_4.6.2.png"></div>
+            <a href="#" class="glass-pro h-[450px] md:h-[550px] relative overflow-hidden flex items-end p-10 reveal group">
+                <img src="waxahachie home image_4.6.2.png" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 group-hover:opacity-60 transition-all duration-1000">
                 <div class="relative z-10">
-                    <p class="text-[9px] font-black uppercase tracking-[0.4em] text-white opacity-40 mb-2">Real Estate Cinematic</p>
                     <h3 class="text-3xl font-black uppercase italic tracking-tighter">Waxahachie Estate</h3>
                 </div>
             </a>
-
-            <!-- Project 3 -->
-            <a href="https://vimeo.com/manage/videos/961679758" class="glass-pro project-card h-[450px] relative flex items-end p-10 reveal">
-                <div class="img-container"><img src="fitted apron thumbnail.jpg"></div>
-                <div class="relative z-10">
-                    <p class="text-[9px] font-black uppercase tracking-[0.4em] text-white opacity-40 mb-2">Visual Identity</p>
-                    <h3 class="text-3xl font-black uppercase italic tracking-tighter">The Fitted Apron</h3>
-                </div>
-            </a>
-
-            <!-- Project 4 -->
-            <a href="#" class="glass-pro project-card h-[450px] relative flex items-end p-10 reveal">
-                <div class="img-container"><img src="pastor ron still.jpg"></div>
-                <div class="relative z-10">
-                    <p class="text-[9px] font-black uppercase tracking-[0.4em] text-white opacity-40 mb-2">Short Film Narrative</p>
-                    <h3 class="text-3xl font-black uppercase italic tracking-tighter">King's Park Journey</h3>
-                </div>
-            </a>
-        </div>
-    </section>
-
-    <!-- CAPABILITIES BENTO (The "Tech Geek" Section) -->
-    <section class="max-w-[85%] mx-auto mb-32 grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="glass-pro p-12 col-span-1 md:col-span-2 reveal">
-            <h3 class="text-3xl font-black uppercase tracking-tighter mb-8 italic">The Full Cycle.</h3>
-            <div class="grid grid-cols-2 gap-8">
-                <div>
-                    <p class="text-[#30106b] font-black text-[10px] uppercase mb-4 tracking-widest">Execution</p>
-                    <ul class="text-zinc-500 space-y-3 text-sm font-bold uppercase tracking-tight">
-                        <li>Cinematography</li>
-                        <li>4K Multi-Cam Audio</li>
-                        <li>Post-Production</li>
-                    </ul>
-                </div>
-                <div>
-                    <p class="text-[#30106b] font-black text-[10px] uppercase mb-4 tracking-widest">Strategy</p>
-                    <ul class="text-zinc-500 space-y-3 text-sm font-bold uppercase tracking-tight">
-                        <li>Brand Positioning</li>
-                        <li>Narrative Engineering</li>
-                        <li>Digital Distribution</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="glass-pro p-12 col-span-1 flex flex-col justify-center items-center text-center border-[#30106b]/30 reveal">
-            <span class="text-5xl mb-4">✦</span>
-            <h3 class="text-xl font-black uppercase italic tracking-tighter">The Humble Edge.</h3>
-            <p class="text-zinc-500 text-xs font-medium leading-relaxed mt-4">
-                Service rooted in faith. Feedback isn't a hurdle; it's a tool for absolute excellence.
-            </p>
         </div>
     </section>
 
     <!-- FINAL CTA -->
-    <section class="max-w-[85%] mx-auto mb-32 reveal">
-        <div class="glass-pro bg-white p-12 md:p-24 flex flex-col items-center text-center">
-            <h2 class="text-black huge-title italic mb-10">Ready to be <br>Iconic?</h2>
-            <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" class="px-16 py-8 bg-black text-white rounded-full font-black uppercase tracking-widest text-[10px] hover:scale-110 transition-transform duration-500">
+    <section class="max-w-[90%] md:max-w-[85%] mx-auto mb-40 reveal">
+        <div class="glass-pro bg-white p-12 md:p-32 flex flex-col items-center text-center">
+            <h2 class="text-black huge-title italic mb-10">Ready to build <br>something iconic?</h2>
+            <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" class="px-16 py-7 bg-black text-white rounded-full font-black uppercase tracking-widest text-[10px] hover:scale-110 transition-transform duration-500">
                 Book a Session
             </a>
         </div>
     </section>
 
-    <footer class="max-w-[85%] mx-auto py-12 border-t border-white/5 flex flex-col md:flex-row justify-between text-[9px] font-bold uppercase tracking-[0.4em] text-zinc-700">
-        <p>© 2026 Mike Miller Media — Dallas Based. Global View.</p>
-        <div class="flex gap-8 mt-6 md:mt-0">
+    <footer class="max-w-[90%] md:max-w-[85%] mx-auto py-16 border-t border-white/5 flex flex-col md:flex-row justify-between text-[10px] font-bold uppercase tracking-[0.4em] text-zinc-700">
+        <p>© 2026 Mike Miller Media — Dallas, TX</p>
+        <div class="flex gap-10 mt-6 md:mt-0">
             <a href="#" class="hover:text-white transition">Instagram</a>
             <a href="#" class="hover:text-white transition">LinkedIn</a>
         </div>
     </footer>
 
-    <!-- INTERSECTION OBSERVER SCRIPT (The Kassow Robots Motion) -->
     <script>
-        // 1. Reveal Elements on Scroll
-        const observerOptions = {
-            threshold: 0.1
-        };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('active');
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
         document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
-        // 2. Navbar Scroll Effect
         window.onscroll = function() {
             const nav = document.getElementById('navbar');
-            if (window.pageYOffset > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
+            if (window.pageYOffset > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
         };
     </script>
 
