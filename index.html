@@ -25,236 +25,198 @@
             scroll-behavior: smooth;
         }
 
-        /* Reveal Animation (Kassow Robots Style) */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        /* Reveal Animation Styles */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* Glass Pro Styling */
         .glass-pro {
             background: var(--glass);
             backdrop-filter: blur(40px);
-            -webkit-backdrop-filter: blur(40px);
             border: 1px solid var(--glass-border);
             border-radius: 2rem;
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .glass-pro:hover {
-            border-color: rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.04);
         }
 
-        /* Sticky Navigation */
-        nav {
-            position: fixed;
-            top: 0; left: 0; width: 100%;
-            z-index: 1000;
-            padding: 1.5rem 0;
-            transition: all 0.4s ease;
-        }
-        nav.scrolled {
-            background: rgba(5, 5, 5, 0.7);
-            backdrop-filter: blur(15px);
-            padding: 1rem 0;
-        }
+        /* Scroll Animation for Services */
+        .service-reveal { opacity: 0.15; transform: translateX(-20px); transition: all 0.6s ease; }
+        .service-reveal.active { opacity: 1; transform: translateX(0); }
 
-        /* Hero Video Aspect Ratios */
-        .hero-video-container {
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-        }
-        @media (max-width: 768px) { .hero-video-container { aspect-ratio: 4 / 5; } }
-        @media (min-width: 769px) { .hero-video-container { aspect-ratio: 16 / 9; } }
+        .huge-title { font-size: clamp(2rem, 8vw, 7rem); font-weight: 900; line-height: 0.9; text-transform: uppercase; letter-spacing: -0.04em; }
 
-        /* Typography */
-        .huge-title {
-            font-size: clamp(2.5rem, 8vw, 7.5rem);
-            font-weight: 900;
-            line-height: 0.9;
-            letter-spacing: -0.04em;
-            text-transform: uppercase;
-        }
+        /* Sticky Navbar */
+        nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 1.5rem 0; transition: 0.4s; }
+        nav.scrolled { background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(20px); padding: 1rem 0; }
 
-        .accent-glow {
-            box-shadow: 0 0 80px -20px rgba(48, 16, 107, 0.5);
-        }
-
-        .nav-link {
-            font-size: 10px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.3em;
-            color: rgba(255,255,255,0.4);
-            transition: color 0.3s;
-        }
-        .nav-link:hover { color: #fff; }
-
-        .service-item {
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            padding: 1.5rem 0;
-        }
-
-        /* Project Card Hover */
-        .project-card img {
-            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
-        }
-        .project-card:hover img {
-            transform: scale(1.08);
-            opacity: 0.6;
-        }
+        .project-card img { transition: 1.5s cubic-bezier(0.16, 1, 0.3, 1); opacity: 0.4; }
+        .project-card:hover img { transform: scale(1.05); opacity: 0.6; }
     </style>
 </head>
 <body class="pt-24">
 
     <!-- NAVIGATION -->
     <nav id="navbar">
-        <div class="max-w-[90%] md:max-w-[85%] mx-auto flex justify-between items-center">
+        <div class="max-w-[85%] mx-auto flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <div class="w-2.5 h-2.5 rounded-full bg-[#30106b]"></div>
-                <span class="font-black text-lg md:text-xl tracking-tighter uppercase">Mike Miller Media</span>
+                <span class="font-black text-xl tracking-tighter uppercase">Mike Miller Media</span>
             </div>
-            <div class="hidden md:flex gap-12">
-                <a href="#work" class="nav-link">Portfolio</a>
-                <a href="#services" class="nav-link">Services</a>
-                <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" class="px-6 py-2 glass-pro !rounded-full !text-white nav-link hover:border-white/30 transition-all">Contact</a>
+            <div class="hidden md:flex gap-12 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+                <a href="#work" class="hover:text-white transition">Portfolio</a>
+                <a href="#services" class="hover:text-white transition">Full Cycle</a>
+                <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" class="text-white border-b border-[#30106b] pb-1">Inquire</a>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
+    <!-- HERO (Mobile 4:5, Desktop 16:9) -->
     <section class="max-w-[90%] md:max-w-[85%] mx-auto mb-24 reveal">
-        <div class="glass-pro accent-glow hero-video-container relative flex items-end p-8 md:p-24">
+        <div class="glass-pro aspect-[4/5] md:aspect-video relative overflow-hidden flex items-end p-8 md:p-24 shadow-[0_0_80px_-20px_rgba(48,16,107,0.4)]">
             <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline>
                 <source src="highlight reel 2026 (short).mp4" type="video/mp4">
             </video>
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-            <div class="relative z-10 max-w-5xl">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="relative z-10 max-w-4xl">
                 <h1 class="huge-title mb-6">Your Creative <br><span class="text-[#30106b]">Partner.</span></h1>
                 <p class="text-zinc-400 text-lg md:text-2xl font-light">Complete Digital Production for Brands with a Vision.</p>
             </div>
         </div>
     </section>
 
-    <!-- BIO SECTION -->
-    <section id="about" class="max-w-[90%] md:max-w-[85%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 mb-40 items-start">
-        <div class="reveal">
-            <p class="text-[#30106b] font-black text-xs uppercase tracking-[0.5em] mb-8">Director Profile</p>
-            <h2 class="text-5xl font-black uppercase mb-10 tracking-tighter italic">Mike Miller</h2>
-            
-            <div class="space-y-6 text-zinc-400 text-lg leading-relaxed font-light">
-                <p class="text-white text-2xl font-semibold leading-snug">
-                    Mike Miller Media was founded on a simple principle: Strategy comes before production.
-                </p>
-                <p>Led by seasoned Creative Director Mike Miller, with over 10 years of experience in digital innovation, our company DNA is rooted in technical excellence and creative vision. We don't just "hit record." We analyze your audience, refine your message, and produce content that doesn't just look good but also drives results.</p>
-                <p>Whether you need a full-service creative partner to manage your brand or a premium studio space to record your next episode, we provide the infrastructure for you to scale.</p>
+    <!-- BIO SECTION (16:9 Video with Controls) -->
+    <section id="about" class="max-w-[85%] mx-auto mb-40 reveal">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <div class="lg:col-span-5">
+                <p class="text-[#30106b] font-black text-xs uppercase tracking-[0.5em] mb-8">Executive Director</p>
+                <div class="space-y-6 text-zinc-400 text-lg leading-relaxed font-light">
+                    <p class="text-white text-3xl font-black italic uppercase italic tracking-tighter">Strategy comes before production.</p>
+                    <p>Led by seasoned Creative Director Mike Miller, with over 10 years of experience in digital innovation, our company DNA is rooted in technical excellence and creative vision. We don't just "hit record." We analyze your audience, refine your message, and produce content that doesn't just look good but also drives results.</p>
+                    <p>Whether you need a full-service creative partner to manage your brand or a premium studio space to record your next episode, we provide the infrastructure for you to scale.</p>
+                </div>
             </div>
-        </div>
-        
-        <!-- Intro Video (With Audio & Player Controls) -->
-        <div class="glass-pro aspect-[4/5] relative overflow-hidden reveal bg-black">
-             <video class="w-full h-full object-cover" controls>
-                <source src="mike-intro.mp4" type="video/mp4">
-            </video>
-        </div>
-    </section>
-
-    <!-- CAPABILITIES / THE FULL CYCLE -->
-    <section id="services" class="max-w-[90%] md:max-w-[85%] mx-auto mb-40 reveal">
-        <div class="glass-pro p-8 md:p-20 border-[#30106b]/30">
-            <p class="text-[#30106b] font-black text-xs uppercase tracking-[0.5em] mb-6">Execution</p>
-            <h2 class="huge-title !text-5xl md:!text-7xl mb-16 italic">The Full Cycle.</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-20">
-                <div class="service-item">
-                    <h3 class="text-xl font-bold uppercase mb-2">Brand Strategy</h3>
-                    <p class="text-zinc-500 text-sm">Positioning your brand for long-term dominance.</p>
-                </div>
-                <div class="service-item">
-                    <h3 class="text-xl font-bold uppercase mb-2">Visual Strategy & Design</h3>
-                    <p class="text-zinc-500 text-sm">Unified identity across all digital platforms.</p>
-                </div>
-                <div class="service-item">
-                    <h3 class="text-xl font-bold uppercase mb-2">Narrative Engineering</h3>
-                    <p class="text-zinc-500 text-sm">Storytelling built to maximize retention and conversion.</p>
-                </div>
-                <div class="service-item">
-                    <h3 class="text-xl font-bold uppercase mb-2">Web Building</h3>
-                    <p class="text-zinc-500 text-sm">Performance-driven high-end digital homes.</p>
-                </div>
-                <div class="service-item md:col-span-2">
-                    <h3 class="text-xl font-bold uppercase mb-4 text-white">Video Production</h3>
-                    <div class="flex flex-wrap gap-4">
-                        <span class="px-4 py-1.5 glass-pro text-[10px] font-bold uppercase tracking-widest text-[#30106b]">4K Cinema Line Cameras</span>
-                        <span class="px-4 py-1.5 glass-pro text-[10px] font-bold uppercase tracking-widest text-[#30106b]">Professional Lighting</span>
-                        <span class="px-4 py-1.5 glass-pro text-[10px] font-bold uppercase tracking-widest text-[#30106b]">High Quality Audio</span>
-                        <span class="px-4 py-1.5 glass-pro text-[10px] font-bold uppercase tracking-widest text-zinc-400">Video Editing</span>
+            <div class="lg:col-span-7">
+                <div class="glass-pro aspect-video relative overflow-hidden bg-black group">
+                    <video id="bioVideo" class="w-full h-full object-cover opacity-80" loop playsinline>
+                        <source src="mike-intro.mp4" type="video/mp4">
+                    </video>
+                    <!-- Visual Play/Pause indicator -->
+                    <div id="videoOverlay" class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
+                        <span class="text-white font-black uppercase tracking-widest text-xs border border-white px-6 py-2 rounded-full">Play / Pause</span>
                     </div>
                 </div>
-                <div class="service-item md:col-span-2">
-                    <h3 class="text-xl font-bold uppercase mb-2">Digital Distribution</h3>
-                    <p class="text-zinc-500 text-sm">Scaling your vision through optimized multi-channel delivery.</p>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- PORTFOLIO GRID -->
-    <section id="work" class="max-w-[90%] md:max-w-[85%] mx-auto mb-40">
+    <!-- THE FULL CYCLE (Smooth Scroll Reveal Section) -->
+    <section id="services" class="max-w-[85%] mx-auto mb-40">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+            <div class="lg:col-span-4 lg:sticky lg:top-32 h-fit">
+                <p class="text-[#30106b] font-black text-xs uppercase tracking-[0.5em] mb-4">The Methodology</p>
+                <h2 class="huge-title !text-5xl italic">The <br>Full <br>Cycle.</h2>
+            </div>
+            <div class="lg:col-span-8 space-y-32 py-20">
+                
+                <!-- Brand Strategy -->
+                <div class="service-reveal flex gap-8">
+                    <div class="w-12 h-12 shrink-0 border border-[#30106b] rounded-xl flex items-center justify-center text-[#30106b]">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Brand Strategy</h3>
+                        <p class="text-zinc-500 font-light max-w-md">We define your unique market position and long-term goals. Every frame we shoot is anchored in your core business objectives.</p>
+                    </div>
+                </div>
+
+                <!-- Visual Strategy -->
+                <div class="service-reveal flex gap-8">
+                    <div class="w-12 h-12 shrink-0 border border-[#30106b] rounded-xl flex items-center justify-center text-[#30106b]">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Visual Strategy & Design</h3>
+                        <p class="text-zinc-500 font-light max-w-md">Crafting a premium, unified aesthetic across all digital touchpoints. We ensure your brand looks as elite as the service you provide.</p>
+                    </div>
+                </div>
+
+                <!-- Narrative Engineering -->
+                <div class="service-reveal flex gap-8">
+                    <div class="w-12 h-12 shrink-0 border border-[#30106b] rounded-xl flex items-center justify-center text-[#30106b]">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Narrative Engineering</h3>
+                        <p class="text-zinc-500 font-light max-w-md">Story-driven messaging built for retention. we turn complex ideas into compelling human stories that keep audiences watching.</p>
+                    </div>
+                </div>
+
+                <!-- Web Building -->
+                <div class="service-reveal flex gap-8">
+                    <div class="w-12 h-12 shrink-0 border border-[#30106b] rounded-xl flex items-center justify-center text-[#30106b]">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Web Building</h3>
+                        <p class="text-zinc-500 font-light max-w-md">High-performance digital homes developed with futuristic intent. We build interfaces that bridge the gap between vision and user experience.</p>
+                    </div>
+                </div>
+
+                <!-- Video Production -->
+                <div class="service-reveal flex gap-8">
+                    <div class="w-12 h-12 shrink-0 border border-[#30106b] rounded-xl flex items-center justify-center text-[#30106b]">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Video Production</h3>
+                        <p class="text-zinc-500 font-light max-w-md">The core engine. 4K cinema-line cameras, professional lighting setups, and multi-track high-fidelity audio engineering.</p>
+                    </div>
+                </div>
+
+                <!-- Editing & Distribution -->
+                <div class="service-reveal flex gap-8">
+                    <div class="w-12 h-12 shrink-0 border border-[#30106b] rounded-xl flex items-center justify-center text-[#30106b]">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mb-4 tracking-tighter">Editing & Digital Distribution</h3>
+                        <p class="text-zinc-500 font-light max-w-md">Precision post-production followed by optimized scaling. We ensure your assets hit the right platforms with maximum impact.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="work" class="max-w-[85%] mx-auto mb-40">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- 1. Kathleen -->
-            <a href="#" class="glass-pro project-card h-[450px] md:h-[550px] relative overflow-hidden flex items-end p-10 reveal group">
-                <img src="Kathleen nurse ep still 2_3.4.1.png" class="absolute inset-0 w-full h-full object-cover opacity-40">
-                <div class="relative z-10">
-                    <p class="text-[9px] font-black uppercase tracking-[0.4em] text-white/50 mb-2">Narrative</p>
-                    <h3 class="text-3xl font-black uppercase italic tracking-tighter">Kathleen Cameron</h3>
-                </div>
+            <a href="#" class="glass-pro project-card h-[500px] relative overflow-hidden flex items-end p-12 reveal">
+                <img src="Kathleen nurse ep still 2_3.4.1.png" class="absolute inset-0 w-full h-full object-cover">
+                <div class="relative z-10"><h3 class="text-3xl font-black italic uppercase tracking-tighter">Kathleen Cameron</h3></div>
             </a>
-            <!-- 2. Estate -->
-            <a href="#" class="glass-pro project-card h-[450px] md:h-[550px] relative overflow-hidden flex items-end p-10 reveal group">
-                <img src="waxahachie home image_4.6.2.png" class="absolute inset-0 w-full h-full object-cover opacity-40">
-                <div class="relative z-10">
-                    <p class="text-[9px] font-black uppercase tracking-[0.4em] text-white/50 mb-2">Cinematic</p>
-                    <h3 class="text-3xl font-black uppercase italic tracking-tighter">Waxahachie Estate</h3>
-                </div>
+            <a href="#" class="glass-pro project-card h-[500px] relative overflow-hidden flex items-end p-12 reveal">
+                <img src="waxahachie home image_4.6.2.png" class="absolute inset-0 w-full h-full object-cover">
+                <div class="relative z-10"><h3 class="text-3xl font-black italic uppercase tracking-tighter">Waxahachie Estate</h3></div>
             </a>
-            <!-- 3. Fitted Apron -->
-            <a href="https://vimeo.com/manage/videos/961679758" class="glass-pro project-card h-[450px] md:h-[550px] relative overflow-hidden flex items-end p-10 reveal group">
-                <img src="fitted apron thumbnail.jpg" class="absolute inset-0 w-full h-full object-cover opacity-40">
-                <div class="relative z-10">
-                    <p class="text-[9px] font-black uppercase tracking-[0.4em] text-white/50 mb-2">Visual Strategy</p>
-                    <h3 class="text-3xl font-black uppercase italic tracking-tighter">Fitted Apron</h3>
-                </div>
+            <a href="https://vimeo.com/manage/videos/961679758" class="glass-pro project-card h-[500px] relative overflow-hidden flex items-end p-12 reveal">
+                <img src="fitted apron thumbnail.jpg" class="absolute inset-0 w-full h-full object-cover">
+                <div class="relative z-10"><h3 class="text-3xl font-black italic uppercase tracking-tighter">Fitted Apron</h3></div>
             </a>
-            <!-- 4. King's Park -->
-            <a href="#" class="glass-pro project-card h-[450px] md:h-[550px] relative overflow-hidden flex items-end p-10 reveal group">
-                <img src="pastor ron still.jpg" class="absolute inset-0 w-full h-full object-cover opacity-40">
-                <div class="relative z-10">
-                    <p class="text-[9px] font-black uppercase tracking-[0.4em] text-white/50 mb-2">Storytelling</p>
-                    <h3 class="text-3xl font-black uppercase italic tracking-tighter">King's Park</h3>
-                </div>
+            <a href="#" class="glass-pro project-card h-[500px] relative overflow-hidden flex items-end p-12 reveal">
+                <img src="pastor ron still.jpg" class="absolute inset-0 w-full h-full object-cover">
+                <div class="relative z-10"><h3 class="text-3xl font-black italic uppercase tracking-tighter">King's Park Journey</h3></div>
             </a>
         </div>
     </section>
 
-    <!-- FINAL COMPACT CTA -->
-    <section class="max-w-[90%] md:max-w-[50%] mx-auto mb-40 reveal">
+    <!-- COMPACT CTA -->
+    <section class="max-w-[90%] md:max-w-[45%] mx-auto mb-40 reveal">
         <div class="glass-pro bg-white p-12 flex flex-col items-center text-center">
-            <h2 class="text-black text-4xl md:text-5xl font-black italic uppercase tracking-tighter mb-8 leading-none">Ready to build <br>something iconic?</h2>
-            <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" class="px-12 py-6 bg-black text-white rounded-full font-black uppercase tracking-widest text-[10px] hover:scale-105 transition-all duration-500">
-                Inquire Now
-            </a>
+            <h2 class="text-black text-4xl font-black italic uppercase tracking-tighter mb-8 leading-none">Ready to build <br>something iconic?</h2>
+            <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" class="px-12 py-5 bg-black text-white rounded-full font-black uppercase tracking-widest text-[10px] hover:scale-105 transition-all duration-500">Book Session</a>
         </div>
     </section>
 
-    <footer class="max-w-[90%] md:max-w-[85%] mx-auto py-16 border-t border-white/5 flex flex-col md:flex-row justify-between text-[10px] font-bold uppercase tracking-[0.4em] text-zinc-700">
-        <p>© 2026 Mike Miller Media — TEX-LA</p>
+    <footer class="max-w-[85%] mx-auto py-20 border-t border-white/5 flex flex-col md:flex-row justify-between text-[10px] font-bold uppercase tracking-[0.5em] text-zinc-700">
+        <p>© 2026 Mike Miller Media — Dallas, TX</p>
         <div class="flex gap-10 mt-8 md:mt-0">
             <a href="#" class="hover:text-white transition">Instagram</a>
             <a href="#" class="hover:text-white transition">LinkedIn</a>
@@ -262,14 +224,32 @@
     </footer>
 
     <script>
-        const observer = new IntersectionObserver((entries) => {
+        // 1. Reveal on Scroll
+        const obs = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('active');
             });
         }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal, .service-reveal').forEach((el) => obs.observe(el));
 
-        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+        // 2. Video Control Logic
+        const bioVideo = document.getElementById('bioVideo');
+        const videoOverlay = document.getElementById('videoOverlay');
+        
+        const videoObs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) bioVideo.play();
+                else bioVideo.pause();
+            });
+        }, { threshold: 0.5 });
+        videoObs.observe(bioVideo);
 
+        videoOverlay.addEventListener('click', () => {
+            if (bioVideo.paused) bioVideo.play();
+            else bioVideo.pause();
+        });
+
+        // 3. Navbar logic
         window.onscroll = function() {
             const nav = document.getElementById('navbar');
             if (window.pageYOffset > 50) nav.classList.add('scrolled');
