@@ -11,13 +11,14 @@
     <style>
         :root {
             --accent: #30106b;
-            --glass: rgba(255, 255, 255, 0.015); /* Lower opacity for better glow visibility */
-            --glass-border: rgba(255, 255, 255, 0.08);
+            /* Inverted glass for light mode */
+            --glass: rgba(255, 255, 255, 0.65); 
+            --glass-border: rgba(0, 0, 0, 0.06);
         }
 
         body {
-            background-color: #050505;
-            color: #f5f5f7;
+            background-color: #f7f7f9; /* Clean off-white background */
+            color: #18181b; /* High-contrast dark neutral text */
             font-family: 'Aileron', sans-serif;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
@@ -37,12 +38,12 @@
             position: absolute;
             border-radius: 50%;
             filter: blur(160px);
-            opacity: 0.18;
+            opacity: 0.08; /* Slightly reduced for light mode so it isn't overpowering */
             background: var(--accent);
         }
         .orb-1 { width: 700px; height: 700px; top: -15%; left: -10%; }
-        .orb-2 { width: 600px; height: 600px; bottom: 5%; right: -5%; opacity: 0.12; }
-        .orb-3 { width: 500px; height: 500px; top: 35%; left: 45%; opacity: 0.08; }
+        .orb-2 { width: 600px; height: 600px; bottom: 5%; right: -5%; opacity: 0.05; }
+        .orb-3 { width: 500px; height: 500px; top: 35%; left: 45%; opacity: 0.04; }
 
         /* Reveal Animation Styles */
         .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -54,6 +55,7 @@
             -webkit-backdrop-filter: blur(45px);
             border: 1px solid var(--glass-border);
             border-radius: 2.5rem;
+            box-shadow: 0 15px 35px -10px rgba(0,0,0,0.03); /* Added subtle shadow for light mode */
         }
 
         /* DRAMATIC SERVICE SCROLL */
@@ -73,10 +75,10 @@
 
         /* Sticky Navbar */
         nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 1.5rem 0; transition: 0.4s; }
-        nav.scrolled { background: rgba(5, 5, 5, 0.6); backdrop-filter: blur(15px); padding: 1rem 0; }
+        nav.scrolled { background: rgba(247, 247, 249, 0.85); backdrop-filter: blur(15px); padding: 1rem 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
 
-        .project-card img { transition: 1.5s cubic-bezier(0.16, 1, 0.3, 1); opacity: 0.4; }
-        .project-card:hover img { transform: scale(1.05); opacity: 0.6; }
+        .project-card img { transition: 1.5s cubic-bezier(0.16, 1, 0.3, 1); opacity: 0.8; } /* Higher opacity images for light mode */
+        .project-card:hover img { transform: scale(1.05); opacity: 1; }
 
         /* Large Icon Pulsing Effect */
         .icon-box {
@@ -87,15 +89,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid rgba(48, 16, 107, 0.3);
+            border: 1px solid rgba(48, 16, 107, 0.15); /* Lightened border */
             border-radius: 1.8rem;
-            background: rgba(48, 16, 107, 0.05);
+            background: rgba(48, 16, 107, 0.03);
             transition: all 0.8s ease;
         }
         .service-focus.active .icon-box {
             border-color: var(--accent);
-            box-shadow: 0 0 30px rgba(48, 16, 107, 0.4);
-            background: rgba(48, 16, 107, 0.15);
+            box-shadow: 0 0 30px rgba(48, 16, 107, 0.15); /* Softer shadow for light mode */
+            background: rgba(48, 16, 107, 0.08);
         }
 
         /* Hero Video Logic */
@@ -116,29 +118,34 @@
         <div class="max-w-[85%] mx-auto flex justify-between items-center">
             <div class="flex items-center gap-3">
                 <div class="w-2.5 h-2.5 rounded-full bg-[#30106b] shadow-[0_0_10px_#30106b]"></div>
-                <span class="font-black text-xl tracking-tighter uppercase">Mike Miller Media</span>
+                <span class="font-black text-xl tracking-tighter uppercase text-zinc-900">Mike Miller Media</span>
             </div>
             <div class="hidden md:flex gap-12 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
-                <a href="#work" class="hover:text-white transition">Portfolio</a>
-                <a href="#services" class="hover:text-white transition">Capabilities</a>
-                <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" class="text-white border-b border-[#30106b] pb-1">Start Vision</a>
+                <a href="#work" class="hover:text-black transition">Portfolio</a>
+                <a href="#services" class="hover:text-black transition">Capabilities</a>
+                <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" class="text-zinc-900 border-b border-[#30106b] pb-1 hover:text-[#30106b] transition">Start Vision</a>
             </div>
         </div>
     </nav>
 
     <section class="max-w-[90%] md:max-w-[85%] mx-auto mb-32 reveal">
-        <div class="glass-pro hero-video-container relative flex items-end p-8 md:p-24 shadow-[0_0_100px_-30px_rgba(48, 16, 107, 0.5)]">
+        <div class="glass-pro hero-video-container relative flex items-end p-8 md:p-24 shadow-[0_20px_80px_-20px_rgba(48,16,107,0.2)]">
             <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline>
                 <source src="highlight reel 2026 (short).mp4" type="video/mp4">
             </video>
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#f7f7f9] via-[#f7f7f9]/80 to-transparent"></div>
             <div class="relative z-10 max-w-4xl">
-                <h1 class="huge-title mb-6 italic">FULL CYCLE <br><span class="text-white">PRODUCTION.</span></h1>
-                <p class="text-zinc-300 text-lg md:text-2xl font-light mb-10">Complete Digital Production for Brands with a Vision.</p>
+                <h1 class="huge-title mb-6 italic text-zinc-900">FULL CYCLE <br><span class="text-[#30106b]">PRODUCTION.</span></h1>
+                <p class="text-zinc-600 text-lg md:text-2xl font-light mb-10">Complete Digital Production for Brands with a Vision.</p>
                 
-                <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" class="inline-block px-12 py-5 bg-white text-black rounded-full font-black uppercase tracking-widest text-[11px] hover:scale-105 hover:bg-zinc-200 transition-all duration-500 shadow-[0_0_30px_rgba(255,255,255,0.15)]">
-                    Start Your Vision
-                </a>
+                <div class="flex flex-wrap gap-4">
+                    <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" class="inline-block px-10 py-5 bg-[#30106b] text-white rounded-full font-black uppercase tracking-widest text-[11px] hover:scale-105 hover:bg-black transition-all duration-500 shadow-[0_10px_30px_rgba(48,16,107,0.3)]">
+                        Start Your Vision
+                    </a>
+                    <a href="#work" class="inline-block px-10 py-5 bg-transparent border-2 border-[#30106b] text-[#30106b] rounded-full font-black uppercase tracking-widest text-[11px] hover:scale-105 hover:bg-[#30106b] hover:text-white transition-all duration-500">
+                        View Portfolio
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -147,19 +154,19 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             <div class="lg:col-span-5">
                 <p class="text-[#30106b] font-black text-xs uppercase tracking-[0.5em] mb-8">Executive Director</p>
-                <div class="space-y-6 text-zinc-400 text-lg leading-relaxed font-light">
-                    <p class="text-white text-3xl font-black italic uppercase tracking-tighter">Hi! I'm Mike.</p>
+                <div class="space-y-6 text-zinc-600 text-lg leading-relaxed font-light">
+                    <p class="text-zinc-900 text-3xl font-black italic uppercase tracking-tighter">Hi! I'm Mike.</p>
                     <p>I'm an innovative and futuristic thinker with over 10 years of experience in design and production. My company DNA is rooted in technical excellence and creative vision.</p>
                     <p>I analyze your audience, refine your message, and produce content that doesn't just look good but also drives results. I provide the infrastructure for you to scale.</p>
                 </div>
             </div>
             <div class="lg:col-span-7">
-                <div class="glass-pro aspect-video relative overflow-hidden bg-black group shadow-2xl">
-                    <video id="bioVideo" class="w-full h-full object-cover opacity-80" loop playsinline>
+                <div class="glass-pro aspect-video relative overflow-hidden bg-black group shadow-xl">
+                    <video id="bioVideo" class="w-full h-full object-cover opacity-90" loop playsinline>
                         <source src="mike-intro.mp4" type="video/mp4">
                     </video>
-                    <div id="videoOverlay" class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
-                        <span class="text-white font-black uppercase tracking-widest text-xs border border-white px-8 py-3 rounded-full">Play // Pause</span>
+                    <div id="videoOverlay" class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
+                        <span class="text-white font-black uppercase tracking-widest text-xs border border-white px-8 py-3 rounded-full bg-black/20 backdrop-blur-sm">Play // Pause</span>
                     </div>
                 </div>
             </div>
@@ -170,7 +177,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
             <div class="lg:col-span-4 lg:sticky lg:top-40 h-fit">
                 <p class="text-[#30106b] font-black text-xs uppercase tracking-[0.5em] mb-4">STRATEGY | PRODUCTION | INNOVATION</p>
-                <h2 class="huge-title !text-6xl italic">The <br>Full <br>Cycle.</h2>
+                <h2 class="huge-title !text-6xl italic text-zinc-900">The <br>Full <br>Cycle.</h2>
             </div>
             <div class="lg:col-span-8 space-y-56 py-20">
                 
@@ -179,8 +186,8 @@
                         <svg width="48" height="48" fill="none" stroke="#30106b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                     </div>
                     <div>
-                        <h3 class="text-3xl font-black uppercase mb-4 tracking-tighter italic">Brand Strategy</h3>
-                        <p class="text-zinc-500 font-light text-xl leading-relaxed">We define your market position and objectives. Every design we craft and every frame we shoot is anchored in your core business goals.</p>
+                        <h3 class="text-3xl font-black uppercase mb-4 tracking-tighter italic text-zinc-900">Brand Strategy</h3>
+                        <p class="text-zinc-600 font-light text-xl leading-relaxed">We define your market position and objectives. Every design we craft and every frame we shoot is anchored in your core business goals.</p>
                     </div>
                 </div>
 
@@ -189,8 +196,8 @@
                         <svg width="48" height="48" fill="none" stroke="#30106b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
                     </div>
                     <div>
-                        <h3 class="text-3xl font-black uppercase mb-4 tracking-tighter italic">Visual Strategy & Design</h3>
-                        <p class="text-zinc-500 font-light text-xl leading-relaxed">Crafting a premium, unified aesthetic across all digital touchpoints to ensure your brand looks as elite as your service.</p>
+                        <h3 class="text-3xl font-black uppercase mb-4 tracking-tighter italic text-zinc-900">Visual Strategy & Design</h3>
+                        <p class="text-zinc-600 font-light text-xl leading-relaxed">Crafting a premium, unified aesthetic across all digital touchpoints to ensure your brand looks as elite as your service.</p>
                     </div>
                 </div>
 
@@ -199,8 +206,8 @@
                         <svg width="48" height="48" fill="none" stroke="#30106b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
                     </div>
                     <div>
-                        <h3 class="text-3xl font-black uppercase mb-4 tracking-tighter italic">Narrative Engineering</h3>
-                        <p class="text-zinc-500 font-light text-xl leading-relaxed">Story-driven messaging built for retention. We turn complex ideas into compelling human stories that keep audiences hooked.</p>
+                        <h3 class="text-3xl font-black uppercase mb-4 tracking-tighter italic text-zinc-900">Narrative Engineering</h3>
+                        <p class="text-zinc-600 font-light text-xl leading-relaxed">Story-driven messaging built for retention. We turn complex ideas into compelling human stories that keep audiences hooked.</p>
                     </div>
                 </div>
 
@@ -209,8 +216,8 @@
                         <svg width="48" height="48" fill="none" stroke="#30106b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
                     </div>
                     <div>
-                        <h3 class="text-3xl font-black uppercase mb-4 tracking-tighter italic">Web Building</h3>
-                        <p class="text-zinc-500 font-light text-xl leading-relaxed">High-performance digital homes developed with futuristic intent to bridge the gap between vision and user experience.</p>
+                        <h3 class="text-3xl font-black uppercase mb-4 tracking-tighter italic text-zinc-900">Web Building</h3>
+                        <p class="text-zinc-600 font-light text-xl leading-relaxed">High-performance digital homes developed with futuristic intent to bridge the gap between vision and user experience.</p>
                     </div>
                 </div>
 
@@ -219,8 +226,8 @@
                         <svg width="48" height="48" fill="none" stroke="#30106b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
                     </div>
                     <div>
-                        <h3 class="text-3xl font-black uppercase mb-4 tracking-tighter italic">Video Production</h3>
-                        <p class="text-zinc-500 font-light text-xl leading-relaxed">The core engine. 4K cinema-line cameras, professional lighting setups, and high-fidelity multi-track audio engineering.</p>
+                        <h3 class="text-3xl font-black uppercase mb-4 tracking-tighter italic text-zinc-900">Video Production</h3>
+                        <p class="text-zinc-600 font-light text-xl leading-relaxed">The core engine. 4K cinema-line cameras, professional lighting setups, and high-fidelity multi-track audio engineering.</p>
                     </div>
                 </div>
 
@@ -229,8 +236,8 @@
                         <svg width="48" height="48" fill="none" stroke="#30106b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
                     </div>
                     <div>
-                        <h3 class="text-3xl font-black uppercase mb-4 tracking-tighter italic">Post & Digital Distribution</h3>
-                        <p class="text-zinc-500 font-light text-xl leading-relaxed">Precision editing followed by optimized scaling. We ensure your assets hit the right platforms with maximum impact.</p>
+                        <h3 class="text-3xl font-black uppercase mb-4 tracking-tighter italic text-zinc-900">Post & Digital Distribution</h3>
+                        <p class="text-zinc-600 font-light text-xl leading-relaxed">Precision editing followed by optimized scaling. We ensure your assets hit the right platforms with maximum impact.</p>
                     </div>
                 </div>
 
@@ -238,40 +245,44 @@
         </div>
     </section>
 
-    <section id="work" class="max-w-[85%] mx-auto mb-48">
+    <section id="work" class="max-w-[85%] mx-auto mb-48 pt-10">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <a href="https://youtu.be/f7teircIjmE?si=0t1qmUsWoK5XZSrI" target="_blank" class="glass-pro project-card h-[500px] relative overflow-hidden flex items-end p-12 reveal">
                 <img src="Kathleen nurse ep still 2_3.4.1.png" class="absolute inset-0 w-full h-full object-cover">
-                <div class="relative z-10"><h3 class="text-3xl font-black italic uppercase tracking-tighter">Kathleen Cameron</h3></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
+                <div class="relative z-10"><h3 class="text-3xl text-white font-black italic uppercase tracking-tighter">Kathleen Cameron</h3></div>
             </a>
             <a href="https://youtu.be/aM3xSD74lnQ?si=GwHmrywTXSNrSky5" target="_blank" class="glass-pro project-card h-[500px] relative overflow-hidden flex items-end p-12 reveal">
                 <img src="waxahachie home image_4.6.2.png" class="absolute inset-0 w-full h-full object-cover">
-                <div class="relative z-10"><h3 class="text-3xl font-black italic uppercase tracking-tighter">Waxahachie Estate</h3></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
+                <div class="relative z-10"><h3 class="text-3xl text-white font-black italic uppercase tracking-tighter">Waxahachie Estate</h3></div>
             </a>
             <a href="https://vimeo.com/961679758" target="_blank" class="glass-pro project-card h-[500px] relative overflow-hidden flex items-end p-12 reveal">
                 <img src="fitted apron thumbnail.jpg" class="absolute inset-0 w-full h-full object-cover">
-                <div class="relative z-10"><h3 class="text-3xl font-black italic uppercase tracking-tighter">Fitted Apron</h3></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
+                <div class="relative z-10"><h3 class="text-3xl text-white font-black italic uppercase tracking-tighter">Fitted Apron</h3></div>
             </a>
             <a href="https://youtu.be/fEKmwX0VNLI?si=b0j4x4wDX6Bksb5r" target="_blank" class="glass-pro project-card h-[500px] relative overflow-hidden flex items-end p-12 reveal">
                 <img src="pastor ron still.jpg" class="absolute inset-0 w-full h-full object-cover">
-                <div class="relative z-10"><h3 class="text-3xl font-black italic uppercase tracking-tighter">King's Park Journey</h3></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
+                <div class="relative z-10"><h3 class="text-3xl text-white font-black italic uppercase tracking-tighter">King's Park Journey</h3></div>
             </a>
         </div>
     </section>
 
     <section class="max-w-[90%] md:max-w-[40%] mx-auto mb-48 reveal">
-        <div class="glass-pro bg-white p-12 flex flex-col items-center text-center shadow-2xl">
-            <h2 class="text-black text-4xl font-black italic uppercase tracking-tighter mb-8 leading-tight">Ready to build <br>something iconic?</h2>
-            <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" class="px-16 py-6 bg-black text-white rounded-full font-black uppercase tracking-widest text-[10px] hover:scale-105 transition-all duration-500 shadow-xl">Book Session</a>
+        <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-12 flex flex-col items-center text-center shadow-[0_20px_50px_-10px_rgba(0,0,0,0.3)]">
+            <h2 class="text-white text-4xl font-black italic uppercase tracking-tighter mb-8 leading-tight">Ready to build <br>something iconic?</h2>
+            <a href="https://calendar.app.google/58rKeGEwoU3uPdvF8" class="px-16 py-6 bg-[#30106b] text-white rounded-full font-black uppercase tracking-widest text-[10px] hover:scale-105 hover:bg-white hover:text-black transition-all duration-500 shadow-xl">Book Session</a>
         </div>
     </section>
 
-    <footer class="max-w-[85%] mx-auto py-20 border-t border-white/5 flex flex-col md:flex-row justify-between text-[10px] font-bold uppercase tracking-[0.5em] text-zinc-700">
+    <footer class="max-w-[85%] mx-auto py-20 border-t border-black/5 flex flex-col md:flex-row justify-between text-[10px] font-bold uppercase tracking-[0.5em] text-zinc-500">
         <p>© 2026 Mike Miller Media — Dallas, TX</p>
         <div class="flex gap-10 mt-8 md:mt-0">
-            <a href="mailto:hello@mikemillermedia.com" class="hover:text-white transition">Email</a>
-            <a href="#" class="hover:text-white transition">Instagram</a>
-            <a href="#" class="hover:text-white transition">LinkedIn</a>
+            <a href="mailto:hello@mikemillermedia.com" class="hover:text-black transition">Email</a>
+            <a href="#" class="hover:text-black transition">Instagram</a>
+            <a href="#" class="hover:text-black transition">LinkedIn</a>
         </div>
     </footer>
 
