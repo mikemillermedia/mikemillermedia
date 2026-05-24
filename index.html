@@ -74,14 +74,17 @@
             box-shadow: 0 0 30px rgba(48, 16, 107, 0.15);
             background: rgba(48, 16, 107, 0.08);
         }
+
+        /* Hides scrollbar for the horizontal slider but keeps functionality */
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+        .hide-scroll::-webkit-scrollbar { display: none; }
     </style>
 </head>
 <body class="bg-white">
 
     <a href="#" class="absolute top-6 left-6 md:top-10 md:left-10 z-50">
         <img src="logo.png" alt="Mike Miller Media" class="h-10 md:h-12 w-auto opacity-90 hover:opacity-100 transition-opacity">
-        
-        </a>
+    </a>
 
     <section class="w-full mb-32 reveal flex flex-col">
         <div class="relative flex items-end w-full h-[65vh] md:h-[80vh] overflow-hidden bg-black">
@@ -129,7 +132,7 @@
         </div>
     </section>
 
-    <section id="services" class="max-w-[85%] mx-auto mb-48">
+    <section id="services" class="max-w-[85%] mx-auto mb-32">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
             <div class="lg:col-span-4 lg:sticky lg:top-40 h-fit">
                 <p class="text-[#30106b] font-black text-xs uppercase tracking-[0.5em] mb-4">STRATEGY | PRODUCTION | INNOVATION</p>
@@ -201,7 +204,47 @@
         </div>
     </section>
 
+    <section id="design-motion" class="w-full relative py-20 mb-32 overflow-hidden reveal">
+        <div class="absolute top-1/2 left-[60%] -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[900px] md:h-[900px] bg-[#ff9a76] rounded-full blur-[120px] opacity-15 pointer-events-none z-0"></div>
+        
+        <div class="relative z-10 max-w-[85%] mx-auto mb-12">
+            <h2 class="huge-title !text-5xl italic text-zinc-900">Graphic & <br>Motion Design.</h2>
+        </div>
+
+        <div class="flex gap-6 overflow-x-auto px-[7.5%] pb-10 snap-x snap-mandatory hide-scroll relative z-10">
+            
+            <a href="#" class="block min-w-[85vw] md:min-w-[450px] h-[550px] relative rounded-[2.5rem] overflow-hidden snap-center group shadow-[0_20px_50px_-10px_rgba(0,0,0,0.1)]">
+                <img src="mockup-placeholder1.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-10 left-10 right-10 text-white">
+                    <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#ff9a76] mb-3">Brand Identity</p>
+                    <h3 class="text-3xl font-black italic tracking-tighter">Client Rebrand</h3>
+                </div>
+            </a>
+
+            <a href="#" class="block min-w-[85vw] md:min-w-[450px] h-[550px] relative rounded-[2.5rem] overflow-hidden snap-center group shadow-[0_20px_50px_-10px_rgba(0,0,0,0.1)]">
+                <img src="mockup-placeholder2.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-10 left-10 right-10 text-white">
+                    <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#ff9a76] mb-3">Motion Graphics</p>
+                    <h3 class="text-3xl font-black italic tracking-tighter">App Launch Explainer</h3>
+                </div>
+            </a>
+
+            <a href="#" class="block min-w-[85vw] md:min-w-[450px] h-[550px] relative rounded-[2.5rem] overflow-hidden snap-center group shadow-[0_20px_50px_-10px_rgba(0,0,0,0.1)]">
+                <img src="mockup-placeholder3.jpg" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-10 left-10 right-10 text-white">
+                    <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#ff9a76] mb-3">Web Design</p>
+                    <h3 class="text-3xl font-black italic tracking-tighter">Digital Experience</h3>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
     <section id="work" class="max-w-[85%] mx-auto mb-48 pt-10">
+        <h2 class="huge-title !text-5xl italic text-zinc-900 mb-12">Video <br>Production.</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <a href="https://youtu.be/f7teircIjmE?si=0t1qmUsWoK5XZSrI" target="_blank" class="glass-pro project-card h-[500px] relative overflow-hidden flex items-end p-12 reveal">
                 <img src="Kathleen nurse ep still 2_3.4.1.png" class="absolute inset-0 w-full h-full object-cover">
