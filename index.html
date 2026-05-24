@@ -78,19 +78,18 @@
         .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; cursor: grab; }
         .hide-scroll::-webkit-scrollbar { display: none; }
         .grabbing { cursor: grabbing !important; }
-        /* Prevents accidental clicks while dragging */
         .grabbing a { pointer-events: none; } 
 
-        /* Dynamic Floating Animations */
+        /* Subtle, Premium Floating Animations */
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-6px); } /* Reduced to a very soft 6px bounce */
             100% { transform: translateY(0px); }
         }
-        .float-anim { animation: float 6s ease-in-out infinite; }
-        .float-delay-1 { animation-delay: -1.5s; }
-        .float-delay-2 { animation-delay: -3s; }
-        .float-delay-3 { animation-delay: -4.5s; }
+        .float-anim { animation: float 7s ease-in-out infinite; } /* Slowed down to 7 seconds */
+        .float-delay-1 { animation-delay: -2s; }
+        .float-delay-2 { animation-delay: -4s; }
+        .float-delay-3 { animation-delay: -6s; }
 
     </style>
 </head>
@@ -191,75 +190,75 @@
 
         <div id="drag-carousel" class="flex gap-6 overflow-x-auto px-[7.5%] py-10 hide-scroll relative z-10 select-none">
             
-            <a href="#" draggable="false" class="float-anim block min-w-[85vw] md:min-w-[420px] h-[550px] relative rounded-[2.5rem] overflow-hidden group shadow-[0_20px_50px_-10px_rgba(0,0,0,0.15)] flex-shrink-0">
+            <a href="#" draggable="false" class="float-anim flex-shrink-0 w-[85vw] h-[85vw] md:w-[450px] md:h-[450px] relative rounded-[2.5rem] overflow-hidden group shadow-[0_20px_50px_-10px_rgba(0,0,0,0.15)]">
                 <img src="mockup-1.jpg" draggable="false" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
-                <div class="absolute bottom-10 left-10 right-10 text-white pointer-events-none">
-                    <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#ff9a76] mb-3">Brand Identity</p>
-                    <h3 class="text-3xl font-black italic tracking-tighter">Client Rebrand</h3>
+                <div class="absolute bottom-8 left-8 right-8 md:bottom-10 md:left-10 md:right-10 text-white pointer-events-none">
+                    <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#ff9a76] mb-2 md:mb-3">Brand Identity</p>
+                    <h3 class="text-2xl md:text-3xl font-black italic tracking-tighter">Client Rebrand</h3>
                 </div>
             </a>
 
-            <a href="#" draggable="false" class="float-anim float-delay-1 block min-w-[85vw] md:min-w-[420px] h-[550px] relative rounded-[2.5rem] overflow-hidden group shadow-[0_20px_50px_-10px_rgba(0,0,0,0.15)] flex-shrink-0">
+            <a href="#" draggable="false" class="float-anim float-delay-1 flex-shrink-0 w-[85vw] h-[85vw] md:w-[450px] md:h-[450px] relative rounded-[2.5rem] overflow-hidden group shadow-[0_20px_50px_-10px_rgba(0,0,0,0.15)]">
                 <img src="mockup-2.jpg" draggable="false" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
-                <div class="absolute bottom-10 left-10 right-10 text-white pointer-events-none">
-                    <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#ff9a76] mb-3">Motion Graphics</p>
-                    <h3 class="text-3xl font-black italic tracking-tighter">Kinetic Typography</h3>
+                <div class="absolute bottom-8 left-8 right-8 md:bottom-10 md:left-10 md:right-10 text-white pointer-events-none">
+                    <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#ff9a76] mb-2 md:mb-3">Motion Graphics</p>
+                    <h3 class="text-2xl md:text-3xl font-black italic tracking-tighter">Kinetic Typography</h3>
                 </div>
             </a>
 
-            <a href="#" draggable="false" class="float-anim float-delay-2 block min-w-[85vw] md:min-w-[420px] h-[550px] relative rounded-[2.5rem] overflow-hidden group shadow-[0_20px_50px_-10px_rgba(0,0,0,0.15)] flex-shrink-0">
+            <a href="#" draggable="false" class="float-anim float-delay-2 flex-shrink-0 w-[85vw] h-[85vw] md:w-[450px] md:h-[450px] relative rounded-[2.5rem] overflow-hidden group shadow-[0_20px_50px_-10px_rgba(0,0,0,0.15)]">
                 <img src="mockup-3.jpg" draggable="false" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
-                <div class="absolute bottom-10 left-10 right-10 text-white pointer-events-none">
-                    <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#ff9a76] mb-3">Web Design</p>
-                    <h3 class="text-3xl font-black italic tracking-tighter">Digital Experience</h3>
+                <div class="absolute bottom-8 left-8 right-8 md:bottom-10 md:left-10 md:right-10 text-white pointer-events-none">
+                    <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#ff9a76] mb-2 md:mb-3">Web Design</p>
+                    <h3 class="text-2xl md:text-3xl font-black italic tracking-tighter">Digital Experience</h3>
                 </div>
             </a>
 
-            <a href="#" draggable="false" class="float-anim float-delay-3 block min-w-[85vw] md:min-w-[420px] h-[550px] relative rounded-[2.5rem] overflow-hidden group shadow-[0_20px_50px_-10px_rgba(0,0,0,0.15)] flex-shrink-0">
+            <a href="#" draggable="false" class="float-anim float-delay-3 flex-shrink-0 w-[85vw] h-[85vw] md:w-[450px] md:h-[450px] relative rounded-[2.5rem] overflow-hidden group shadow-[0_20px_50px_-10px_rgba(0,0,0,0.15)]">
                 <img src="mockup-4.jpg" draggable="false" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
-                <div class="absolute bottom-10 left-10 right-10 text-white pointer-events-none">
-                    <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#ff9a76] mb-3">3D Animation</p>
-                    <h3 class="text-3xl font-black italic tracking-tighter">Product Reveal</h3>
+                <div class="absolute bottom-8 left-8 right-8 md:bottom-10 md:left-10 md:right-10 text-white pointer-events-none">
+                    <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#ff9a76] mb-2 md:mb-3">3D Animation</p>
+                    <h3 class="text-2xl md:text-3xl font-black italic tracking-tighter">Product Reveal</h3>
                 </div>
             </a>
 
-            <a href="#" draggable="false" class="float-anim block min-w-[85vw] md:min-w-[420px] h-[550px] relative rounded-[2.5rem] overflow-hidden group shadow-[0_20px_50px_-10px_rgba(0,0,0,0.15)] flex-shrink-0">
+            <a href="#" draggable="false" class="float-anim flex-shrink-0 w-[85vw] h-[85vw] md:w-[450px] md:h-[450px] relative rounded-[2.5rem] overflow-hidden group shadow-[0_20px_50px_-10px_rgba(0,0,0,0.15)]">
                 <img src="mockup-5.jpg" draggable="false" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
-                <div class="absolute bottom-10 left-10 right-10 text-white pointer-events-none">
-                    <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#ff9a76] mb-3">Social Campaign</p>
-                    <h3 class="text-3xl font-black italic tracking-tighter">Platform Scaling</h3>
+                <div class="absolute bottom-8 left-8 right-8 md:bottom-10 md:left-10 md:right-10 text-white pointer-events-none">
+                    <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#ff9a76] mb-2 md:mb-3">Social Campaign</p>
+                    <h3 class="text-2xl md:text-3xl font-black italic tracking-tighter">Platform Scaling</h3>
                 </div>
             </a>
 
-            <a href="#" draggable="false" class="float-anim float-delay-1 block min-w-[85vw] md:min-w-[420px] h-[550px] relative rounded-[2.5rem] overflow-hidden group shadow-[0_20px_50px_-10px_rgba(0,0,0,0.15)] flex-shrink-0">
+            <a href="#" draggable="false" class="float-anim float-delay-1 flex-shrink-0 w-[85vw] h-[85vw] md:w-[450px] md:h-[450px] relative rounded-[2.5rem] overflow-hidden group shadow-[0_20px_50px_-10px_rgba(0,0,0,0.15)]">
                 <img src="mockup-6.jpg" draggable="false" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
-                <div class="absolute bottom-10 left-10 right-10 text-white pointer-events-none">
-                    <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#ff9a76] mb-3">UI/UX Mockups</p>
-                    <h3 class="text-3xl font-black italic tracking-tighter">App Interface</h3>
+                <div class="absolute bottom-8 left-8 right-8 md:bottom-10 md:left-10 md:right-10 text-white pointer-events-none">
+                    <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#ff9a76] mb-2 md:mb-3">UI/UX Mockups</p>
+                    <h3 class="text-2xl md:text-3xl font-black italic tracking-tighter">App Interface</h3>
                 </div>
             </a>
 
-            <a href="#" draggable="false" class="float-anim float-delay-2 block min-w-[85vw] md:min-w-[420px] h-[550px] relative rounded-[2.5rem] overflow-hidden group shadow-[0_20px_50px_-10px_rgba(0,0,0,0.15)] flex-shrink-0">
+            <a href="#" draggable="false" class="float-anim float-delay-2 flex-shrink-0 w-[85vw] h-[85vw] md:w-[450px] md:h-[450px] relative rounded-[2.5rem] overflow-hidden group shadow-[0_20px_50px_-10px_rgba(0,0,0,0.15)]">
                 <img src="mockup-7.jpg" draggable="false" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
-                <div class="absolute bottom-10 left-10 right-10 text-white pointer-events-none">
-                    <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#ff9a76] mb-3">VFX Composite</p>
-                    <h3 class="text-3xl font-black italic tracking-tighter">Studio Effects</h3>
+                <div class="absolute bottom-8 left-8 right-8 md:bottom-10 md:left-10 md:right-10 text-white pointer-events-none">
+                    <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#ff9a76] mb-2 md:mb-3">VFX Composite</p>
+                    <h3 class="text-2xl md:text-3xl font-black italic tracking-tighter">Studio Effects</h3>
                 </div>
             </a>
 
-            <a href="#" draggable="false" class="float-anim float-delay-3 block min-w-[85vw] md:min-w-[420px] h-[550px] relative rounded-[2.5rem] overflow-hidden group shadow-[0_20px_50px_-10px_rgba(0,0,0,0.15)] flex-shrink-0">
+            <a href="#" draggable="false" class="float-anim float-delay-3 flex-shrink-0 w-[85vw] h-[85vw] md:w-[450px] md:h-[450px] relative rounded-[2.5rem] overflow-hidden group shadow-[0_20px_50px_-10px_rgba(0,0,0,0.15)]">
                 <img src="mockup-8.jpg" draggable="false" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
-                <div class="absolute bottom-10 left-10 right-10 text-white pointer-events-none">
-                    <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#ff9a76] mb-3">Logo Animation</p>
-                    <h3 class="text-3xl font-black italic tracking-tighter">Dynamic Reveal</h3>
+                <div class="absolute bottom-8 left-8 right-8 md:bottom-10 md:left-10 md:right-10 text-white pointer-events-none">
+                    <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#ff9a76] mb-2 md:mb-3">Logo Animation</p>
+                    <h3 class="text-2xl md:text-3xl font-black italic tracking-tighter">Dynamic Reveal</h3>
                 </div>
             </a>
 
