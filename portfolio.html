@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mike Miller | Graphic Designer & Video Editor</title>
+    
+    <link href="https://fonts.cdnfonts.com/css/aileron" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        :root {
+            --accent: #30106b;
+            --glass: rgba(255, 255, 255, 0.4); 
+            --glass-border: rgba(0, 0, 0, 0.04);
+        }
+
+        body {
+            background-color: #ffffff; 
+            color: #18181b; 
+            font-family: 'Aileron', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            position: relative;
+        }
+
+        /* Reveal Animation Styles */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .glass-pro {
+            background: var(--glass);
+            backdrop-filter: blur(45px);
+            -webkit-backdrop-filter: blur(45px);
+            border: 1px solid var(--glass-border);
+            border-radius: 2.5rem;
+            box-shadow: 0 15px 40px -10px rgba(0,0,0,0.05); 
+        }
+
+        .service-focus { 
+            opacity: 0.1; 
+            transform: scale(0.9) translateX(-30px); 
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: blur(6px);
+        }
+        .service-focus.active { 
+            opacity: 1; 
+            transform: scale(1) translateX(0); 
+            filter: blur(0);
+        }
+
+        .huge-title { font-size: clamp(2.5rem, 8vw, 8rem); font-weight: 900; line-height: 0.9; text-transform: uppercase; letter-spacing: -0.04em; }
+
+        .project-img-wrapper img, .project-img-wrapper video { transition: 1.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        .project-card:hover .project-img-wrapper img, 
+        .project-card:hover .project-img-wrapper video { transform: scale(1.05); }
+
+        .icon-box {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(48, 16, 107, 0.15);
+            border-radius: 1.8rem;
+            background: rgba(48, 16, 107, 0.03);
+            transition: all 0.8s ease;
+        }
+        .service-focus.active .icon-box {
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(48, 16, 107, 0.15);
+            background: rgba(48, 16, 107, 0.08);
+        }
+
+        /* Carousel Drag Styling */
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; cursor: grab; }
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .grabbing { cursor: grabbing !important; }
+        .grabbing a, .grabbing div { pointer-events: none; } 
+
+        /* Subtle, Premium Floating Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); } 
+            100% { transform: translateY(0px); }
+        }
+        .float-anim { animation: float 7s ease-in-out infinite; } 
+        .float-delay-1 { animation-delay: -2s; }
+        .float-delay-2 { animation-delay: -4s; }
+        .float-delay-3 { animation-delay: -6s; }
+        
+        .card-details { border-top: 1px solid rgba(0,0,0,0.05); }
+
+    </style>
+</head>
+<body class="bg-white">
+
+    <a href="#" class="absolute top-6 left-6 md:top-10 md:left-10 z-50">
+        <h2 class="text-xl md:text-2xl font-black tracking-tighter italic text-white mix-blend-difference">Mike Miller.</h2>
+    </a>
+
+    <section class="w-full mb-32 reveal flex flex-col">
+        <div class="relative flex items-end w-full h-[65vh] md:h-[80vh] overflow-hidden bg-black">
+            <video class="absolute inset-0 w-full h-full object-cover opacity-60" autoplay loop muted playsinline>
+                <source src="highlight%20reel%202026%20(short).mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10"></div>
+            
+            <div class="relative z-10 w-full max-w-[85%] mx-auto pb-12 md:pb-24">
+                <h1 class="huge-title mb-4 italic text-white">GRAPHIC DESIGNER <br>& VIDEO EDITOR.</h1>
+                <p class="text-zinc-300 text-lg md:text-2xl font-light max-w-3xl">Transforming raw concepts into high-converting visual assets for forward-thinking marketing teams.</p>
+            </div>
+        </div>
+
+        <div class="w-full max-w-[85%] mx-auto mt-8 flex flex-col md:flex-row gap-4">
+            <a href="resume.pdf" target="_blank" class="inline-block text-center px-10 py-5 bg-[#30106b] text-white rounded-full font-black uppercase tracking-widest text-[11px] hover:scale-105 hover:bg-black transition-all duration-500 shadow-[0_10px_30px_rgba(48,16,107,0.3)] w-full md:w-auto">
+                Download Résumé
+            </a>
+            <a href="#portfolio" class="inline-block text-center px-10 py-5 bg-transparent border-2 border-[#30106b] text-[#30106b] rounded-full font-black uppercase tracking-widest text-[11px] hover:scale-105 hover:bg-[#30106b] hover:text-white transition-all duration-500 w-full md:w-auto">
+                Explore Portfolio
+            </a>
+        </div>
+    </section>
+
+    <section id="about" class="max-w-[85%] mx-auto mb-48 reveal">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <div class="lg:col-span-5">
+                <p class="text-[#30106b] font-black text-xs uppercase tracking-[0.5em] mb-8">Creative Professional</p>
+                <div class="space-y-6 text-zinc-600 text-lg leading-relaxed font-light">
+                    <p class="text-zinc-900 text-3xl font-black italic uppercase tracking-tighter">Hi! I'm Mike.</p>
+                    <p>I'm a versatile Graphic Designer and Video Editor looking to bring my technical expertise and creative vision to a collaborative, in-house marketing team.</p>
+                    <p>I thrive on taking projects from raw footage and initial concepts all the way through to final polished delivery. Whether it's editing high-retention video content, designing branded graphics, or adapting assets for multiple social platforms, I ensure brand consistency and high performance every step of the way.</p>
+                    <p>I'm highly receptive to feedback, deeply organized, and ready to elevate your team's visual storytelling.</p>
+                </div>
+            </div>
+            <div class="lg:col-span-7">
+                <div class="glass-pro aspect-video relative overflow-hidden bg-black group shadow-xl">
+                    <video id="bioVideo" class="w-full h-full object-cover opacity-90" loop playsinline poster="https://placehold.co/1920x1080/1a1a1a/ffffff?text=Introduction+Video">
+                        <source src="mike-intro.mp4" type="video/mp4">
+                    </video>
+                    <div id="videoOverlay" class="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer">
+                        <span class="text-white font-black uppercase tracking-widest text-xs border border-white px-8 py-3 rounded-full bg-black/20 backdrop-blur-sm">Play // Pause</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="expertise" class="max-w-[85%] mx-auto mb-32">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            <div class="lg:col-span-4 lg:sticky lg:top-40 h-fit">
+                <p class="text-[#30106b] font-black text-xs uppercase tracking-[0.5em] mb-4">ADOBE CREATIVE CLOUD</p>
+                <h2 class="huge-title !text-6xl italic text-zinc-900">Software <br>& <br>Expertise.</h2>
+            </div>
+            <div class="lg:col-span-8 space-y-40 py-10 md:py-20">
+                
+                <div class="service-focus flex flex-col md:flex-row gap-8 md:gap-12 items-start md:items-center">
+                    <div class="icon-box"><svg width="48" height="48" fill="none" stroke="#30106b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg></div>
+                    <div>
+                        <h3 class="text-3xl font-black uppercase mb-2 tracking-tighter italic text-zinc-900">Video Editing</h3>
+                        <p class="text-[#30106b] font-bold text-sm mb-3">Adobe Premiere Pro • Final Cut Pro • Color Correction • Audio Mixing</p>
+                        <p class="text-zinc-600 font-light text-xl leading-relaxed">Proficient in editing long-form and short-form content from raw footage through final delivery. Expert in pacing, cutting to music, applying professional LUTs, and ensuring crisp audio.</p>
+                    </div>
+                </div>
+
+                <div class="service-focus flex flex-col md:flex-row gap-8 md:gap-12 items-start md:items-center">
+                    <div class="icon-box"><svg width="48" height="48" fill="none" stroke="#30106b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg></div>
+                    <div>
+                        <h3 class="text-3xl font-black uppercase mb-2 tracking-tighter italic text-zinc-900">Motion Graphics & Animation</h3>
+                        <p class="text-[#30106b] font-bold text-sm mb-3">Adobe After Effects • Keyframing • Text Animation</p>
+                        <p class="text-zinc-600 font-light text-xl leading-relaxed">Elevating standard video content with dynamic lower thirds, custom transitions, engaging text-on-screen (captions), and complex compositing for high-retention ads.</p>
+                    </div>
+                </div>
+
+                <div class="service-focus flex flex-col md:flex-row gap-8 md:gap-12 items-start md:items-center">
+                    <div class="icon-box"><svg width="48" height="48" fill="none" stroke="#30106b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg></div>
+                    <div>
+                        <h3 class="text-3xl font-black uppercase mb-2 tracking-tighter italic text-zinc-900">Graphic Design & Branding</h3>
+                        <p class="text-[#30106b] font-bold text-sm mb-3">Adobe Photoshop • Adobe Illustrator • Typography • Composition</p>
+                        <p class="text-zinc-600 font-light text-xl leading-relaxed">Creating compelling visuals for email campaigns, digital advertising, flyers, and in-store signage while strictly adhering to corporate brand guidelines and visual storytelling best practices.</p>
+                    </div>
+                </div>
+
+                <div class="service-focus flex flex-col md:flex-row gap-8 md:gap-12 items-start md:items-center">
+                    <div class="icon-box"><svg width="48" height="48" fill="none" stroke="#30106b" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg></div>
+                    <div>
+                        <h3 class="text-3xl font-black uppercase mb-2 tracking-tighter italic text-zinc-900">Social Media Formats</h3>
+                        <p class="text-[#30106b] font-bold text-sm mb-3">Export Settings • Video Compression • Platform Trends</p>
+                        <p class="text-zinc-600 font-light text-xl leading-relaxed">Deep understanding of optimizing creative assets natively for Instagram, TikTok, Facebook, and YouTube. Adapting master creative files across multiple aspect ratios seamlessly.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <span id="portfolio" class="block -mt-20 pb-20"></span>
+
+    <section class="w-full relative py-20 mb-32 overflow-visible reveal">
+        <div class="absolute top-1/2 left-[60%] -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[900px] md:h-[900px] bg-[#ff9a76] rounded-full blur-[120px] opacity-15 pointer-events-none z-0"></div>
+        
+        <div class="relative z-10 max-w-[85%] mx-auto mb-12 select-none">
+            <h2 class="huge-title !text-5xl italic text-zinc-900">Graphic & <br>Motion Design.</h2>
+            <p class="text-zinc-500 font-bold uppercase tracking-widest text-[10px] mt-4">Drag to explore <span class="ml-2">→</span></p>
+        </div>
+
+        <div id="drag-carousel" class="flex gap-6 overflow-x-auto px-[7.5%] py-10 hide-scroll relative z-10 select-none items-stretch">
+
+            <!-- Card 1 -->
+            <div class="float-anim float-delay-2 flex-shrink-0 w-[300px] md:w-[380px] glass-pro project-card overflow-hidden flex flex-col group">
+                <div class="h-[400px] project-img-wrapper relative overflow-hidden bg-black">
+                    <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline poster="https://placehold.co/400x600/1a1a1a/ffffff?text=Event+Promo">
+                        <source src="1million-motion.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="p-6 md:p-8 flex-1 bg-white/70 backdrop-blur-md flex flex-col">
+                    <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#30106b] mb-1">Event Promotion</p>
+                    <h3 class="text-2xl font-black italic tracking-tighter text-zinc-900 mb-4">1 Million Campaign</h3>
+                    
+                    <div class="card-details mt-auto pt-4 space-y-3 text-sm text-zinc-700">
+                        <p><strong>Scope:</strong> [Describe what you designed here, e.g., Created animated promotional asset for digital ad campaign]</p>
+                        <p><strong>Software:</strong> [e.g., Adobe After Effects, Illustrator]</p>
+                        <p class="text-[#30106b] font-bold"><strong>Impact:</strong> [e.g., Driven 10,000+ course signups, 15% increase in CTR]</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="float-anim float-delay-1 flex-shrink-0 w-[300px] md:w-[380px] glass-pro project-card overflow-hidden flex flex-col group">
+                <div class="h-[400px] project-img-wrapper relative overflow-hidden bg-black">
+                    <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline poster="https://placehold.co/400x600/1a1a1a/ffffff?text=Brand+Identity">
+                        <source src="The%20Breakdown%20Logo%20(motion%202160x3840).mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="p-6 md:p-8 flex-1 bg-white/70 backdrop-blur-md flex flex-col">
+                    <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#30106b] mb-1">Brand Identity</p>
+                    <h3 class="text-2xl font-black italic tracking-tighter text-zinc-900 mb-4">The Breakdown</h3>
+                    
+                    <div class="card-details mt-auto pt-4 space-y-3 text-sm text-zinc-700">
+                        <p><strong>Scope:</strong> [Describe the branding package, e.g., Developed animated logo sting and lower thirds for YouTube series]</p>
+                        <p><strong>Software:</strong> [e.g., Adobe Premiere Pro, After Effects]</p>
+                        <p class="text-[#30106b] font-bold"><strong>Impact:</strong> [e.g., Standardized brand aesthetics across 50+ episodes]</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="float-anim float-delay-3 flex-shrink-0 w-[300px] md:w-[380px] glass-pro project-card overflow-hidden flex flex-col group">
+                <div class="h-[400px] project-img-wrapper relative overflow-hidden bg-black">
+                    <img src="fitted%20apron%20merch%20hoodie.png" draggable="false" class="absolute inset-0 w-full h-full object-cover" onerror="this.src='https://placehold.co/400x600/1a1a1a/ffffff?text=Merch+Design'">
+                </div>
+                <div class="p-6 md:p-8 flex-1 bg-white/70 backdrop-blur-md flex flex-col">
+                    <p class="text-[10px] font-black uppercase tracking-[0.3em] text-[#30106b] mb-1">Merch / Flyer Design</p>
+                    <h3 class="text-2xl font-black italic tracking-tighter text-zinc-900 mb-4">Fitted Apron</h3>
+                    
+                    <div class="card-details mt-auto pt-4 space-y-3 text-sm text-zinc-700">
+                        <p><strong>Scope:</strong> [Describe design context, e.g., Designed typography and vector layout for in-store signage and merchandise]</p>
+                        <p><strong>Software:</strong> [e.g., Adobe Illustrator, Photoshop]</p>
+                        <p class="text-[#30106b] font-bold"><strong>Impact:</strong> [e.g., Sold out initial inventory run in 48 hours]</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="work" class="max-w-[85%] mx-auto mb-48 pt-10 reveal">
+        <h2 class="huge-title !text-5xl italic text-zinc-900 mb-12">Video <br>Production.</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            
+            <!-- Video Proj 1 -->
+            <div class="glass-pro project-card overflow-hidden flex flex-col group">
+                <div class="h-[300px] project-img-wrapper relative overflow-hidden bg-black">
+                    <img src="Kathleen%20nurse%20ep%20still%202_3.4.1.png" class="absolute inset-0 w-full h-full object-cover" onerror="this.src='https://placehold.co/800x450/1a1a1a/ffffff?text=Video+Project+1'">
+                    <a href="https://youtu.be/f7teircIjmE?si=0t1qmUsWoK5XZSrI" target="_blank" class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="bg-white text-black px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest">Watch Video</span>
+                    </a>
+                </div>
+                <div class="p-8 bg-white/80 backdrop-blur-md flex-1">
+                    <h3 class="text-3xl font-black italic uppercase tracking-tighter text-zinc-900 mb-6">Kathleen Cameron</h3>
+                    <div class="card-details pt-5 space-y-3 text-zinc-700">
+                        <p><strong>Project Scope:</strong> [Detail your role, e.g., Lead Editor for a multi-camera interview series. Handled A-roll sync, B-roll integration, and narrative pacing.]</p>
+                        <p><strong>Software Used:</strong> [e.g., Adobe Premiere Pro for editing, Audition for dialogue cleanup, Lumetri for color grade.]</p>
+                        <p class="text-[#30106b] font-bold"><strong>Impact & ROI:</strong> [e.g., Generated over 250k views on YouTube, funneling viewers directly to the client's premium coaching course.]</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Proj 2 -->
+            <div class="glass-pro project-card overflow-hidden flex flex-col group">
+                <div class="h-[300px] project-img-wrapper relative overflow-hidden bg-black">
+                    <img src="waxahachie%20home%20image_4.6.2.png" class="absolute inset-0 w-full h-full object-cover" onerror="this.src='https://placehold.co/800x450/1a1a1a/ffffff?text=Video+Project+2'">
+                    <a href="https://youtu.be/aM3xSD74lnQ?si=GwHmrywTXSNrSky5" target="_blank" class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span class="bg-white text-black px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest">Watch Video</span>
+                    </a>
+                </div>
+                <div class="p-8 bg-white/80 backdrop-blur-md flex-1">
+                    <h3 class="text-3xl font-black italic uppercase tracking-tighter text-zinc-900 mb-6">Waxahachie Estate</h3>
+                    <div class="card-details pt-5 space-y-3 text-zinc-700">
+                        <p><strong>Project Scope:</strong> [e.g., Real estate marketing video. Edited drone and gimbal footage, adding custom motion tracked text for property details.]</p>
+                        <p><strong>Software Used:</strong> [e.g., Adobe Premiere Pro, After Effects]</p>
+                        <p class="text-[#30106b] font-bold"><strong>Impact & ROI:</strong> [e.g., Highly engaging visual asset that contributed to closing a high-ticket property sale within 14 days.]</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="social-media" class="max-w-[85%] mx-auto mb-48 reveal">
+        <h2 class="huge-title !text-5xl italic text-zinc-900 mb-12">Social <br>Media.</h2>
+        <p class="text-zinc-600 mb-8 max-w-2xl text-lg">Short-form content optimized for TikTok, Reels, and YouTube Shorts. All captions, jump cuts, and motion graphics executed within professional editing suites (No CapCut shortcuts).</p>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <!-- Social Card 1 -->
+            <div class="glass-pro project-card overflow-hidden flex flex-col group">
+                <div class="aspect-[9/16] relative overflow-hidden bg-black project-img-wrapper">
+                    <video class="w-full h-full object-cover opacity-90" autoplay loop muted playsinline poster="https://placehold.co/400x700/1a1a1a/ffffff?text=Short+Form">
+                        <source src="Schmidgall (Lux Office Broll)_web.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="p-5 bg-white/80 backdrop-blur-md flex-1">
+                    <h3 class="text-xl font-black italic tracking-tighter text-zinc-900 mb-3">Dental B-Roll</h3>
+                    <div class="text-xs text-zinc-700 space-y-2">
+                        <p><strong>Scope:</strong> [e.g., Fast-paced cinematic edit for Instagram Reels to highlight office luxury.]</p>
+                        <p><strong>Software:</strong> [e.g., Premiere Pro]</p>
+                        <p class="text-[#30106b] font-bold"><strong>Impact:</strong> [e.g., 50k views, drove 12 new consultations.]</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Card 2 -->
+            <div class="glass-pro project-card overflow-hidden flex flex-col group">
+                <div class="aspect-[9/16] relative overflow-hidden bg-black project-img-wrapper">
+                    <video class="w-full h-full object-cover opacity-90" autoplay loop muted playsinline poster="https://placehold.co/400x700/1a1a1a/ffffff?text=Podcast+Clip">
+                        <source src="Dad Went to Jail Reel_web.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="p-5 bg-white/80 backdrop-blur-md flex-1">
+                    <h3 class="text-xl font-black italic tracking-tighter text-zinc-900 mb-3">Podcast Clip</h3>
+                    <div class="text-xs text-zinc-700 space-y-2">
+                        <p><strong>Scope:</strong> [e.g., Selected high-retention hook, designed custom branded captions, and mixed audio.]</p>
+                        <p><strong>Software:</strong> [e.g., Premiere Pro, After Effects]</p>
+                        <p class="text-[#30106b] font-bold"><strong>Impact:</strong> [e.g., Increased podcast subscriber count by 5%.]</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Social Card 3 -->
+            <div class="glass-pro project-card overflow-hidden flex flex-col group">
+                <div class="aspect-[9/16] relative overflow-hidden bg-black project-img-wrapper">
+                    <video class="w-full h-full object-cover opacity-90" autoplay loop muted playsinline poster="https://placehold.co/400x700/1a1a1a/ffffff?text=Course+Promo">
+                        <source src="Healthy Marriage Qualities Reel_web.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="p-5 bg-white/80 backdrop-blur-md flex-1">
+                    <h3 class="text-xl font-black italic tracking-tighter text-zinc-900 mb-3">Course Promo</h3>
+                    <div class="text-xs text-zinc-700 space-y-2">
+                        <p><strong>Scope:</strong> [e.g., Edited educational short-form asset for paid social media advertising.]</p>
+                        <p><strong>Software:</strong> [e.g., Premiere Pro]</p>
+                        <p class="text-[#30106b] font-bold"><strong>Impact:</strong> [e.g., Decreased Cost-Per-Acquisition (CPA) on Facebook Ads.]</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Card 4 -->
+            <div class="glass-pro project-card overflow-hidden flex flex-col group">
+                <div class="aspect-[9/16] relative overflow-hidden bg-black project-img-wrapper">
+                    <video class="w-full h-full object-cover opacity-90" autoplay loop muted playsinline poster="https://placehold.co/400x700/1a1a1a/ffffff?text=Testimonial">
+                        <source src="Schmidgall (Emily Testimonial - captions)_web.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="p-5 bg-white/80 backdrop-blur-md flex-1">
+                    <h3 class="text-xl font-black italic tracking-tighter text-zinc-900 mb-3">Testimonial</h3>
+                    <div class="text-xs text-zinc-700 space-y-2">
+                        <p><strong>Scope:</strong> [e.g., Client testimonial cutdown. Applied basic color correction and burned-in subtitles.]</p>
+                        <p><strong>Software:</strong> [e.g., Premiere Pro, Audition]</p>
+                        <p class="text-[#30106b] font-bold"><strong>Impact:</strong> [e.g., Highest converting organic post of Q3.]</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="max-w-[90%] md:max-w-[50%] mx-auto mb-48 reveal">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-12 flex flex-col items-center text-center shadow-[0_20px_50px_-10px_rgba(0,0,0,0.3)]">
+            <h2 class="text-white text-4xl font-black italic uppercase tracking-tighter mb-8 leading-tight">Ready to elevate <br>your marketing team?</h2>
+            <p class="text-zinc-400 mb-8 font-light">I'm ready to bring my portfolio of skills in-house to produce engaging content across all your digital channels.</p>
+            <a href="mailto:admin@mikemillermedia.com" class="px-16 py-6 bg-[#30106b] text-white rounded-full font-black uppercase tracking-widest text-[10px] hover:scale-105 hover:bg-white hover:text-black transition-all duration-500 shadow-xl">Contact Me</a>
+        </div>
+    </section>
+
+    <footer class="max-w-[85%] mx-auto py-20 border-t border-black/5 flex flex-col md:flex-row justify-between text-[10px] font-bold uppercase tracking-[0.5em] text-zinc-500">
+        <p>© 2026 Mike Miller — Candidate Portfolio</p>
+        <div class="flex gap-10 mt-8 md:mt-0">
+            <a href="mailto:admin@mikemillermedia.com" class="hover:text-black transition">Email</a>
+            <a href="resume.pdf" target="_blank" class="hover:text-black transition">Résumé</a>
+        </div>
+    </footer>
+
+    <script>
+        // Reveal Logic
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach((el) => obs.observe(el));
+
+        // Dramatic Service Focus
+        const serviceObs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+                else entry.target.classList.remove('active');
+            });
+        }, { threshold: 0.75 });
+        document.querySelectorAll('.service-focus').forEach((el) => serviceObs.observe(el));
+
+        // Video Controller
+        const bioVideo = document.getElementById('bioVideo');
+        const videoOverlay = document.getElementById('videoOverlay');
+        const vObs = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) bioVideo.play();
+                else bioVideo.pause();
+            });
+        }, { threshold: 0.5 });
+        vObs.observe(bioVideo);
+
+        videoOverlay.addEventListener('click', () => {
+            if (bioVideo.paused) bioVideo.play();
+            else bioVideo.pause();
+        });
+
+        // --- CAROUSEL DRAG LOGIC ---
+        const slider = document.getElementById('drag-carousel');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('grabbing');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+        });
+
+        slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('grabbing');
+        });
+
+        slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('grabbing');
+        });
+
+        slider.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 2; 
+            slider.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+
+</body>
+</html>
